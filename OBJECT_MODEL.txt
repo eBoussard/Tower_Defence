@@ -11,6 +11,7 @@ Tower				Defending Exit from Enemies					Price
 																Shooting speed
 																Range
 																Ammunition
+																Sell value
 																
 Ammunition			Shot by Towers, hits Enemies				Location (not on grid of Board)
 													
@@ -24,3 +25,6 @@ Rules				Gives allowed Locations for Pieces
 					Rules operate on Board and Pieces
 					
 Engine				Change Location of Pieces on Board			Speed of play
+
+UI					Shows a graphical representation			
+					of the game									
