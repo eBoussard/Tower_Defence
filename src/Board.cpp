@@ -32,6 +32,14 @@ void Board::draw() const
   drawExit();
 }
 
+void Board::MouseClick(unsigned int x, unsigned int y)
+{
+  if (y < m_Size_y)
+    {
+      std::cout << "mouse clicked on board\n";
+    }
+}
+
 void Board::drawBackground() const
 {
   al_clear_to_color(al_map_rgb(0,0,0));

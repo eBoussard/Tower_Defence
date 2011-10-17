@@ -1,6 +1,7 @@
 #include <ScoreBoard.hpp>
 
 #include <stdio.h>
+#include <iostream>
 
 #include <allegro.h>
 #include <allegro_primitives.h>
@@ -41,6 +42,17 @@ void ScoreBoard::draw() const
   drawTopLine();
   drawTowerButton();
   drawInfoText();
+}
+
+void ScoreBoard::MouseClick(unsigned int x, unsigned int y)
+{
+  if (y > m_Position_y + (m_ButtonSize / 2) && y < m_Position_y + (m_ButtonSize * 1.5))
+    {
+      if (x > m_Size_x - (m_ButtonSize * 2) && x < m_Size_x - m_ButtonSize)
+	{
+	  std::cout << "button clicked\n";
+	}
+    }
 }
 
 void ScoreBoard::drawTopLine() const

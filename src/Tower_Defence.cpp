@@ -21,7 +21,31 @@ const unsigned int ScreenW = 1280;
 const unsigned int ScreenH = 720;
 const float FPS = 60.;
 
+bool MouseClick (unsigned int & x, unsigned int & y)
+{
+  ALLEGRO_MOUSE_STATE MouseState;
 
+  static bool MouseOneDown = false;
+
+  al_get_mouse_state (&MouseState);
+
+
+
+  if (MouseState.buttons & 1)
+    {
+      MouseOneDown = true;
+      return false;
+    }
+
+  else if (MouseOneDown)
+    {
+      x = al_get_mouse_state_axis (&MouseState, 0);
+      y = al_get_mouse_state_axis (&MouseState, 1);
+      MouseOneDown = false;
+      return true;
+    }
+  return false;
+}
 
 
 
@@ -41,6 +65,14 @@ int main()
   if (!al_init())
     {
       cout << "failed to initialize Allegro!\n";
+      return 1;
+    }
+
+
+
+  if (!al_install_mouse())
+    {
+      cout << "mouse fail\n";
       return 1;
     }
 
@@ -116,13 +148,29 @@ int main()
   while(1)
     {
       ALLEGRO_EVENT Event;
+      unsigned int x, y;
+
+
+
       al_wait_for_event(EventQueue, &Event);
+
+
       if (Event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
       	{
       	  break;
       	}
+
+      if (MouseClick(x,y))
+	{
+	  pBoard->MouseClick(x,y);
+	  pScoreBoard->MouseClick(x,y);
+	}
+
+
       pBoard->draw();
       pScoreBoard->draw();
+
+
       al_flip_display();
     }
 }

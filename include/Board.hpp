@@ -9,6 +9,7 @@ public:
   Board();
   void debugPrint() const;
   void draw() const;
+  void MouseClick(unsigned int x, unsigned int y);
 
 
 private:
