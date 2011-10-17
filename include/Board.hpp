@@ -8,11 +8,17 @@ class Board
 public:
   Board();
   void debugPrint() const;
+  void draw() const;
 
 
 private:
   Board(const Board&);
   Board & operator = (const Board&);
+
+  void drawBackground() const;
+  void drawTiles() const;
+  void drawEntrance() const;
+  void drawExit() const;
 
 
   //Properties
