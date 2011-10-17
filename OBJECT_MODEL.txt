@@ -1,0 +1,26 @@
+Object				Description									Properties
+Player				Places towers on Board						Money
+																Life
+													
+Board				Game is played on the Board					Size
+																Entrance
+																Exit
+													
+Tower				Defending Exit from Enemies					Price
+					Placed on Board by Player					Damage
+																Shooting speed
+																Range
+																Ammunition
+																
+Ammunition			Shot by Towers, hits Enemies				Location (not on grid of Board)
+													
+Enemies 			Moves on Board from Entrance to Exit		Health Points
+																Movement speed
+																Yields Money
+																
+Piece				Towers and Enemies are Pieces				Location on board
+
+Rules				Gives allowed Locations for Pieces
+					Rules operate on Board and Pieces
+					
+Engine				Change Location of Pieces on Board			Speed of play
