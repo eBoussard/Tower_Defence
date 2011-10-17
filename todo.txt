@@ -1,0 +1,9 @@
+*text in scoreboard (player health, score, money)
+
+*automatic motion of enemy
+
+*summon several enemy (wave)
+
+*make tower placeable on board
+
+*enemy avoids tower
