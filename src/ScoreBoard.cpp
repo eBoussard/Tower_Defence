@@ -35,6 +35,7 @@ ScoreBoard::~ScoreBoard()
 {
   al_destroy_font (m_InfoFont); 
   al_shutdown_ttf_addon();
+  free(m_InfoText);
 }
 
 
