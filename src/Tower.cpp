@@ -10,7 +10,7 @@ Tower::Tower():m_Price(100), m_Damage(100), m_ShootingSpeed(100), m_Range(100), 
 
 ALLEGRO_BITMAP * Tower::getBitmap() const
 {
-  int TowerBitmapSize = 50;
+  int TowerBitmapSize = 48;
 
 
   ALLEGRO_BITMAP *TowerBitmap = NULL;

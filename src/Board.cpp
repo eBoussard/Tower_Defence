@@ -34,11 +34,29 @@ void Board::draw() const
 
 void Board::MouseClick(unsigned int x, unsigned int y)
 {
+  unsigned int x_leftBorder, y_topBorder;
+
+  x_leftBorder = 64 * (x / 64);
+  y_topBorder = 64 * (y / 64);
   if (y < m_Size_y)
     {
+      al_draw_line(x_leftBorder, y_topBorder, (x_leftBorder + 64), (y_topBorder + 64), al_map_rgb(255,255,255), 2);
       std::cout << "mouse clicked on board\n";
     }
 }
+
+
+bool Board::CreateTower (unsigned int x, unsigned int y, unsigned int &Grid_x, unsigned int &Grid_y) const
+{
+  if (y < m_Size_y)
+    {
+      Grid_x = x / 64;
+      Grid_y = y / 64;
+      return true;
+    }
+  return false;
+}
+
 
 void Board::drawBackground() const
 {

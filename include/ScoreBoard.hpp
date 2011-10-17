@@ -12,6 +12,7 @@ public:
   ~ScoreBoard();
   void draw() const;
   void MouseClick(unsigned int x, unsigned int y);
+  bool TowerButtonActive() const;
 
 
 private:
@@ -37,10 +38,12 @@ private:
   const unsigned int m_Score;
   const unsigned int m_HealthPoints;
   const unsigned int m_Money;
+  bool m_TowerButtonActive;
 
   ALLEGRO_BITMAP *m_TowerButton;
   ALLEGRO_COLOR m_ColorGray;
   ALLEGRO_COLOR m_ColorWhite;
+  ALLEGRO_COLOR m_ColorRed;
 
   ALLEGRO_FONT *m_InfoFont;
 };

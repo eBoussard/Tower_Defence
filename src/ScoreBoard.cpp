@@ -10,7 +10,7 @@
 
 
 
-ScoreBoard::ScoreBoard():m_ButtonSize(40), m_Size_x(1280), m_Size_y(80), m_Position_x(0), m_Position_y(640), m_Money(100), m_Score(100), m_HealthPoints(100)
+ScoreBoard::ScoreBoard():m_ButtonSize(40), m_Size_x(1280), m_Size_y(80), m_Position_x(0), m_Position_y(640), m_Money(100), m_Score(100), m_HealthPoints(100), m_TowerButtonActive(false)
 {
   al_init();
   al_init_primitives_addon();
@@ -23,6 +23,7 @@ ScoreBoard::ScoreBoard():m_ButtonSize(40), m_Size_x(1280), m_Size_y(80), m_Posit
 
   m_ColorGray = al_map_rgb (127, 127, 127);
   m_ColorWhite = al_map_rgb (255, 255, 255);
+  m_ColorRed = al_map_rgb (255, 0, 0);
 
   m_InfoFont =  al_load_ttf_font ("pirulen.ttf", 18, 0);
 
@@ -51,9 +52,18 @@ void ScoreBoard::MouseClick(unsigned int x, unsigned int y)
       if (x > m_Size_x - (m_ButtonSize * 2) && x < m_Size_x - m_ButtonSize)
 	{
 	  std::cout << "button clicked\n";
+	  m_TowerButtonActive = !m_TowerButtonActive;
 	}
     }
 }
+
+
+bool ScoreBoard::TowerButtonActive() const
+{
+  return m_TowerButtonActive;
+}
+
+
 
 void ScoreBoard::drawTopLine() const
 {
@@ -63,6 +73,10 @@ void ScoreBoard::drawTopLine() const
 void ScoreBoard::drawTowerButton() const
 {
   al_draw_bitmap (m_TowerButton, m_Size_x - (m_ButtonSize * 2), m_Size_y + 640 - (m_ButtonSize + (m_ButtonSize / 2)), 0);
+  if (m_TowerButtonActive)
+    {
+      al_draw_rectangle (1198, 658, 1242, 702, m_ColorRed, 2);
+    }
 }
 
 void ScoreBoard::drawInfoText() const

@@ -160,15 +160,33 @@ int main()
       	  break;
       	}
 
-      if (MouseClick(x,y))
-	{
-	  pBoard->MouseClick(x,y);
-	  pScoreBoard->MouseClick(x,y);
-	}
+
 
 
       pBoard->draw();
       pScoreBoard->draw();
+
+      if (MouseClick(x,y))
+	{
+	  pBoard->MouseClick(x,y);
+	  pScoreBoard->MouseClick(x,y);
+
+	  if (pScoreBoard->TowerButtonActive())
+	    {
+	      unsigned int Grid_x, Grid_y;
+	      if (pBoard->CreateTower(x, y, Grid_x, Grid_y))
+		{
+		  std::cout << "new tower created on " << Grid_x << ", " << Grid_y << std::endl;
+		}
+	      else
+		{
+		  std::cout << "could not create tower\n";
+		}
+	    }
+	}
+
+
+
 
 
       al_flip_display();

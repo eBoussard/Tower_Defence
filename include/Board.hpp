@@ -10,6 +10,7 @@ public:
   void debugPrint() const;
   void draw() const;
   void MouseClick(unsigned int x, unsigned int y);
+  bool CreateTower(unsigned int x, unsigned int y, unsigned int &Grid_x, unsigned int &Grid_y) const;
 
 
 private:
