@@ -1,9 +1,9 @@
-*text in scoreboard (player health, score, money)
+*make tower button clickable
+
+*make tower placeable on board
 
 *automatic motion of enemy
 
 *summon several enemy (wave)
-
-*make tower placeable on board
 
 *enemy avoids tower
