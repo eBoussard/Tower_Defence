@@ -1,5 +1,7 @@
 #include <ScoreBoard.hpp>
 
+#include <stdio.h>
+
 #include <allegro.h>
 #include <allegro_primitives.h>
 #include <allegro_font.h>
@@ -7,7 +9,7 @@
 
 
 
-ScoreBoard::ScoreBoard():m_ButtonSize(40), m_Size_x(1280), m_Size_y(80), m_Position_x(0), m_Position_y(640)
+ScoreBoard::ScoreBoard():m_ButtonSize(40), m_Size_x(1280), m_Size_y(80), m_Position_x(0), m_Position_y(640), m_Money(100), m_Score(100), m_HealthPoints(100)
 {
   al_init();
   al_init_primitives_addon();
@@ -22,6 +24,8 @@ ScoreBoard::ScoreBoard():m_ButtonSize(40), m_Size_x(1280), m_Size_y(80), m_Posit
   m_ColorWhite = al_map_rgb (255, 255, 255);
 
   m_InfoFont =  al_load_ttf_font ("pirulen.ttf", 18, 0);
+
+  m_InfoText = (char *)malloc(128);
 }
 
 
@@ -51,12 +55,35 @@ void ScoreBoard::drawTowerButton() const
 
 void ScoreBoard::drawInfoText() const
 {
-
-
   if (m_InfoFont != NULL)
     {
-      al_draw_text (m_InfoFont, m_ColorWhite, 10, m_Position_y, ALLEGRO_ALIGN_LEFT, "SCORE");
-      al_draw_text (m_InfoFont, m_ColorWhite, 10, (m_Position_y + 25), ALLEGRO_ALIGN_LEFT, "LIFE");
-      al_draw_text (m_InfoFont, m_ColorWhite, 10, (m_Position_y + 50), ALLEGRO_ALIGN_LEFT, "MONEY");
+      al_draw_text (m_InfoFont, m_ColorWhite, 10, (m_Position_y + 2), ALLEGRO_ALIGN_LEFT, "SCORE");
+      al_draw_text (m_InfoFont, m_ColorWhite, 10, (m_Position_y + ((m_Size_y - 20) / 2)), ALLEGRO_ALIGN_LEFT, "LIFE");
+      al_draw_text (m_InfoFont, m_ColorWhite, 10, (m_Position_y + (m_Size_y - 20)), ALLEGRO_ALIGN_LEFT, "MONEY");
+
+      al_draw_text (m_InfoFont, m_ColorWhite, 180, (m_Position_y + 2), ALLEGRO_ALIGN_RIGHT, GetScoreInfoText());
+      al_draw_text (m_InfoFont, m_ColorWhite, 180, (m_Position_y + ((m_Size_y - 20) / 2)), ALLEGRO_ALIGN_RIGHT, GetHealthPointsInfoText());
+      al_draw_text (m_InfoFont, m_ColorWhite, 180, (m_Position_y + (m_Size_y - 20)), ALLEGRO_ALIGN_RIGHT, GetMoneyInfoText());
     }
 }
+
+
+char * ScoreBoard::GetScoreInfoText() const
+{
+  sprintf (m_InfoText, "%d", m_Score);
+  return m_InfoText;
+}
+
+char * ScoreBoard::GetHealthPointsInfoText() const
+{
+  sprintf (m_InfoText, "%d", m_HealthPoints);
+  return m_InfoText;
+}
+
+char * ScoreBoard::GetMoneyInfoText() const
+{
+  sprintf (m_InfoText, "%d", m_Money);
+  return m_InfoText;
+}
+
+

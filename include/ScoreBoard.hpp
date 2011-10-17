@@ -21,6 +21,11 @@ private:
   void drawTowerButton() const;
   void drawInfoText() const;
 
+  char * m_InfoText;
+  char * GetScoreInfoText() const;
+  char * GetHealthPointsInfoText() const;
+  char * GetMoneyInfoText() const;
+
 
   //Properties
   const unsigned int m_ButtonSize;
@@ -28,6 +33,10 @@ private:
   const unsigned int m_Size_y;
   const int m_Position_x;
   const int m_Position_y;
+  const unsigned int m_Score;
+  const unsigned int m_HealthPoints;
+  const unsigned int m_Money;
+
   ALLEGRO_BITMAP *m_TowerButton;
   ALLEGRO_COLOR m_ColorGray;
   ALLEGRO_COLOR m_ColorWhite;

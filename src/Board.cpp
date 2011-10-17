@@ -51,11 +51,11 @@ void Board::drawTiles() const
 
 void Board::drawEntrance() const
 {
-  al_draw_line(0,m_EntranceUpper, 0, m_EntranceLower, al_map_rgb(0,255,0), 3);
+  al_draw_line(2, m_EntranceUpper, 2, m_EntranceLower, al_map_rgb(0,255,0), 3);
 }
 
 void Board::drawExit() const
 {
-  al_draw_line(m_Size_x ,m_ExitUpper, m_Size_x, m_ExitLower, al_map_rgb(255,0,0), 3);
+  al_draw_line(m_Size_x, m_ExitUpper, m_Size_x, m_ExitLower, al_map_rgb(255,0,0), 3);
 }
 
