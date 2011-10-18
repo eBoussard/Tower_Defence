@@ -4,19 +4,19 @@
 
 
 
-Tower::Tower():m_Price(100), m_Damage(100), m_ShootingSpeed(100), m_Range(100), m_SellValue(100)
+Tower::Tower():m_Price(100), m_Damage(100), m_shootingSpeed(100), m_Range(100), m_sellValue(100)
 { }
 
 
 ALLEGRO_BITMAP * Tower::getBitmap() const
 {
-  int TowerBitmapSize = 48;
+  int towerBitmapSize = 48;
 
 
-  ALLEGRO_BITMAP *TowerBitmap = NULL;
+  ALLEGRO_BITMAP *towerBitmap = NULL;
 
-  TowerBitmap = al_create_bitmap (TowerBitmapSize, TowerBitmapSize);
-  return TowerBitmap;
+  towerBitmap = al_create_bitmap (towerBitmapSize, towerBitmapSize);
+  return towerBitmap;
 }
 
 
@@ -25,7 +25,7 @@ void Tower::debugPrint() const
   std::cout << "Tower\n";
   std::cout << "Price: " << m_Price << "\n";
   std::cout << "Damage: " << m_Damage << "\n";
-  std::cout << "ShootingSpeed: " << m_ShootingSpeed << "\n";
+  std::cout << "ShootingSpeed: " << m_shootingSpeed << "\n";
   std::cout << "Range: " << m_Range << "\n";
-  std::cout << "SellValue: " << m_SellValue << "\n\n";
+  std::cout << "SellValue: " << m_sellValue << "\n\n";
 }

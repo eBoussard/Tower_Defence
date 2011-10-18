@@ -5,7 +5,7 @@
 
 
 
-Board::Board():m_Size_x(1280), m_Size_y(640),  m_EntranceLower(128), m_EntranceUpper(64), m_ExitLower(576), m_ExitUpper(512)
+Board::Board():m_max_x(1280), m_min_x(0), m_max_y(640), m_min_y(0),  m_entranceLower(128), m_entranceUpper(64), m_exitLower(576), m_exitUpper(512), m_tileSize(64)
 {
   al_init();
   al_init_primitives_addon();
@@ -15,43 +15,46 @@ Board::Board():m_Size_x(1280), m_Size_y(640),  m_EntranceLower(128), m_EntranceU
 void Board::debugPrint() const
 {
   std::cout << "Board\n";
-  std::cout << "Size_x: " << m_Size_x << "\n";
-  std::cout << "Size_y: " << m_Size_y << "\n";
-  std::cout << "EntranceLower: " << m_EntranceLower << "\n";
-  std::cout << "EntranceUpper: " << m_EntranceUpper << "\n";
-  std::cout << "ExitLower: " << m_ExitLower << "\n";
-  std::cout << "ExitUpper: " << m_ExitUpper << "\n\n";
+  std::cout << "max_x: " << m_max_x << "\n";
+  std::cout << "min_x: " << m_min_x << "\n";
+  std::cout << "max_y: " << m_max_y << "\n";
+  std::cout << "min_y: " << m_min_y << "\n";
+  std::cout << "entranceLower: " << m_entranceLower << "\n";
+  std::cout << "entranceUpper: " << m_entranceUpper << "\n";
+  std::cout << "exitLower: " << m_exitLower << "\n";
+  std::cout << "exitUpper: " << m_exitUpper << "\n";
+  std::cout << "tileSize: " << m_tileSize << "\n\n";
 }
 
 
 void Board::draw() const
 {
   drawBackground();
-  drawTiles();
+  drawGrid();
   drawEntrance();
   drawExit();
 }
 
-void Board::MouseClick(unsigned int x, unsigned int y)
+void Board::mouseClick(unsigned int x, unsigned int y)
 {
   unsigned int x_leftBorder, y_topBorder;
 
-  x_leftBorder = 64 * (x / 64);
-  y_topBorder = 64 * (y / 64);
-  if (y < m_Size_y)
+  x_leftBorder = m_tileSize * (x / m_tileSize);
+  y_topBorder = m_tileSize * (y / m_tileSize);
+  if (y < m_max_y)
     {
-      al_draw_line(x_leftBorder, y_topBorder, (x_leftBorder + 64), (y_topBorder + 64), al_map_rgb(255,255,255), 2);
+      al_draw_line(x_leftBorder, y_topBorder, (x_leftBorder + m_tileSize), (y_topBorder + m_tileSize), al_map_rgb(255,255,255), 2); //PLACEHOLDER
       std::cout << "mouse clicked on board\n";
     }
 }
 
 
-bool Board::CreateTower (unsigned int x, unsigned int y, unsigned int &Grid_x, unsigned int &Grid_y) const
+bool Board::createTower (unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const
 {
-  if (y < m_Size_y)
+  if (y < m_max_y)
     {
-      Grid_x = x / 64;
-      Grid_y = y / 64;
+      gridPosition_x = x / m_tileSize;
+      gridPosition_y = y / m_tileSize;
       return true;
     }
   return false;
@@ -60,28 +63,28 @@ bool Board::CreateTower (unsigned int x, unsigned int y, unsigned int &Grid_x, u
 
 void Board::drawBackground() const
 {
-  al_clear_to_color(al_map_rgb(0,0,0));
+  al_clear_to_color(al_map_rgb(0,0,0)); //PLACEHOLDER
 }
 
-void Board::drawTiles() const
+void Board::drawGrid() const
 {
-  for(int h_pos = 64; h_pos < 640; h_pos += 64)
+  for(int hPos = m_tileSize; hPos <= m_max_y; hPos += m_tileSize)
     {
-      al_draw_line(0, h_pos, m_Size_x, h_pos, al_map_rgb(127,127,127), 2);
+      al_draw_line(m_min_x, hPos, m_max_x, hPos, al_map_rgb(127,127,127), 2);
     }
-  for(int v_pos = 64; v_pos < 1280; v_pos += 64)
+  for(int vPos = m_tileSize; vPos < m_max_x; vPos += m_tileSize)
     {
-      al_draw_line(v_pos, 0, v_pos, m_Size_y, al_map_rgb(127,127,127), 2);
+      al_draw_line(vPos, m_min_y, vPos, m_max_y, al_map_rgb(127,127,127), 2);
     }
 }
 
 void Board::drawEntrance() const
 {
-  al_draw_line(2, m_EntranceUpper, 2, m_EntranceLower, al_map_rgb(0,255,0), 3);
+  al_draw_line(m_min_x + 2, m_entranceUpper, m_min_x + 2, m_entranceLower, al_map_rgb(0,255,0), 3); //PLACEHOLDER
 }
 
 void Board::drawExit() const
 {
-  al_draw_line(m_Size_x, m_ExitUpper, m_Size_x, m_ExitLower, al_map_rgb(255,0,0), 3);
+  al_draw_line(m_max_x, m_exitUpper, m_max_x, m_exitLower, al_map_rgb(255,0,0), 3); //PLACEHOLDER
 }
 

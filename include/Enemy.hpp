@@ -9,7 +9,9 @@ class Enemy
 public:
   Enemy();
   void debugPrint() const;
+
   ALLEGRO_BITMAP * getBitmap() const;
+
 
 
 private:
@@ -17,11 +19,13 @@ private:
   Enemy & operator = (const Enemy&);
 
 
+
   //Properties
-  unsigned int m_HealthPoints;
-  unsigned int m_MovementSpeed;
-  unsigned int m_YieldsMoney;
+  unsigned int m_healthPoints;
+  unsigned int m_movementSpeed;
+  unsigned int m_yieldsMoney;
 };
+
 
 
 #endif //ENEMY_HPP

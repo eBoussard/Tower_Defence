@@ -9,8 +9,9 @@ public:
   Board();
   void debugPrint() const;
   void draw() const;
-  void MouseClick(unsigned int x, unsigned int y);
-  bool CreateTower(unsigned int x, unsigned int y, unsigned int &Grid_x, unsigned int &Grid_y) const;
+  void mouseClick(unsigned int x, unsigned int y);
+  bool createTower(unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const;
+
 
 
 private:
@@ -18,19 +19,24 @@ private:
   Board & operator = (const Board&);
 
   void drawBackground() const;
-  void drawTiles() const;
+  void drawGrid() const;
   void drawEntrance() const;
   void drawExit() const;
 
 
+
   //Properties
-  const unsigned int m_Size_x;
-  const unsigned int m_Size_y;
-  const unsigned int m_EntranceLower;
-  const unsigned int m_EntranceUpper;
-  const unsigned int m_ExitLower;
-  const unsigned int m_ExitUpper;
+  const unsigned int m_max_x;
+  const unsigned int m_min_x;
+  const unsigned int m_max_y;
+  const unsigned int m_min_y;
+  const unsigned int m_entranceLower;
+  const unsigned int m_entranceUpper;
+  const unsigned int m_exitLower;
+  const unsigned int m_exitUpper;
+  const unsigned int m_tileSize;
 };
+
 
 
 #endif //BOARD_HPP

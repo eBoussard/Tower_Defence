@@ -2,19 +2,26 @@
 #define PLAYER_HPP
 
 
+
 class Player
 {
 public:
   Player();
   void debugPrint() const;
 
+
+
 private:
   Player(const Player&);
   Player & operator = (const Player&);
 
+
+
   //Properties
   unsigned int m_Money;
-  unsigned int m_HealthPoints;
+  unsigned int m_healthPoints;
 };
+
+
 
 #endif //PLAYER_HPP

@@ -21,29 +21,36 @@ const unsigned int ScreenW = 1280;
 const unsigned int ScreenH = 720;
 const float FPS = 60.;
 
-bool MouseClick (unsigned int & x, unsigned int & y)
+
+
+
+bool mouseClick (unsigned int & x, unsigned int & y)
 {
-  ALLEGRO_MOUSE_STATE MouseState;
+  ALLEGRO_MOUSE_STATE mouseState;
 
-  static bool MouseOneDown = false;
+  static bool mouseOneDown = false;
 
-  al_get_mouse_state (&MouseState);
+  al_get_mouse_state (&mouseState);
 
 
 
-  if (MouseState.buttons & 1)
+
+  if (mouseState.buttons & 1)
     {
-      MouseOneDown = true;
+      mouseOneDown = true;
       return false;
     }
 
-  else if (MouseOneDown)
+
+
+  if (mouseOneDown)
     {
-      x = al_get_mouse_state_axis (&MouseState, 0);
-      y = al_get_mouse_state_axis (&MouseState, 1);
-      MouseOneDown = false;
+      x = al_get_mouse_state_axis (&mouseState, 0);
+      y = al_get_mouse_state_axis (&mouseState, 1);
+      mouseOneDown = false;
       return true;
     }
+
   return false;
 }
 
@@ -52,10 +59,8 @@ bool MouseClick (unsigned int & x, unsigned int & y)
 int main()
 {
   ALLEGRO_DISPLAY *Display = NULL;
-  ALLEGRO_BITMAP *EnemyPH = NULL;
-  ALLEGRO_BITMAP *TowerPH = NULL;
-  ALLEGRO_EVENT_QUEUE *EventQueue = NULL;
-  ALLEGRO_TIMER *FramerateTimer = NULL;
+  ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
+  ALLEGRO_TIMER *framerateTimer = NULL;
 
 
 
@@ -80,8 +85,8 @@ int main()
 
 
 
-  EventQueue = al_create_event_queue();
-  if (!EventQueue)
+  eventQueue = al_create_event_queue();
+  if (!eventQueue)
     {
       cout << "EventQueue fail\n";
       return 1;
@@ -91,8 +96,8 @@ int main()
 
 
 
-  FramerateTimer = al_create_timer (1.0 / FPS);
-  if (!FramerateTimer)
+  framerateTimer = al_create_timer (1.0 / FPS);
+  if (!framerateTimer)
     {
       cout << "Framerate timer fail\n";
       return 1;
@@ -123,6 +128,8 @@ int main()
   ScoreBoard *pScoreBoard = new ScoreBoard();
 
 
+
+
   if (pPlayer != NULL) pPlayer->debugPrint();
 
   if (pBoard != NULL) pBoard->debugPrint();
@@ -137,11 +144,12 @@ int main()
 
 
 
-  al_register_event_source (EventQueue, al_get_display_event_source (Display));
 
-  al_register_event_source (EventQueue, al_get_timer_event_source (FramerateTimer));
+  al_register_event_source (eventQueue, al_get_display_event_source (Display));
 
-  al_start_timer(FramerateTimer);
+  al_register_event_source (eventQueue, al_get_timer_event_source (framerateTimer));
+
+  al_start_timer(framerateTimer);
 
   al_set_target_bitmap(al_get_backbuffer(Display)); 
 
@@ -152,7 +160,7 @@ int main()
 
 
 
-      al_wait_for_event(EventQueue, &Event);
+      al_wait_for_event(eventQueue, &Event);
 
 
       if (Event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
@@ -166,17 +174,17 @@ int main()
       pBoard->draw();
       pScoreBoard->draw();
 
-      if (MouseClick(x,y))
+      if (mouseClick(x, y))
 	{
-	  pBoard->MouseClick(x,y);
-	  pScoreBoard->MouseClick(x,y);
+	  pBoard->mouseClick(x,y);
+	  pScoreBoard->mouseClick(x,y);
 
-	  if (pScoreBoard->TowerButtonActive())
+	  if (pScoreBoard->towerButtonActive())
 	    {
-	      unsigned int Grid_x, Grid_y;
-	      if (pBoard->CreateTower(x, y, Grid_x, Grid_y))
+	      unsigned int gridPosition_x, gridPosition_y;
+	      if (pBoard->createTower(x, y, gridPosition_x, gridPosition_y))
 		{
-		  std::cout << "new tower created on " << Grid_x << ", " << Grid_y << std::endl;
+		  std::cout << "new tower created on " << gridPosition_x << ", " << gridPosition_y << std::endl;
 		}
 	      else
 		{

@@ -4,25 +4,25 @@
 
 
 
-Enemy::Enemy():m_HealthPoints(100), m_MovementSpeed(100), m_YieldsMoney(100)
+Enemy::Enemy():m_healthPoints(100), m_movementSpeed(100), m_yieldsMoney(100)
 { }
 
 
-
+//PLACEHOLDER
 ALLEGRO_BITMAP * Enemy::getBitmap() const
 {
-  int EnemyBitmapSize = 50;
+  int enemyBitmapSize = 50;
 
-  ALLEGRO_BITMAP *EnemyBitmap = NULL;
+  ALLEGRO_BITMAP *enemyBitmap = NULL;
  
-  EnemyBitmap = al_create_bitmap (EnemyBitmapSize, EnemyBitmapSize);
-  return EnemyBitmap;
+  enemyBitmap = al_create_bitmap (enemyBitmapSize, enemyBitmapSize);
+  return enemyBitmap;
 }
 
 void Enemy::debugPrint() const
 {
   std::cout << "Enemy\n";
-  std::cout << "HealthPoints: " << m_HealthPoints << "\n";
-  std::cout << "MovementSpeed: " << m_MovementSpeed << "\n";
-  std::cout << "YieldsMoney: " << m_YieldsMoney << "\n\n";
+  std::cout << "HealthPoints: " << m_healthPoints << "\n";
+  std::cout << "MovementSpeed: " << m_movementSpeed << "\n";
+  std::cout << "YieldsMoney: " << m_yieldsMoney << "\n\n";
 }

@@ -2,12 +2,12 @@
 #include <iostream>
 
 
-Engine::Engine():m_SpeedOfPlay(100)
+Engine::Engine():m_playSpeed(100)
 { }
 
 
 void Engine::debugPrint() const
 {
   std::cout << "Engine\n";
-  std::cout << "SpeedOfPlay: " << m_SpeedOfPlay << "\n\n";
+  std::cout << "playSpeed: " << m_playSpeed << "\n\n";
 }

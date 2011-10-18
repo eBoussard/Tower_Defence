@@ -11,17 +11,22 @@ public:
   void debugPrint() const;
   ALLEGRO_BITMAP * getBitmap() const;
 
+
+
 private:
   Tower(const Tower&);
   Tower & operator = (const Tower&);
 
+
+
   //Properties
   unsigned int m_Price;
   unsigned int m_Damage;
-  unsigned int m_ShootingSpeed;
+  unsigned int m_shootingSpeed;
   unsigned int m_Range;
-  unsigned int m_SellValue;
+  unsigned int m_sellValue;
 };
+
 
 
 #endif //TOWER_HPP
