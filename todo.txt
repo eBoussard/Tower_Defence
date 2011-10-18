@@ -1,5 +1,3 @@
-*clean code
-
 *make tower placeable on board
 
 *make tower removeable by right clicking
@@ -9,3 +7,6 @@
 *summon several enemy (wave)
 
 *enemy avoids tower
+
+*make a menu
+
