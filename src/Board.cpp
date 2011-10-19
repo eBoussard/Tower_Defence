@@ -12,6 +12,7 @@ Board::Board():m_max_x(1280), m_min_x(0), m_max_y(640), m_min_y(0),  m_entranceL
 }
 
 
+
 void Board::debugPrint() const
 {
   std::cout << "Board\n";
@@ -27,6 +28,7 @@ void Board::debugPrint() const
 }
 
 
+
 void Board::draw() const
 {
   drawBackground();
@@ -34,6 +36,8 @@ void Board::draw() const
   drawEntrance();
   drawExit();
 }
+
+
 
 void Board::mouseClick(unsigned int x, unsigned int y)
 {
