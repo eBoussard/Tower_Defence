@@ -4,24 +4,19 @@
 
 
 
-Tower::Tower(unsigned int xIndex, unsigned int yIndex):m_Price(100), m_Damage(100), m_shootingSpeed(100), m_Range(100), m_sellValue(100), m_xIndex(xIndex), m_yIndex(yIndex)
-{ }
-
-
-ALLEGRO_BITMAP * Tower::getBitmap() const
+Tower::Tower(unsigned int xIndex, unsigned int yIndex):m_Price(100), m_Damage(100), m_shootingSpeed(100), m_Range(100), m_sellValue(100), m_xIndex(xIndex), m_yIndex(yIndex), m_towerBitmapSize(48)
 {
-  int towerBitmapSize = 48;
+  al_init();
 
+  m_towerBitmap = al_create_bitmap (m_towerBitmapSize, m_towerBitmapSize);
+ 
 
-  ALLEGRO_BITMAP *towerBitmap = NULL;
-
-  towerBitmap = al_create_bitmap (towerBitmapSize, towerBitmapSize);
   ALLEGRO_BITMAP *pOldTargetBitmap = al_get_target_bitmap();
-  al_set_target_bitmap (towerBitmap);
+  al_set_target_bitmap (m_towerBitmap);
   al_clear_to_color (al_map_rgb (0, 255, 0));
   al_set_target_bitmap(pOldTargetBitmap);
-  return towerBitmap;
 }
+
 
 
 void Tower::debugPrint() const
@@ -36,14 +31,7 @@ void Tower::debugPrint() const
 
 
 
-unsigned int Tower::getXIndex() const
+void Tower::draw() const
 {
-  return m_xIndex;
-}
-
-
-
-unsigned int Tower::getYIndex() const
-{
-  return m_yIndex;
+  al_draw_bitmap (m_towerBitmap, (m_xIndex * 64) + 8, (m_yIndex * 64) + 8, 0);
 }

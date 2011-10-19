@@ -1,4 +1,4 @@
-*make tower placeable on board
+*make another tower
 
 *make tower removeable by right clicking
 
@@ -9,4 +9,5 @@
 *enemy avoids tower
 
 *make a menu
+
 

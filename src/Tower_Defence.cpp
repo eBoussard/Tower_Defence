@@ -117,7 +117,7 @@ int main()
 
   Board *pBoard = new Board();
 
-  Tower *pTower = new Tower(0, 0);
+  Tower *pTower = NULL;
 
   Ammunition *pAmmunition = new Ammunition();
 
@@ -173,34 +173,36 @@ int main()
 
       pBoard->draw();
       pScoreBoard->draw();
+ 
 
+
+      //if mouse one is clicked
       if (mouseClick(x, y))
 	{
 	  pBoard->mouseClick(x,y);
 	  pScoreBoard->mouseClick(x,y);
 
+	  //and if tower button is active
 	  if (pScoreBoard->towerButtonActive())
 	    {
 	      unsigned int gridPosition_x, gridPosition_y;
+	      //gridPosition means tile coordinates here
 	      if (pBoard->createTower(x, y, gridPosition_x, gridPosition_y))
 		{
-		  delete pTower;
-		  pTower = new Tower(gridPosition_x, gridPosition_y);
+		  delete pTower; //remove old tower drawn on Board
+		  pTower = new Tower(gridPosition_x, gridPosition_y); //create new tower on tile
 		  std::cout << "new tower created on " << gridPosition_x << ", " << gridPosition_y << std::endl;
 		}
 	      else
 		{
 		  std::cout << "could not create tower\n";
 		}
-	    }
+	    } 
 	}
-
 
       if (pTower != NULL)
 	{
-	  ALLEGRO_BITMAP *pTowerBitmap = pTower->getBitmap();
-
-	  al_draw_bitmap (pTowerBitmap, (pTower->getXIndex() * 64) + 8, (pTower->getYIndex() * 64) + 8, 0);
+	  pTower->draw();
 	}
 
 
