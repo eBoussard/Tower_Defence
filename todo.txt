@@ -1,4 +1,6 @@
-*make another tower
+*make tower placeable only once per tile
+
+*fix remove tower function
 
 *automatic motion of enemy
 

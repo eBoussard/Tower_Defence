@@ -1,6 +1,7 @@
 #include <iostream>
 #include <allegro.h>
 #include <allegro_primitives.h>
+#include <list>
 
 #include <Player.hpp>
 #include <Board.hpp>
@@ -132,7 +133,7 @@ int main()
 
   Board *pBoard = new Board();
 
-  Tower *pTower = NULL;
+  list<Tower *> Towers;
 
   Ammunition *pAmmunition = new Ammunition();
 
@@ -148,8 +149,6 @@ int main()
   if (pPlayer != NULL) pPlayer->debugPrint();
 
   if (pBoard != NULL) pBoard->debugPrint();
-
-  if (pTower != NULL) pTower->debugPrint();
 
   if (pAmmunition != NULL) pAmmunition->debugPrint();
 
@@ -204,8 +203,8 @@ int main()
 	      //tilePosition means tile coordinates here
 	      if (pBoard->getTileCoordinates(x, y, tilePosition_x, tilePosition_y))
 		{
-		  delete pTower; //remove old tower drawn on Board
-		  pTower = new Tower(tilePosition_x, tilePosition_y); //create new tower on tile
+		  Tower * pTower = new Tower(tilePosition_x, tilePosition_y); //create new tower on tile
+		  Towers.push_back(pTower);
 		  std::cout << "new tower created on " << tilePosition_x << ", " << tilePosition_y << std::endl;
 		}
 	      else
@@ -215,22 +214,28 @@ int main()
 	    } 
 	}
 
-      if (mouseTwoClick(x, y))
+      // if (mouseTwoClick(x, y))
+      // 	{
+      // 	  unsigned int tilePosition_x, tilePosition_y;
+      // 	  pBoard->getTileCoordinates(x, y, tilePosition_x, tilePosition_y);
+      // 	  if (pTower != NULL && pTower->onTile (tilePosition_x, tilePosition_y))
+      // 	    {
+      // 	      delete pTower;
+      // 	      pTower = NULL;
+      // 	    }
+      // 	}
+
+
+
+
+      // if (pTower != NULL)
+      // 	{
+      // 	  pTower->draw();
+      // 	}
+
+      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
 	{
-	  unsigned int tilePosition_x, tilePosition_y;
-	  pBoard->getTileCoordinates(x, y, tilePosition_x, tilePosition_y);
-	  if (pTower != NULL && pTower->onTile (tilePosition_x, tilePosition_y))
-	    {
-	      delete pTower;
-	      pTower = NULL;
-	    }
-	}
-
-
-
-
-      if (pTower != NULL)
-	{
+	  Tower * pTower = *it;
 	  pTower->draw();
 	}
 
