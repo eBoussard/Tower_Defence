@@ -10,6 +10,7 @@ public:
   Tower(unsigned int xIndex, unsigned int yIndex);
   void debugPrint() const;
   void draw() const;
+  bool onTile(unsigned int tilePosition_x, unsigned int tilePosition_y) const;
 
 
 private:

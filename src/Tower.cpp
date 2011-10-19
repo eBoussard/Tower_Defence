@@ -35,3 +35,9 @@ void Tower::draw() const
 {
   al_draw_bitmap (m_towerBitmap, (m_xIndex * 64) + 8, (m_yIndex * 64) + 8, 0);
 }
+
+
+bool Tower::onTile (unsigned int tilePosition_x, unsigned int tilePosition_y) const
+{
+  return ((tilePosition_x == m_xIndex) && (tilePosition_y == m_yIndex));
+}

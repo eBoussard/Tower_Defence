@@ -24,36 +24,51 @@ const float FPS = 60.;
 
 
 
-bool mouseClick (unsigned int & x, unsigned int & y)
+bool mouseNClick (unsigned int & x, unsigned int & y, unsigned int N, bool & isDown)
 {
   ALLEGRO_MOUSE_STATE mouseState;
 
-  static bool mouseOneDown = false;
+  // static bool isDown = false;
 
   al_get_mouse_state (&mouseState);
 
+  std::cout << "MouseN called with " << N << std::endl;
 
 
 
-  if (mouseState.buttons & 1)
+
+  if (mouseState.buttons & N)
     {
-      mouseOneDown = true;
+      isDown = true;
       return false;
     }
 
 
 
-  if (mouseOneDown)
+  if (isDown)
     {
       x = al_get_mouse_state_axis (&mouseState, 0);
       y = al_get_mouse_state_axis (&mouseState, 1);
-      mouseOneDown = false;
+      isDown = false;
       return true;
     }
 
   return false;
 }
 
+
+bool mouseOneClick (unsigned int & x, unsigned int & y)
+{
+  static bool isDown = false;
+  return mouseNClick(x, y, 1, isDown);
+}
+
+
+bool mouseTwoClick (unsigned int & x, unsigned int & y)
+{
+  static bool isDown = false;
+  return mouseNClick(x, y, 2, isDown);
+}
 
 
 int main()
@@ -177,7 +192,7 @@ int main()
 
 
       //if mouse one is clicked
-      if (mouseClick(x, y))
+      if (mouseOneClick(x, y))
 	{
 	  pBoard->mouseClick(x,y);
 	  pScoreBoard->mouseClick(x,y);
@@ -185,13 +200,13 @@ int main()
 	  //and if tower button is active
 	  if (pScoreBoard->towerButtonActive())
 	    {
-	      unsigned int gridPosition_x, gridPosition_y;
-	      //gridPosition means tile coordinates here
-	      if (pBoard->getTileCoordinates(x, y, gridPosition_x, gridPosition_y))
+	      unsigned int tilePosition_x, tilePosition_y;
+	      //tilePosition means tile coordinates here
+	      if (pBoard->getTileCoordinates(x, y, tilePosition_x, tilePosition_y))
 		{
 		  delete pTower; //remove old tower drawn on Board
-		  pTower = new Tower(gridPosition_x, gridPosition_y); //create new tower on tile
-		  std::cout << "new tower created on " << gridPosition_x << ", " << gridPosition_y << std::endl;
+		  pTower = new Tower(tilePosition_x, tilePosition_y); //create new tower on tile
+		  std::cout << "new tower created on " << tilePosition_x << ", " << tilePosition_y << std::endl;
 		}
 	      else
 		{
@@ -199,6 +214,20 @@ int main()
 		}
 	    } 
 	}
+
+      if (mouseTwoClick(x, y))
+	{
+	  unsigned int tilePosition_x, tilePosition_y;
+	  pBoard->getTileCoordinates(x, y, tilePosition_x, tilePosition_y);
+	  if (pTower != NULL && pTower->onTile (tilePosition_x, tilePosition_y))
+	    {
+	      delete pTower;
+	      pTower = NULL;
+	    }
+	}
+
+
+
 
       if (pTower != NULL)
 	{
