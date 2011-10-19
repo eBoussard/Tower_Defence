@@ -43,7 +43,6 @@ void Board::mouseClick(unsigned int x, unsigned int y)
   y_topBorder = m_tileSize * (y / m_tileSize);
   if (y < m_max_y)
     {
-      al_draw_line(x_leftBorder, y_topBorder, (x_leftBorder + m_tileSize), (y_topBorder + m_tileSize), al_map_rgb(255,255,255), 2); //PLACEHOLDER
       std::cout << "mouse clicked on board\n";
     }
 }

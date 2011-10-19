@@ -200,7 +200,7 @@ int main()
 	{
 	  ALLEGRO_BITMAP *pTowerBitmap = pTower->getBitmap();
 
-	  al_draw_bitmap (pTowerBitmap, pTower->getXIndex() * 64, pTower->getYIndex() * 64, 0);
+	  al_draw_bitmap (pTowerBitmap, (pTower->getXIndex() * 64) + 8, (pTower->getYIndex() * 64) + 8, 0);
 	}
 
 
