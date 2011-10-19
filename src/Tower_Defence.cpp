@@ -117,7 +117,7 @@ int main()
 
   Board *pBoard = new Board();
 
-  Tower *pTower = new Tower();
+  Tower *pTower = new Tower(0, 0);
 
   Ammunition *pAmmunition = new Ammunition();
 
