@@ -7,9 +7,11 @@
 class Tower
 {
 public:
-  Tower();
+  Tower(unsigned int xIndex, unsigned int yIndex);
   void debugPrint() const;
   ALLEGRO_BITMAP * getBitmap() const;
+  unsigned int getXIndex() const;
+  unsigned int getYIndex() const;
 
 
 
@@ -25,6 +27,8 @@ private:
   unsigned int m_shootingSpeed;
   unsigned int m_Range;
   unsigned int m_sellValue;
+  const unsigned int m_xIndex;
+  const unsigned int m_yIndex;
 };
 
 
