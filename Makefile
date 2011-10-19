@@ -1,6 +1,6 @@
 VPATH = src
 CPPFLAGS = -Iinclude -I/usr/local/include/allegro5 -g
-LDFLAGS = -L/usr/local/lib -lallegro -lallegro_primitives -lallegro_font -lallegro_ttf -g
+LDFLAGS = -L/usr/local/lib -lallegro -lallegro_primitives -lallegro_font -lallegro_image -lallegro_ttf -g
 
 all: Tower_Defence
 

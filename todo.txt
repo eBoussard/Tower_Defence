@@ -1,7 +1,5 @@
 *make another tower
 
-*make tower removeable by right clicking
-
 *automatic motion of enemy
 
 *summon several enemy (wave)
@@ -11,3 +9,7 @@
 *make a menu
 
 
+code cleaning todos:
+*make ALLEGRO_COLOR variables
+
+*make tile size variable in tower files

@@ -7,6 +7,7 @@
 #include <allegro_primitives.h>
 #include <allegro_font.h>
 #include <allegro_ttf.h>
+#include <allegro_image.h>
 
 
 
@@ -18,6 +19,7 @@ ScoreBoard::ScoreBoard():m_buttonSize(40), m_max_x(1280), m_min_x(0), m_max_y(80
   al_init_primitives_addon();
   al_init_font_addon();
   al_init_ttf_addon();
+  al_init_image_addon();
 
   m_colorWhite = al_map_rgb (255, 255, 255);
   m_colorRed = al_map_rgb (255, 0, 0);
@@ -25,9 +27,12 @@ ScoreBoard::ScoreBoard():m_buttonSize(40), m_max_x(1280), m_min_x(0), m_max_y(80
 
 
   //PLACEHOLDER
-  m_towerButton = al_create_bitmap (m_buttonSize, m_buttonSize);
-  al_set_target_bitmap (m_towerButton);
-  al_clear_to_color (al_map_rgb(0,255,0));
+  // m_towerButton = al_create_bitmap (m_buttonSize, m_buttonSize);
+  // al_set_target_bitmap (m_towerButton);
+  // al_clear_to_color (al_map_rgb(0,255,0));
+
+
+  m_towerButton = al_load_bitmap ("gfx/T1.bmp");
 
 
   m_infoFont =  al_load_ttf_font ("pirulen.ttf", 18, 0);

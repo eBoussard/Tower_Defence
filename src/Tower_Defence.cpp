@@ -32,7 +32,7 @@ bool mouseNClick (unsigned int & x, unsigned int & y, unsigned int N, bool & isD
 
   al_get_mouse_state (&mouseState);
 
-  std::cout << "MouseN called with " << N << std::endl;
+  //  std::cout << "MouseN called with " << N << std::endl;
 
 
 

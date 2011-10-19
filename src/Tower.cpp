@@ -1,15 +1,17 @@
 #include <Tower.hpp>
 #include <iostream>
 #include <allegro.h>
+#include <allegro_image.h>
 
 
 
 Tower::Tower(unsigned int xIndex, unsigned int yIndex):m_Price(100), m_Damage(100), m_shootingSpeed(100), m_Range(100), m_sellValue(100), m_xIndex(xIndex), m_yIndex(yIndex), m_towerBitmapSize(48)
 {
   al_init();
+  al_init_image_addon();
 
   m_towerBitmap = al_create_bitmap (m_towerBitmapSize, m_towerBitmapSize);
- 
+
 
   ALLEGRO_BITMAP *pOldTargetBitmap = al_get_target_bitmap();
   al_set_target_bitmap (m_towerBitmap);
