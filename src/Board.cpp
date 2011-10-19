@@ -52,7 +52,7 @@ void Board::mouseClick(unsigned int x, unsigned int y)
 }
 
 
-bool Board::createTower (unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const
+bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const
 {
   if (y < m_max_y)
     {

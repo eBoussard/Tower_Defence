@@ -187,7 +187,7 @@ int main()
 	    {
 	      unsigned int gridPosition_x, gridPosition_y;
 	      //gridPosition means tile coordinates here
-	      if (pBoard->createTower(x, y, gridPosition_x, gridPosition_y))
+	      if (pBoard->getTileCoordinates(x, y, gridPosition_x, gridPosition_y))
 		{
 		  delete pTower; //remove old tower drawn on Board
 		  pTower = new Tower(gridPosition_x, gridPosition_y); //create new tower on tile
