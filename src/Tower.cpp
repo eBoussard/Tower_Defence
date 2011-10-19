@@ -16,8 +16,10 @@ ALLEGRO_BITMAP * Tower::getBitmap() const
   ALLEGRO_BITMAP *towerBitmap = NULL;
 
   towerBitmap = al_create_bitmap (towerBitmapSize, towerBitmapSize);
+  ALLEGRO_BITMAP *pOldTargetBitmap = al_get_target_bitmap();
   al_set_target_bitmap (towerBitmap);
   al_clear_to_color (al_map_rgb (0, 255, 0));
+  al_set_target_bitmap(pOldTargetBitmap);
   return towerBitmap;
 }
 

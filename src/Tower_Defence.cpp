@@ -184,6 +184,8 @@ int main()
 	      unsigned int gridPosition_x, gridPosition_y;
 	      if (pBoard->createTower(x, y, gridPosition_x, gridPosition_y))
 		{
+		  delete pTower;
+		  pTower = new Tower(gridPosition_x, gridPosition_y);
 		  std::cout << "new tower created on " << gridPosition_x << ", " << gridPosition_y << std::endl;
 		}
 	      else
@@ -194,7 +196,12 @@ int main()
 	}
 
 
+      if (pTower != NULL)
+	{
+	  ALLEGRO_BITMAP *pTowerBitmap = pTower->getBitmap();
 
+	  al_draw_bitmap (pTowerBitmap, pTower->getXIndex() * 64, pTower->getYIndex() * 64, 0);
+	}
 
 
       al_flip_display();
