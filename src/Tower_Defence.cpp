@@ -25,20 +25,16 @@ const float FPS = 60.;
 
 
 
-bool mouseNClick (unsigned int & x, unsigned int & y, unsigned int N, bool & isDown)
+bool mouseNClick (unsigned int & x, unsigned int & y, unsigned int n, bool & isDown)
 {
   ALLEGRO_MOUSE_STATE mouseState;
 
-  // static bool isDown = false;
-
   al_get_mouse_state (&mouseState);
 
-  //  std::cout << "MouseN called with " << N << std::endl;
 
 
 
-
-  if (mouseState.buttons & N)
+  if (mouseState.buttons & n)
     {
       isDown = true;
       return false;
@@ -53,9 +49,9 @@ bool mouseNClick (unsigned int & x, unsigned int & y, unsigned int N, bool & isD
       isDown = false;
       return true;
     }
-
   return false;
 }
+
 
 
 bool mouseOneClick (unsigned int & x, unsigned int & y)
@@ -65,11 +61,19 @@ bool mouseOneClick (unsigned int & x, unsigned int & y)
 }
 
 
+
 bool mouseTwoClick (unsigned int & x, unsigned int & y)
 {
   static bool isDown = false;
   return mouseNClick(x, y, 2, isDown);
 }
+
+
+
+
+
+
+
 
 
 int main()
@@ -99,16 +103,12 @@ int main()
 
 
 
-
-
   eventQueue = al_create_event_queue();
   if (!eventQueue)
     {
       cout << "EventQueue fail\n";
       return 1;
     }
-
-
 
 
 
@@ -120,6 +120,7 @@ int main()
     }
 
 
+
   Display = al_create_display (ScreenW, ScreenH);
   if (!Display)
     {
@@ -129,32 +130,17 @@ int main()
 
 
 
-  Player *pPlayer = new Player();
-
-  Board *pBoard = new Board();
-
-  list<Tower *> Towers;
-
-  Ammunition *pAmmunition = new Ammunition();
-
-  Enemy *pEnemy = new Enemy();
-
-  Engine *pEngine = new Engine();
-
-  ScoreBoard *pScoreBoard = new ScoreBoard();
 
 
 
+  list <Tower *> Towers;
 
-  if (pPlayer != NULL) pPlayer->debugPrint();
+  ScoreBoard scoreboard;
 
-  if (pBoard != NULL) pBoard->debugPrint();
+  Rules rules;
 
-  if (pAmmunition != NULL) pAmmunition->debugPrint();
+  Board board;
 
-  if (pEnemy != NULL) pEnemy->debugPrint();
-
-  if (pEngine != NULL) pEngine->debugPrint();
 
 
 
@@ -167,15 +153,20 @@ int main()
 
   al_set_target_bitmap(al_get_backbuffer(Display)); 
 
+
+
+
+
+
   while(1)
     {
       ALLEGRO_EVENT Event;
-      unsigned int x, y;
+
+      unsigned int x, y, tilePosition_x, tilePosition_y;
 
 
 
       al_wait_for_event(eventQueue, &Event);
-
 
       if (Event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
       	{
@@ -185,59 +176,56 @@ int main()
 
 
 
-      pBoard->draw();
-      pScoreBoard->draw();
- 
+      board.draw();
 
-
-      //if mouse one is clicked
-      if (mouseOneClick(x, y))
-	{
-	  pBoard->mouseClick(x,y);
-	  pScoreBoard->mouseClick(x,y);
-
-	  //and if tower button is active
-	  if (pScoreBoard->towerButtonActive())
-	    {
-	      unsigned int tilePosition_x, tilePosition_y;
-	      //tilePosition means tile coordinates here
-	      if (pBoard->getTileCoordinates(x, y, tilePosition_x, tilePosition_y))
-		{
-		  Tower * pTower = new Tower(tilePosition_x, tilePosition_y); //create new tower on tile
-		  Towers.push_back(pTower);
-		  std::cout << "new tower created on " << tilePosition_x << ", " << tilePosition_y << std::endl;
-		}
-	      else
-		{
-		  std::cout << "could not create tower\n";
-		}
-	    } 
-	}
-
-      // if (mouseTwoClick(x, y))
-      // 	{
-      // 	  unsigned int tilePosition_x, tilePosition_y;
-      // 	  pBoard->getTileCoordinates(x, y, tilePosition_x, tilePosition_y);
-      // 	  if (pTower != NULL && pTower->onTile (tilePosition_x, tilePosition_y))
-      // 	    {
-      // 	      delete pTower;
-      // 	      pTower = NULL;
-      // 	    }
-      // 	}
-
-
-
-
-      // if (pTower != NULL)
-      // 	{
-      // 	  pTower->draw();
-      // 	}
+      scoreboard.draw();
 
       for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
 	{
 	  Tower * pTower = *it;
 	  pTower->draw();
 	}
+ 
+
+
+      //If mouse one is clicked
+      if (mouseOneClick(x, y))
+	{
+	  board.mouseClick(x, y);
+
+	  scoreboard.mouseClick(x, y);
+
+
+	  //and tower button is active
+	  if (scoreboard.towerButtonActive())
+	    {	   
+	      if (board.getTileCoordinates(x, y, tilePosition_x, tilePosition_y)) //x and y means pixel coordinates, tilePosition_x and tilePosition_y means tile position (on grid)
+		{
+		  if (rules.towerPlacementValid(board, Towers, tilePosition_x, tilePosition_y))
+		    {
+		      //Creates a new tower
+		      Tower * pTower = new Tower(tilePosition_x, tilePosition_y);
+
+		      //and puts it in the list
+		      Towers.push_back(pTower);
+
+		      cout << "new tower created on " << tilePosition_x << ", " << tilePosition_y << endl; //Temporary
+		    }
+		} 
+	    } 
+	}
+
+
+
+      // if (mouseTwoClick(x, y))
+      //  	{       
+      //  	  board.getTileCoordinates(x, y, tilePosition_x, tilePosition_y);
+
+      //  	  if (onTile (tilePosition_x, tilePosition_y))
+      // 	    {
+      // 	      Towers.pop_back();       	      
+      //  	    }
+      // 	}
 
 
       al_flip_display();

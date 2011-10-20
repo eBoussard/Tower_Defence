@@ -5,7 +5,7 @@
 
 
 
-Board::Board():m_max_x(1280), m_min_x(0), m_max_y(640), m_min_y(0),  m_entranceLower(128), m_entranceUpper(64), m_exitLower(576), m_exitUpper(512), m_tileSize(64)
+Board::Board():m_max_x(1280), m_min_x(0), m_max_y(640), m_min_y(0),  m_entranceTile(1), m_exitTile(8), m_tileSize(64)
 {
   al_init();
   al_init_primitives_addon();
@@ -20,13 +20,8 @@ void Board::debugPrint() const
   std::cout << "min_x: " << m_min_x << "\n";
   std::cout << "max_y: " << m_max_y << "\n";
   std::cout << "min_y: " << m_min_y << "\n";
-  std::cout << "entranceLower: " << m_entranceLower << "\n";
-  std::cout << "entranceUpper: " << m_entranceUpper << "\n";
-  std::cout << "exitLower: " << m_exitLower << "\n";
-  std::cout << "exitUpper: " << m_exitUpper << "\n";
-  std::cout << "tileSize: " << m_tileSize << "\n\n";
+   std::cout << "tileSize: " << m_tileSize << "\n\n";
 }
-
 
 
 void Board::draw() const
@@ -83,11 +78,23 @@ void Board::drawGrid() const
 
 void Board::drawEntrance() const
 {
-  al_draw_line(m_min_x + 2, m_entranceUpper, m_min_x + 2, m_entranceLower, al_map_rgb(0,255,0), 3); //PLACEHOLDER
+  al_draw_line(m_min_x + 2, m_entranceTile * m_tileSize, m_min_x + 2, (m_entranceTile + 1) * m_tileSize, al_map_rgb(0,255,0), 3); //PLACEHOLDER
 }
 
 void Board::drawExit() const
 {
-  al_draw_line(m_max_x, m_exitUpper, m_max_x, m_exitLower, al_map_rgb(255,0,0), 3); //PLACEHOLDER
+  al_draw_line(m_max_x, m_exitTile * m_tileSize, m_max_x, (m_exitTile + 1) * m_tileSize, al_map_rgb(255,0,0), 3); //PLACEHOLDER
 }
 
+
+
+unsigned int Board::getEntranceTile() const
+{
+  return m_entranceTile;
+}
+
+
+unsigned int Board::getExitTile() const
+{
+  return m_exitTile;
+}

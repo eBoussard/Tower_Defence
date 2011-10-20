@@ -11,6 +11,8 @@ public:
   void draw() const;
   void mouseClick(unsigned int x, unsigned int y);
   bool getTileCoordinates(unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const;
+  unsigned int getEntranceTile() const;
+  unsigned int getExitTile() const;
 
 
 
@@ -30,10 +32,8 @@ private:
   const unsigned int m_min_x;
   const unsigned int m_max_y;
   const unsigned int m_min_y;
-  const unsigned int m_entranceLower;
-  const unsigned int m_entranceUpper;
-  const unsigned int m_exitLower;
-  const unsigned int m_exitUpper;
+  const unsigned int m_entranceTile;
+  const unsigned int m_exitTile;
   const unsigned int m_tileSize;
 };
 
