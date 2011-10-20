@@ -218,6 +218,25 @@ int main()
 	}
 
 
+      if (mouseTwoClick(x, y))
+      	{
+      	  if (board.getTileCoordinates(x, y, tilePosition_x, tilePosition_y))
+      	    {
+      	      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
+      		{
+      		  Tower *pTower = *it;
+
+      		  if (pTower->onTile(tilePosition_x, tilePosition_y))
+      		    {
+      		      delete pTower;
+      		      Towers.erase(it);
+		      break;
+      		    }
+      		}
+      	    }
+      	}
+
+
 
 
 

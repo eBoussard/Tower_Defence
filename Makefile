@@ -4,7 +4,7 @@ LDFLAGS = -L/usr/local/lib -lallegro -lallegro_primitives -lallegro_font -lalleg
 
 all: TowerDefence
 
-Tower_Defence: Player.o Board.o Tower.o Ammunition.o Enemy.o Engine.o TowerDefence.o ScoreBoard.o Rules.o
+TowerDefence: Player.o Board.o Tower.o Ammunition.o Enemy.o Engine.o TowerDefence.o ScoreBoard.o Rules.o
 	g++ $(LDFLAGS) -o TowerDefence Player.o Board.o Tower.o Ammunition.o Enemy.o Engine.o TowerDefence.o ScoreBoard.o Rules.o
 
 clean:
