@@ -7,7 +7,6 @@ class Player
 {
 public:
   Player();
-  void debugPrint() const;
 
 
 

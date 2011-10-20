@@ -8,7 +8,6 @@ class Enemy
 {
 public:
   Enemy();
-  void debugPrint() const;
 
   ALLEGRO_BITMAP * getBitmap() const;
 

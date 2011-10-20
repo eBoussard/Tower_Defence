@@ -7,7 +7,6 @@ class Engine
 {
 public:
   Engine();
-  void debugPrint() const;
 
 
 

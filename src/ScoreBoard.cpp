@@ -13,7 +13,7 @@
 
 
 
-ScoreBoard::ScoreBoard():m_buttonSize(40), m_max_x(1280), m_min_x(0), m_max_y(80), m_min_y(0), m_topLinePosition(640), m_Score(100), m_healthPoints(100), m_Money(100), m_towerButtonActive(false)
+ScoreBoard::ScoreBoard():m_buttonSize(32), m_max_x(1280), m_min_x(0), m_max_y(80), m_min_y(0), m_topLinePosition(640), m_Score(100), m_healthPoints(100), m_Money(100), m_towerButtonActive(false)
 {
   al_init();
   al_init_primitives_addon();
@@ -24,12 +24,6 @@ ScoreBoard::ScoreBoard():m_buttonSize(40), m_max_x(1280), m_min_x(0), m_max_y(80
   m_colorWhite = al_map_rgb (255, 255, 255);
   m_colorRed = al_map_rgb (255, 0, 0);
 
-
-
-  //PLACEHOLDER
-  // m_towerButton = al_create_bitmap (m_buttonSize, m_buttonSize);
-  // al_set_target_bitmap (m_towerButton);
-  // al_clear_to_color (al_map_rgb(0,255,0));
 
 
   m_towerButton = al_load_bitmap ("gfx/T1.bmp");
@@ -83,6 +77,8 @@ void ScoreBoard::drawTowerButton() const
 {
   al_draw_bitmap (m_towerButton, m_max_x - (m_buttonSize * 2), m_topLinePosition + (m_buttonSize / 2), 0);
   if (m_towerButtonActive)
+
+
     {
       al_draw_rectangle ((m_max_x - 2) - (m_buttonSize * 2), (m_topLinePosition - 2) + (m_buttonSize / 2), (m_max_x + 2) - m_buttonSize, (m_topLinePosition + 2) + (m_buttonSize * 1.5), m_colorRed, 2);
     }
@@ -95,7 +91,7 @@ void ScoreBoard::drawInfoText() const
   if (m_infoFont != NULL)
     {
       al_draw_text (m_infoFont, m_colorWhite, (m_min_x + 10), (m_topLinePosition + 2), ALLEGRO_ALIGN_LEFT, "SCORE");
-      al_draw_text (m_infoFont, m_colorWhite, (m_min_x + 10), (m_topLinePosition + ((m_max_y - 20) / 2)), ALLEGRO_ALIGN_LEFT, "LIFE"); //TODO - try changing to m_max_y - 10
+      al_draw_text (m_infoFont, m_colorWhite, (m_min_x + 10), (m_topLinePosition + ((m_max_y - 20) / 2)), ALLEGRO_ALIGN_LEFT, "LIFE");
       al_draw_text (m_infoFont, m_colorWhite, (m_min_x + 10), (m_topLinePosition + (m_max_y - 20)), ALLEGRO_ALIGN_LEFT, "MONEY");
 
 
@@ -112,11 +108,13 @@ char * ScoreBoard::getScoreInfoText() const
   return m_infoText;
 }
 
+
 char * ScoreBoard::getHealthPointsInfoText() const
 {
   sprintf (m_infoText, "%d", m_healthPoints);
   return m_infoText;
 }
+
 
 char * ScoreBoard::getMoneyInfoText() const
 {

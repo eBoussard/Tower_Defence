@@ -13,17 +13,6 @@ Board::Board():m_max_x(1280), m_min_x(0), m_max_y(640), m_min_y(0),  m_entranceT
 
 
 
-void Board::debugPrint() const
-{
-  std::cout << "Board\n";
-  std::cout << "max_x: " << m_max_x << "\n";
-  std::cout << "min_x: " << m_min_x << "\n";
-  std::cout << "max_y: " << m_max_y << "\n";
-  std::cout << "min_y: " << m_min_y << "\n";
-   std::cout << "tileSize: " << m_tileSize << "\n\n";
-}
-
-
 void Board::draw() const
 {
   drawBackground();
@@ -47,6 +36,7 @@ void Board::mouseClick(unsigned int x, unsigned int y)
 }
 
 
+//QUESTION Why bool?
 bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const
 {
   if (y < m_max_y)
@@ -59,10 +49,15 @@ bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gr
 }
 
 
+
+
 void Board::drawBackground() const
 {
-  al_clear_to_color(al_map_rgb(0,0,0)); //PLACEHOLDER
+  al_clear_to_color(al_map_rgb(0,0,0));
 }
+
+
+
 
 void Board::drawGrid() const
 {
@@ -76,14 +71,20 @@ void Board::drawGrid() const
     }
 }
 
+
+
+
 void Board::drawEntrance() const
 {
-  al_draw_line(m_min_x + 2, m_entranceTile * m_tileSize, m_min_x + 2, (m_entranceTile + 1) * m_tileSize, al_map_rgb(0,255,0), 3); //PLACEHOLDER
+  al_draw_line(m_min_x + 2, m_entranceTile * m_tileSize, m_min_x + 2, (m_entranceTile + 1) * m_tileSize, al_map_rgb(0,255,0), 3);
 }
+
+
+
 
 void Board::drawExit() const
 {
-  al_draw_line(m_max_x, m_exitTile * m_tileSize, m_max_x, (m_exitTile + 1) * m_tileSize, al_map_rgb(255,0,0), 3); //PLACEHOLDER
+  al_draw_line(m_max_x, m_exitTile * m_tileSize, m_max_x, (m_exitTile + 1) * m_tileSize, al_map_rgb(255,0,0), 3);
 }
 
 

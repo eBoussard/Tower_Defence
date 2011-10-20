@@ -7,7 +7,6 @@ class Board
 {
 public:
   Board();
-  void debugPrint() const;
   void draw() const;
   void mouseClick(unsigned int x, unsigned int y);
   bool getTileCoordinates(unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const;

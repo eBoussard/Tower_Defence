@@ -5,6 +5,7 @@
 #include <Tower.hpp>
 #include <list>
 
+
 class Rules
 {
 public:

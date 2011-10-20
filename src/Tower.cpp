@@ -21,18 +21,6 @@ Tower::Tower(unsigned int xIndex, unsigned int yIndex):m_Price(100), m_Damage(10
 
 
 
-void Tower::debugPrint() const
-{
-  std::cout << "Tower\n";
-  std::cout << "Price: " << m_Price << "\n";
-  std::cout << "Damage: " << m_Damage << "\n";
-  std::cout << "ShootingSpeed: " << m_shootingSpeed << "\n";
-  std::cout << "Range: " << m_Range << "\n";
-  std::cout << "SellValue: " << m_sellValue << "\n\n";
-}
-
-
-
 void Tower::draw() const
 {
   al_draw_bitmap (m_towerBitmap, (m_xIndex * 64) + 8, (m_yIndex * 64) + 8, 0);

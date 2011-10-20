@@ -7,7 +7,6 @@ class Ammunition
 {
 public:
   Ammunition();
-  void debugPrint() const;
 
 
 
