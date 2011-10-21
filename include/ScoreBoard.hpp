@@ -6,10 +6,13 @@
 #include <allegro_ttf.h>
 
 
-
+///class test
 class ScoreBoard
 {
 public: 
+  ///test
+
+  ///more test
   ScoreBoard();
   ~ScoreBoard();
   void draw() const;

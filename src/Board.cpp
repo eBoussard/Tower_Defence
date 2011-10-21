@@ -36,6 +36,7 @@ void Board::mouseClick(unsigned int x, unsigned int y)
 }
 
 
+
 bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const
 {
   if (y < screenHeight_)
