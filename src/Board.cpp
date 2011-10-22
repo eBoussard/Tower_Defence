@@ -5,7 +5,7 @@
 
 
 
-Board::Board():m_max_x(1280), m_min_x(0), m_max_y(640), m_min_y(0),  m_entranceTile(1), m_exitTile(8), m_tileSize(64)
+Board::Board():screenWidth_(1280), screenHeight_(640), entranceTile_(1), exitTile_(8), tileSize_(64)
 {
   al_init();
   al_init_primitives_addon();
@@ -13,7 +13,7 @@ Board::Board():m_max_x(1280), m_min_x(0), m_max_y(640), m_min_y(0),  m_entranceT
 
 
 
-void Board::draw() const
+void Board::Draw() const
 {
   drawBackground();
   drawGrid();
@@ -27,22 +27,21 @@ void Board::mouseClick(unsigned int x, unsigned int y)
 {
   unsigned int x_leftBorder, y_topBorder;
 
-  x_leftBorder = m_tileSize * (x / m_tileSize);
-  y_topBorder = m_tileSize * (y / m_tileSize);
-  if (y < m_max_y)
+  x_leftBorder = tileSize_ * (x / tileSize_);
+  y_topBorder = tileSize_ * (y / tileSize_);
+  if (y < screenHeight_)
     {
       std::cout << "mouse clicked on board\n";
     }
 }
 
 
-//QUESTION Why bool?
 bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const
 {
-  if (y < m_max_y)
+  if (y < screenHeight_)
     {
-      gridPosition_x = x / m_tileSize;
-      gridPosition_y = y / m_tileSize;
+      gridPositionX = x / tileSize_;
+      gridPositionX = y / tileSize_;
       return true;
     }
   return false;
@@ -61,13 +60,13 @@ void Board::drawBackground() const
 
 void Board::drawGrid() const
 {
-  for(int hPos = m_tileSize; hPos <= m_max_y; hPos += m_tileSize)
+  for(int hPos = tileSize_; hPos <= screenHeight_; hPos += tileSize_)
     {
-      al_draw_line(m_min_x, hPos, m_max_x, hPos, al_map_rgb(127,127,127), 2);
+      al_draw_line(0, hPos, screenWidth_, hPos, al_map_rgb(127,127,127), 2);
     }
-  for(int vPos = m_tileSize; vPos < m_max_x; vPos += m_tileSize)
+  for(int vPos = tileSize_; vPos < screenWidth_; vPos += tileSize_)
     {
-      al_draw_line(vPos, m_min_y, vPos, m_max_y, al_map_rgb(127,127,127), 2);
+      al_draw_line(vPos, 0, vPos, screenHeight_, al_map_rgb(127,127,127), 2);
     }
 }
 
@@ -76,7 +75,7 @@ void Board::drawGrid() const
 
 void Board::drawEntrance() const
 {
-  al_draw_line(m_min_x + 2, m_entranceTile * m_tileSize, m_min_x + 2, (m_entranceTile + 1) * m_tileSize, al_map_rgb(0,255,0), 3);
+  al_draw_line(2, (entranceTile_ * tileSize_), 2, ((entranceTile_ + 1) * tileSize_), al_map_rgb(0,255,0), 3);
 }
 
 
@@ -84,14 +83,14 @@ void Board::drawEntrance() const
 
 void Board::drawExit() const
 {
-  al_draw_line(m_max_x, m_exitTile * m_tileSize, m_max_x, (m_exitTile + 1) * m_tileSize, al_map_rgb(255,0,0), 3);
+  al_draw_line(screenWidth_, m_exitTile * m_tileSize, screenWidth_, (m_exitTile + 1) * m_tileSize, al_map_rgb(255,0,0), 3);
 }
 
 
 
 unsigned int Board::getEntranceTile() const
 {
-  return m_entranceTile;
+  return entranceTile_;
 }
 
 

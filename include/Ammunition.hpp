@@ -16,10 +16,12 @@ private:
 
 
 
-  //Properties
-  unsigned int m_Location;
-};
+  // Properties
+  // !Location of ammunition on board
 
+  // !Ammunition's location is a pixel location rather than a tile location.
+  unsigned int Location_;
+};
 
 
 #endif //AMMUNITION_HPP
