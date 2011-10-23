@@ -17,9 +17,9 @@ using namespace std;
 
 
 
-
-const unsigned int ScreenW = 1280;
-const unsigned int ScreenH = 720;
+//TODO
+const unsigned int startupScreenWidth = 800;
+const unsigned int startupScreenHeight = 600;
 const float FPS = 60.;
 
 
@@ -95,6 +95,22 @@ int main()
 
 
 
+  list <Tower *> Towers;
+
+  ScoreBoard scoreboard;
+
+  Rules rules;
+
+  Board board;
+
+  UI ui;
+
+
+
+  //TODO
+  Display = al_create_display (startupScreenWidth, startupScreenHeight);
+
+
   if (!al_install_mouse())
     {
       cout << "mouse fail\n";
@@ -121,46 +137,6 @@ int main()
 
 
 
-  // Display = al_create_display (ScreenW, ScreenH);
-  // if (!Display)
-  //   {
-  //     cout << "failed to create display!\n";
-  //     return 1;
-  //   }
-
-
-
-
-
-
-  list <Tower *> Towers;
-
-  ScoreBoard scoreboard;
-
-  Rules rules;
-
-  Board board;
-
-  UI ui;
-
-  int width, height;
-
-  char displayMode = ui.getDisplayMode();
-
-  if (displayMode == 'D')
-    {
-      ui.desktopProperties(width, height);
-      Display = al_create_display (width, height);
-    }
-
-  if (displayMode == 'L')
-    {
-      ui.laptopProperties(width, height);
-      Display = al_create_display (width, height);
-    }
-
-
-
 
 
   al_register_event_source (eventQueue, al_get_display_event_source (Display));
@@ -176,6 +152,12 @@ int main()
 
 
 
+
+  bool inMenu = true;
+
+
+
+
   while(1)
     {
       ALLEGRO_EVENT Event;
@@ -187,23 +169,29 @@ int main()
       al_wait_for_event(eventQueue, &Event);
 
       if (Event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
-      	{
-      	  break;
-      	}
-
-
-
-
-      board.Draw();
-
-      scoreboard.Draw();
-
-      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
 	{
-	  Tower * pTower = *it;
-	  pTower->Draw();
+	  break;
 	}
- 
+
+      if (inMenu)
+	{
+	    {
+	      ui.Draw();
+	    }
+	}
+
+      else
+	{
+	  board.Draw();
+
+	  scoreboard.Draw();
+	
+	  for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
+	    {
+	      Tower * pTower = *it;
+	      pTower->Draw();
+	    }
+	}
 
 
       //If mouse one is clicked
@@ -213,6 +201,8 @@ int main()
 
 	  scoreboard.buttonClicked(x, y);
 
+
+	  inMenu = false;
 
 	  //and tower button is active
 	  if (scoreboard.towerButtonActive())
@@ -237,22 +227,22 @@ int main()
 
 
       if (mouseTwoClick(x, y))
-      	{
-      	  if (board.getTileCoordinates(x, y, tilePosition_x, tilePosition_y))
-      	    {
-      	      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
-      		{
-      		  Tower *pTower = *it;
+	{
+	  if (board.getTileCoordinates(x, y, tilePosition_x, tilePosition_y))
+	    {
+	      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
+		{
+		  Tower *pTower = *it;
 
-      		  if (pTower->onTile(tilePosition_x, tilePosition_y))
-      		    {
-      		      delete pTower;
-      		      Towers.erase(it);
+		  if (pTower->onTile(tilePosition_x, tilePosition_y))
+		    {
+		      delete pTower;
+		      Towers.erase(it);
 		      break;
-      		    }
-      		}
-      	    }
-      	}
+		    }
+		}
+	    }
+	}
 
 
 
@@ -262,3 +252,4 @@ int main()
       al_flip_display();
     }
 }
+

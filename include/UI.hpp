@@ -11,21 +11,21 @@ class UI
 {
 public:
   UI();
-
-  char getDisplayMode();
-  void desktopProperties(int &width, int &height);
-  void laptopProperties(int &width, int &height);
-
+  void Draw();  
 
 private:
   UI(const UI&);
   UI & operator = (const UI&);
 
+  void drawResolutionTexts();
+  void drawResolutionSelector();
+
+  ALLEGRO_FONT *resolutionText_;
+  ALLEGRO_COLOR Unselected_;
+  ALLEGRO_COLOR Selected_;
 };
 
 
 
 #endif //UI_HPP
 
-//TODO More resolution options
-//TODO Buttons (images) for selecting mode and resolution
