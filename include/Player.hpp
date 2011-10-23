@@ -1,4 +1,4 @@
-//! Player places Tower on Board
+//! Place Tower on Board
 
 //! Player may place and remove Tower.
 
@@ -24,11 +24,16 @@ private:
 
   //! Player's money
 
-  //! Killing Enemy will earn Player more money.
+  //! Killing Enemy will earn Player more money. The amount of money
+  //! is decided by Enemy's @ref yieldsMoney_ "value".
   unsigned int Money_;
 
-  //! Player's health points, which decreases when Enemy reaches exit.
+  //! Player's health points, which decreases when Enemy reaches @ref
+  //! exitTile_ "exit"
   unsigned int healthPoints_;
+
+  //! Player's score increases for every killed Enemy
+  unsigned int Score_;
 };
 
 

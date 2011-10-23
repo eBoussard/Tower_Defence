@@ -176,14 +176,14 @@ int main()
 
 
 
-      board.draw();
+      board.Draw();
 
-      scoreboard.draw();
+      scoreboard.Draw();
 
       for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
 	{
 	  Tower * pTower = *it;
-	  pTower->draw();
+	  pTower->Draw();
 	}
  
 
@@ -193,7 +193,7 @@ int main()
 	{
 	  board.mouseClick(x, y);
 
-	  scoreboard.mouseClick(x, y);
+	  scoreboard.buttonClicked(x, y);
 
 
 	  //and tower button is active

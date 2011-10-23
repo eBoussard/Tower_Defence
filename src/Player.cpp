@@ -3,7 +3,7 @@
 
 
 
-Player::Player():m_Money(100), m_healthPoints(100)
+Player::Player():Money_(100), healthPoints_(100), Score_(100)
 { }
 
 

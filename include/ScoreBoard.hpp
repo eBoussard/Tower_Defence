@@ -1,8 +1,8 @@
 //! Bar at the bottom of the screen
 
-//! The ScoreBoard bar is used to inform Player about Player's health,
-//! money and score. The bar also includes button selectors for
-//! placing Tower on Board. The bar is 1280 by 80 pixels.
+//! Includes information about Player's @ref Player::Money_ "money",
+//! @ref Player::healthPoints_ "health points" and @ref Player::Score_
+//! "score". It also includes a clickable @ref towerButton_ "button".
 
 #ifndef SCOREBOARD_HPP
 #define SCOREBOARD_HPP
@@ -18,16 +18,15 @@ public:
   ScoreBoard();
   ~ScoreBoard();
 
-  //! Draw visual elements on ScoreBoard
   void Draw() const;
 
-  //! Check if Tower button has been pressed
-  //! @param x check if mouse is clicked on button's x-axis
-  //! @param y check if mouse is clicked on button's y-axis
+  //! Check if the @ref towerButton_ "button" has been pressed
+  //! @param x check if mouse is clicked on the @ref towerButton_ "button's" x-axis
+  //! @param y check if mouse is clicked on the @ref towerButton_ "button's" y-axis
   void buttonClicked(unsigned int x, unsigned int y);
 
-  //! Check if button has been clicked
-  //! @returns true if mouse has been clicked on buttons position
+  //! Check if @ref towerButton_ "button" has been clicked
+  //! @returns true if mouse has been clicked on @ref towerButton_ "button's" position
   bool towerButtonActive() const;
 
 
@@ -40,11 +39,11 @@ private:
 
   //! Draws text on screen
 
-  //! This method will draw the text "SCORE", "LIFE" and "MONEY" on
+  //! Draw the text "SCORE", "LIFE" and "MONEY" on
   //! the left side of ScoreBoard.
   void drawInfoText() const;
 
-  //! TODO
+  //! Buffer for formatting text (score, health points and money)
   char * infoText_;
   char * getScoreInfoText() const;
   char * getHealthPointsInfoText() const;
@@ -54,8 +53,8 @@ private:
 
   //Properties
   const unsigned int buttonSize_;
-  const unsigned int screenWidth_;
-  const unsigned int screenHeight_;
+  const unsigned int scoreBoardWidth_;
+  const unsigned int scoreBoardHeight_;
 
   //! The y-axis position of the top border of ScoreBoard
 
@@ -66,14 +65,15 @@ private:
   const unsigned int Score_;
   const unsigned int healthPoints_;
   const unsigned int Money_;
+
+  //! @return true if @ref towerButton_ "tower button" has been
+  //! clicked once
   bool towerButtonActive_;
 
   //! The image representing the clickable button
   ALLEGRO_BITMAP *towerButton_;
 
-  //! TODO
   ALLEGRO_FONT *infoFont_;
-
 
   ALLEGRO_COLOR colorWhite_;
   ALLEGRO_COLOR colorRed_;

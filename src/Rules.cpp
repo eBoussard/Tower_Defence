@@ -7,16 +7,16 @@ Rules::Rules()
 { }
 
 
-bool Rules::towerPlacementValid (const Board & board, const std::list<Tower *> & Towers, unsigned int tilePosition_x, unsigned int tilePosition_y) const
+bool Rules::towerPlacementValid (const Board & board, const std::list<Tower *> & Towers, unsigned int tilePositionX, unsigned int tilePositionY) const
 {
 
-  if ((tilePosition_x == 0) && (tilePosition_y == board.getEntranceTile()))
+  if ((tilePositionX == 0) && (tilePositionY == board.getEntranceTile()))
     {
       return false;
     }
 
 
-  if ((tilePosition_x == 19) && (tilePosition_y == board.getExitTile()))
+  if ((tilePositionX == 19) && (tilePositionY == board.getExitTile()))
     {
       return false;
     }
@@ -26,7 +26,7 @@ bool Rules::towerPlacementValid (const Board & board, const std::list<Tower *> &
   for (std::list<Tower *>::const_iterator it = Towers.begin(); it != Towers.end(); ++it)
     {
       Tower *pTower = *it;
-      if (pTower->onTile(tilePosition_x, tilePosition_y))
+      if (pTower->onTile(tilePositionX, tilePositionY))
 	{
 	  return false;
 	}

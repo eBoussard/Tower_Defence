@@ -1,12 +1,15 @@
-//! Rules check if the requested action is allowed
+//! Check if the requested action is allowed
+
+//! Rules mainly control Tower placement on Board to make sure Enemy
+//! always has a free path to @ref exitTile_ "exit".
 
 #ifndef RULES_HPP
 #define RULES_HPP
 
-//! To get positions
+//! To find out positions
 
-//! These includes are needed in order to find Tower position on
-//! Board, entrance position and exit position.
+//! These includes are needed in order to find out current Tower, @ref
+//! entranceTile_ "entrance" and @ref exitTile_ "exit" positions.
 #include <Board.hpp>
 #include <Tower.hpp>
 #include <list>
@@ -19,11 +22,12 @@ public:
 
   //! Check if tower placement is valid
 
-  //! @param board TODO
-  //! @param Towers to find out current Tower positions
+  //! @param board current positions of @ref entranceTile_ "entrance"
+  //! and @ref exitTile_ "exit"
+  //! @param Towers current position(s) of Tower
   //! @param tilePositionX tile position on grid on x-axis
   //! @param tilePositionY tile position on grid on y-axis
-  //! @returns true if all conditions are false
+  //! @returns true if placement of Tower is valid
   bool towerPlacementValid (const Board & board, const std::list<Tower *> & Towers, unsigned int tilePositionX, unsigned int tilePositionY) const;
 
 

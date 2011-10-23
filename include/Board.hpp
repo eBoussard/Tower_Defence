@@ -26,20 +26,20 @@ public:
   //! are returned in gridPositionX and gridPositionX.
   //! @param x pixel position on x-axis
   //! @param y pixel position on y-axis
-  //! @param gridPositionX tile position on x-axis
+  //! @param[out] gridPositionX tile position on x-axis
   //! containing the pixels x and y
-  //! @param gridPositionY tile position on y-axis
+  //! @param[out] gridPositionY tile position on y-axis
   //! containing the pixels x and y
   //! @return true if the pixel position is on a tile
   bool getTileCoordinates(unsigned int x, unsigned int y, unsigned int &gridPositionX, unsigned int &gridPositionY) const;
 
-  //! Get the tile position of the entrance tile
+  //! Get the tile position of the @ref entranceTile_ "entrance tile"
   //! 
-  //! The entrance tile is always located along the left wall of Board.
+  //! The @ref entranceTile_ "entrance tile" is always located along the left wall of Board.
   //! @return entrance tile position on y-axis
   unsigned int getEntranceTile() const;
 
-  //! Get the tile position of the exit tile
+  //! Get the tile position of the @ref exitTile_ "exit tile"
   //!
   //! The exit tile is always located along the right wall of Board.
   //! @return exit tile position on y-axis

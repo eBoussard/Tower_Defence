@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-Engine::Engine():m_playSpeed(100)
+Engine::Engine():playSpeed_(100)
 { }
 
 

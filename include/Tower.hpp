@@ -10,11 +10,10 @@ class Tower
 {
 public:
 
-  //! @param xIndex Tower's position on x-axis on Board
-  //! @param yIndex Tower's position on y-axis on Board
+  //! @param xIndex tower's position on x-axis on Board
+  //! @param yIndex tower's position on y-axis on Board
   Tower(unsigned int xIndex, unsigned int yIndex);
 
-  //! Draw visual elements on Board
   void Draw() const;
 
   //! Find out if Tower is positioned on a perticular tile

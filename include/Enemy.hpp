@@ -1,4 +1,12 @@
-//! Moves from entrance to exit and avoids Tower
+//! Moves from @ref entranceTile_ "entrance" to @ref exitTile_ "exit" and avoids Tower
+
+//! Enemy moves from @ref entranceTile_ "entrance" to @ref exitTile_
+//! "exit". It spawns with a set number of @ref healthPoints_ "health
+//! points" which decreases when shot by Tower. When Enemy's health
+//! points reaches zero it will despawn (die).
+
+//! Enemy tries to find the shortest route to @ref exitTile_ "exit"
+//! while avoiding Tower.
 
 #ifndef ENEMY_HPP
 #define ENEMY_HPP
@@ -27,13 +35,16 @@ private:
   //! Enemy's health points
 
   //! Enemy spawns with a certain number of health points. These
-  //! health points are decreased when shot by Tower. When they reach
-  //! zero, Enemy dies (despawns).
+  //! health points are decreased when shot by Tower. Upon reaching
+  //! zero, Enemy despawns.
   unsigned int healthPoints_;
 
   unsigned int movementSpeed_;
 
-  //! Enemy will upon death yield a certain amount of money.
+  //! Enemy will yield a set amount of money when killed
+
+  //! Money collected from slain Enemy is used to purchase and/or
+  //! upgrade Tower.
   unsigned int yieldsMoney_;
 };
 
