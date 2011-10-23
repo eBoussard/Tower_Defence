@@ -121,12 +121,12 @@ int main()
 
 
 
-  Display = al_create_display (ScreenW, ScreenH);
-  if (!Display)
-    {
-      cout << "failed to create display!\n";
-      return 1;
-    }
+  // Display = al_create_display (ScreenW, ScreenH);
+  // if (!Display)
+  //   {
+  //     cout << "failed to create display!\n";
+  //     return 1;
+  //   }
 
 
 
@@ -140,6 +140,24 @@ int main()
   Rules rules;
 
   Board board;
+
+  UI ui;
+
+  int width, height;
+
+  char displayMode = ui.getDisplayMode();
+
+  if (displayMode == 'D')
+    {
+      ui.desktopProperties(width, height);
+      Display = al_create_display (width, height);
+    }
+
+  if (displayMode == 'L')
+    {
+      ui.laptopProperties(width, height);
+      Display = al_create_display (width, height);
+    }
 
 
 
