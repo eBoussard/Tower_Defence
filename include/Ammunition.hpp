@@ -1,3 +1,4 @@
+//! Shot by Tower
 #ifndef AMMUNITION_HPP
 #define AMMUNITION_HPP
 
@@ -17,9 +18,10 @@ private:
 
 
   // Properties
-  // !Location of ammunition on board
 
-  // !Ammunition's location is a pixel location rather than a tile location.
+  //! Location of Ammunition on Board
+
+  //! Ammunition's Location is a pixel location rather than a tile location.
   unsigned int Location_;
 };
 

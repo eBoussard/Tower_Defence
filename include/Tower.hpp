@@ -1,3 +1,5 @@
+//! Placed by Player in order to kill Enemy
+
 #ifndef TOWER_HPP
 #define TOWER_HPP
 #include <allegro.h>
@@ -7,10 +9,18 @@
 class Tower
 {
 public:
+
+  //! @param xIndex Tower's position on x-axis on Board
+  //! @param yIndex Tower's position on y-axis on Board
   Tower(unsigned int xIndex, unsigned int yIndex);
-  void debugPrint() const;
-  void draw() const;
-  bool onTile(unsigned int tilePosition_x, unsigned int tilePosition_y) const;
+
+  //! Draw visual elements on Board
+  void Draw() const;
+
+  //! Find out if Tower is positioned on a perticular tile
+  //! @param tilePositionX tile position on x-axis
+  //! @param tilePositionY tile position on y-axis
+  bool onTile(unsigned int tilePositionX, unsigned int tilePositionY) const;
 
 
 private:
@@ -20,15 +30,23 @@ private:
 
 
   //Properties
-  unsigned int m_Price;
-  unsigned int m_Damage;
-  unsigned int m_shootingSpeed;
-  unsigned int m_Range;
-  unsigned int m_sellValue;
-  const unsigned int m_xIndex;
-  const unsigned int m_yIndex;
-  ALLEGRO_BITMAP *m_towerBitmap;
-  int m_towerBitmapSize;
+  unsigned int Price_;
+  unsigned int Damage_;
+
+  //! Tower shoots at a certain pace
+  unsigned int shootingSpeed_;
+
+  //! Tower can only shoot within a certain range of itself
+  unsigned int Range_;
+
+  //! Tower can be sold back for a certain value
+  unsigned int sellValue_;
+  const unsigned int xIndex_;
+  const unsigned int yIndex_;
+
+  //! An image representing Tower
+  ALLEGRO_BITMAP *towerBitmap_;
+  int towerBitmapSize_;
 };
 
 

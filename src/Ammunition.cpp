@@ -3,7 +3,7 @@
 
 
 
-Ammunition::Ammunition():m_Location(100)
+Ammunition::Ammunition():Location_(100)
 { }
 
 

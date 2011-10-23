@@ -4,7 +4,7 @@
 
 
 
-Enemy::Enemy():m_healthPoints(100), m_movementSpeed(100), m_yieldsMoney(100)
+Enemy::Enemy():healthPoints_(100), movementSpeed_(100), yieldsMoney_(100)
 { }
 
 

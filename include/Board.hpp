@@ -1,8 +1,7 @@
 //! The playable area
 
-//! The board is the 1280 by 640 pixel area where event such as
-//! placement of Tower, movement of Enemy and movement of Ammunition
-//! takes place.
+//! Board is 1280 pixels wide and 640 pixels high. The grid, Enemy,
+//! Tower, entrance and exit are all drawn on Board.
 
 #ifndef BOARD_HPP
 #define BOARD_HPP
@@ -13,44 +12,37 @@ class Board
 {
 public:
   Board();
-
-  //! Draw visual elements on Board
   void Draw() const;
 
   //! Detect where on Board mouse has been clicked
+  //! @param x pixel position on x-axis
+  //! @param y pixel position on y-axis
   void mouseClick(unsigned int x, unsigned int y);
 
-  //! Detect if a pixel coordinate is on a tile and return the tile coordinates 
+  //! Detect if the pixel coordinate is on a tile
   //!
   //! The x and y parameters are pixel coordinates that may correspond
-  //! to a tile. If the pixel is on a tile, a true value is returned
-  //! and the tile index coordinates
+  //! to a tile. If the pixel is on a tile, the tile coordinates
   //! are returned in gridPositionX and gridPositionX.
-  //! @param x x-coordinate of the pixel
-  //! @param y y-coordinate of the pixel
-  //! @param gridPositionX The zero-based x-index of the tile
-  //! containing the point x, y
-  //! @param gridPositionY The zero-based y-index of the tile
-  //! containing the point x, y
-  //! @return true if the given pixel is on a tile of the board
-  bool getTileCoordinates(unsigned int x, unsigned int y, unsigned int &gridPosition_x, unsigned int &gridPosition_y) const;
+  //! @param x pixel position on x-axis
+  //! @param y pixel position on y-axis
+  //! @param gridPositionX tile position on x-axis
+  //! containing the pixels x and y
+  //! @param gridPositionY tile position on y-axis
+  //! containing the pixels x and y
+  //! @return true if the pixel position is on a tile
+  bool getTileCoordinates(unsigned int x, unsigned int y, unsigned int &gridPositionX, unsigned int &gridPositionY) const;
 
-  //! Get the index of the entrance tile
+  //! Get the tile position of the entrance tile
   //! 
   //! The entrance tile is always located along the left wall of Board.
-  //! The entrance tile position is fully determined by the
-  //! zero-based y-index from the top of the board
-  //!
-  //! @return The zero-based index of the entrance tile of Board
+  //! @return entrance tile position on y-axis
   unsigned int getEntranceTile() const;
 
-  //! Get the index of the exit tile
+  //! Get the tile position of the exit tile
   //!
   //! The exit tile is always located along the right wall of Board.
-  //! The exit tile position is fully determined by the zero-based
-  //! y-index from the top of the board.
-  //!
-  //! @return The zero-based index of the exit tile of Board
+  //! @return exit tile position on y-axis
   unsigned int getExitTile() const;
 
 
@@ -64,8 +56,8 @@ private:
 
   //! Draw the grid
 
-  //! The grid consists of 200 tiles, 0-19 on the y-axis and 0-9 on
-  //! the x-axis
+  //! The grid consists of 200 tiles, ranging from 0-19 on the y-axis and 0-9 on
+  //! the x-axis. The grid is zero-based.
   void drawGrid() const;
   void drawEntrance() const;
   void drawExit() const;
@@ -75,8 +67,14 @@ private:
   //Properties
   const unsigned int screenWidth_;
   const unsigned int screenHeight_;
+
+  //! Location of entrance on Board
   const unsigned int entranceTile_;
+
+  //! Location of exit on Board
   const unsigned int exitTile_;
+
+  //! The size of a tile on Board
   const unsigned int tileSize_;
 };
 

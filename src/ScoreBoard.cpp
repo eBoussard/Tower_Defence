@@ -13,7 +13,7 @@
 
 
 
-ScoreBoard::ScoreBoard():m_buttonSize(32), m_max_x(1280), m_min_x(0), m_max_y(80), m_min_y(0), m_topLinePosition(640), m_Score(100), m_healthPoints(100), m_Money(100), m_towerButtonActive(false)
+ScoreBoard::ScoreBoard():buttonSize_(32), m_max_x(1280), m_min_x(0), m_max_y(80), m_min_y(0), m_topLinePosition(640), m_Score(100), m_healthPoints(100), m_Money(100), m_towerButtonActive(false)
 {
   al_init();
   al_init_primitives_addon();
@@ -44,7 +44,7 @@ ScoreBoard::~ScoreBoard()
 
 
 
-void ScoreBoard::draw() const
+void ScoreBoard::Draw() const
 {
   drawTowerButton();
   drawInfoText();
@@ -52,7 +52,7 @@ void ScoreBoard::draw() const
 
 
 
-void ScoreBoard::mouseClick(unsigned int x, unsigned int y)
+void ScoreBoard::buttonClicked(unsigned int x, unsigned int y)
 {
   if (y > m_topLinePosition + (m_buttonSize / 2) && y < m_topLinePosition + (m_buttonSize * 1.5))
     {

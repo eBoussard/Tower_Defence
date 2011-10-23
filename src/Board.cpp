@@ -84,7 +84,7 @@ void Board::drawEntrance() const
 
 void Board::drawExit() const
 {
-  al_draw_line(screenWidth_, m_exitTile * m_tileSize, screenWidth_, (m_exitTile + 1) * m_tileSize, al_map_rgb(255,0,0), 3);
+  al_draw_line(screenWidth_, exitTile_ * tileSize_, screenWidth_, (exitTile_ + 1) * tileSize_, al_map_rgb(255,0,0), 3);
 }
 
 
@@ -97,5 +97,5 @@ unsigned int Board::getEntranceTile() const
 
 unsigned int Board::getExitTile() const
 {
-  return m_exitTile;
+  return exitTile_;
 }
