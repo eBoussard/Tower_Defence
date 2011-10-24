@@ -20,10 +20,3 @@ ALLEGRO_BITMAP * Enemy::getBitmap() const
 }
 
 
-//TODO Enemy movement
-
-//TODO Summon several enemy (waves)
-
-//TODO Make enemy avoid tower 
-
-

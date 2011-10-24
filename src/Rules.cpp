@@ -32,8 +32,6 @@ bool Rules::towerPlacementValid (const Board & board, const std::list<Tower *> &
 	}
     }
 
-  //TODO Do not allow placing tower which blocks enemy from exit (dead end)
-
   return true;
 }
 

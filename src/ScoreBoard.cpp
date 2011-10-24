@@ -29,22 +29,17 @@ ScoreBoard::ScoreBoard():buttonSize_(32), scoreBoardWidth_(1280), scoreBoardHeig
 
 
   infoFont_ =  al_load_ttf_font ("pirulen.ttf", 18, 0);
-  //TODO find a better alternative for malloc (newer C++ style preferred)
-  infoText_ = (char *)malloc(128);
-
-
-  //TODO clean up messy code here.
-  std::cout << "ScoreBoard destructor: " <<  std::ios::hex << infoFont_ << std::endl;
+  //EXPERIMENTAL
+  infoText_ = new char [128];
 }
 
 
 
 ScoreBoard::~ScoreBoard()
 {
-  std::cout << "ScoreBoard destructor: " <<  std::ios::hex << infoFont_ << std::endl;
   al_destroy_font (infoFont_); 
   al_shutdown_ttf_addon();
-  free(infoText_);
+  delete(infoText_);
 }
 
 

@@ -17,7 +17,6 @@ using namespace std;
 
 
 
-//TODO
 const unsigned int startupScreenWidth = 1280;
 const unsigned int startupScreenHeight = 720;
 const float FPS = 60.;
@@ -107,7 +106,6 @@ int main()
 
 
 
-  //TODO
   Display = al_create_display (startupScreenWidth, startupScreenHeight);
 
 
