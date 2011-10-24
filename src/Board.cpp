@@ -12,6 +12,8 @@ Board::Board():screenWidth_(1280), screenHeight_(640), entranceTile_(1), exitTil
   al_init_primitives_addon();
   al_init_image_addon();
   Background_ = al_load_bitmap ("gfx/BG1.bmp");
+  Entrance_ = al_load_bitmap ("gfx/Spawn1.bmp");
+  Exit_ = al_load_bitmap ("gfx/Exit.bmp");
 }
 
 
@@ -81,7 +83,8 @@ void Board::drawGrid() const
 
 void Board::drawEntrance() const
 {
-  al_draw_line(2, (entranceTile_ * tileSize_), 2, ((entranceTile_ + 1) * tileSize_), al_map_rgb(0,255,0), 3);
+  //  al_draw_line(2, (entranceTile_ * tileSize_), 2, ((entranceTile_ + 1) * tileSize_), al_map_rgb(0,255,0), 3);
+  al_draw_bitmap (Entrance_, 0, 64, 0);
 }
 
 
@@ -89,7 +92,8 @@ void Board::drawEntrance() const
 
 void Board::drawExit() const
 {
-  al_draw_line(screenWidth_, exitTile_ * tileSize_, screenWidth_, (exitTile_ + 1) * tileSize_, al_map_rgb(255,0,0), 3);
+  //  al_draw_line(screenWidth_, exitTile_ * tileSize_, screenWidth_, (exitTile_ + 1) * tileSize_, al_map_rgb(255,0,0), 3);
+  al_draw_bitmap (Exit_, 1248, 64, 0);
 }
 
 

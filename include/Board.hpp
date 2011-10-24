@@ -80,6 +80,9 @@ private:
 
   //! The grassy green background filling Board
   ALLEGRO_BITMAP *Background_;
+
+  ALLEGRO_BITMAP *Entrance_;
+  ALLEGRO_BITMAP *Exit_;
 };
 
 
