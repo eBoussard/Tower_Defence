@@ -11,7 +11,7 @@ Board::Board():screenWidth_(1280), screenHeight_(640), entranceTile_(1), exitTil
   al_init();
   al_init_primitives_addon();
   al_init_image_addon();
-  Background = al_load_bitmap ("gfx/BG1.bmp");
+  Background_ = al_load_bitmap ("gfx/BG1.bmp");
 }
 
 
@@ -66,11 +66,11 @@ void Board::drawGrid() const
 {
   for(int hPos = tileSize_; hPos <= screenHeight_; hPos += tileSize_)
     {
-      al_draw_line(0, hPos, screenWidth_, hPos, al_map_rgb(127,127,127), 2);
+      al_draw_line(0, hPos, screenWidth_, hPos, al_map_rgb(0, 0, 0), 2);
     }
   for(int vPos = tileSize_; vPos < screenWidth_; vPos += tileSize_)
     {
-      al_draw_line(vPos, 0, vPos, screenHeight_, al_map_rgb(127,127,127), 2);
+      al_draw_line(vPos, 0, vPos, screenHeight_, al_map_rgb(0, 0, 0), 2);
     }
 }
 
