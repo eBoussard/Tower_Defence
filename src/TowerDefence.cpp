@@ -18,8 +18,8 @@ using namespace std;
 
 
 //TODO
-const unsigned int startupScreenWidth = 800;
-const unsigned int startupScreenHeight = 600;
+const unsigned int startupScreenWidth = 1280;
+const unsigned int startupScreenHeight = 720;
 const float FPS = 60.;
 
 
@@ -162,7 +162,7 @@ int main()
     {
       ALLEGRO_EVENT Event;
 
-      unsigned int x, y, tilePosition_x, tilePosition_y;
+      unsigned int x, y, tilePositionX, tilePositionY;
 
 
 
@@ -173,25 +173,29 @@ int main()
 	  break;
 	}
 
-             if (inMenu)
-      	{
-         {
-	      ui.Draw();
-	         }
-	      	}
 
-             else
-	 	{
+
+
+      if (inMenu)
+      	{
+	  {
+	    ui.Draw();
+	  }
+	}
+
+      else
+	{
 	  board.Draw();
 
 	  scoreboard.Draw();
+	}
 	
 	  for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
 	    {
 	      Tower * pTower = *it;
 	      pTower->Draw();
 	    }
-	   	}
+	
 
 
       //If mouse one is clicked
@@ -207,17 +211,17 @@ int main()
 	  //and tower button is active
 	  if (scoreboard.towerButtonActive())
 	    {	   
-	      if (board.getTileCoordinates(x, y, tilePosition_x, tilePosition_y)) //x and y means pixel coordinates, tilePosition_x and tilePosition_y means tile position (on grid)
+	      if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY)) //x and y means pixel coordinates, tilePositionX and tilePositionY means tile position (on grid)
 		{
-		  if (rules.towerPlacementValid(board, Towers, tilePosition_x, tilePosition_y))
+		  if (rules.towerPlacementValid(board, Towers, tilePositionX, tilePositionY))
 		    {
 		      //Creates a new tower
-		      Tower * pTower = new Tower(tilePosition_x, tilePosition_y);
+		      Tower * pTower = new Tower(tilePositionX, tilePositionY);
 
 		      //and puts it in the list
 		      Towers.push_back(pTower);
 
-		      cout << "new tower created on " << tilePosition_x << ", " << tilePosition_y << endl; //Temporary
+		      cout << "new tower created on\nX: " << tilePositionX << "\nY: " << tilePositionY << endl; //Temporary
 
 		      cout << "Amount of towers: " << Towers.size() << endl;
 		    }
@@ -228,13 +232,13 @@ int main()
 
       if (mouseTwoClick(x, y))
 	{
-	  if (board.getTileCoordinates(x, y, tilePosition_x, tilePosition_y))
+	  if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY))
 	    {
 	      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
 		{
 		  Tower *pTower = *it;
 
-		  if (pTower->onTile(tilePosition_x, tilePosition_y))
+		  if (pTower->onTile(tilePositionX, tilePositionY))
 		    {
 		      delete pTower;
 		      Towers.erase(it);
@@ -243,10 +247,6 @@ int main()
 		}
 	    }
 	}
-
-
-
-
 
 
       al_flip_display();

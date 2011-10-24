@@ -35,6 +35,7 @@ void Board::mouseClick(unsigned int x, unsigned int y)
   if (y < screenHeight_)
     {
       std::cout << "mouse clicked on board\n";
+      std::cout << "X: " << x_leftBorder << "\nY: " << y_topBorder << std::endl;
     }
 }
 
@@ -45,7 +46,7 @@ bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gr
   if (y < screenHeight_)
     {
       gridPositionX = x / tileSize_;
-      gridPositionX = y / tileSize_;
+      gridPositionY = y / tileSize_;
       return true;
     }
   return false;
@@ -57,6 +58,7 @@ bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gr
 void Board::drawBackground() const
 {
   al_draw_bitmap (Background_, 0, 0, 0);
+  //al_clear_to_color (al_map_rgb (0, 0, 0));
 }
 
 
@@ -66,11 +68,11 @@ void Board::drawGrid() const
 {
   for(int hPos = tileSize_; hPos <= screenHeight_; hPos += tileSize_)
     {
-      al_draw_line(0, hPos, screenWidth_, hPos, al_map_rgb(0, 0, 0), 2);
+      al_draw_line(0, hPos, screenWidth_, hPos, al_map_rgb(255, 0, 0), 2);
     }
   for(int vPos = tileSize_; vPos < screenWidth_; vPos += tileSize_)
     {
-      al_draw_line(vPos, 0, vPos, screenHeight_, al_map_rgb(0, 0, 0), 2);
+      al_draw_line(vPos, 0, vPos, screenHeight_, al_map_rgb(255, 0, 0), 2);
     }
 }
 
