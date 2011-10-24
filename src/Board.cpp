@@ -2,6 +2,7 @@
 #include <iostream>
 #include <allegro.h>
 #include <allegro_primitives.h>
+#include <allegro_image.h>
 
 
 
@@ -9,6 +10,8 @@ Board::Board():screenWidth_(1280), screenHeight_(640), entranceTile_(1), exitTil
 {
   al_init();
   al_init_primitives_addon();
+  al_init_image_addon();
+  Background = al_load_bitmap ("gfx/BG1.bmp");
 }
 
 
@@ -53,7 +56,7 @@ bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gr
 
 void Board::drawBackground() const
 {
-  al_clear_to_color(al_map_rgb(0,0,0));
+  al_draw_bitmap (Background_, 0, 0, 0);
 }
 
 

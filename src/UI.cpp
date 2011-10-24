@@ -27,6 +27,7 @@ void UI::Draw()
  
 void UI::drawResolutionTexts()
 {
+  //TODO create several selectable resolution alternatives
   al_draw_text (resolutionText_, Unselected_, (800 / 2), (600 / 2), ALLEGRO_ALIGN_CENTRE, "TEST");
 }
 

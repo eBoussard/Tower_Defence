@@ -18,8 +18,8 @@ using namespace std;
 
 
 //TODO
-const unsigned int startupScreenWidth = 800;
-const unsigned int startupScreenHeight = 600;
+const unsigned int startupScreenWidth = 1280;
+const unsigned int startupScreenHeight = 720;
 const float FPS = 60.;
 
 
@@ -153,7 +153,7 @@ int main()
 
 
 
-  bool inMenu = true;
+  //IMPORTANT  bool inMenu = true;
 
 
 
@@ -173,15 +173,15 @@ int main()
 	  break;
 	}
 
-      if (inMenu)
-	{
-	    {
+      //IMPORTANT      if (inMenu)
+      //	{
+      //    {
 	      ui.Draw();
-	    }
-	}
+	      //    }
+	      //	}
 
-      else
-	{
+      //IMPORTANT      else
+	//IMPORTANT	{
 	  board.Draw();
 
 	  scoreboard.Draw();
@@ -191,7 +191,7 @@ int main()
 	      Tower * pTower = *it;
 	      pTower->Draw();
 	    }
-	}
+	  //IMPORTANT	}
 
 
       //If mouse one is clicked
@@ -202,7 +202,7 @@ int main()
 	  scoreboard.buttonClicked(x, y);
 
 
-	  inMenu = false;
+	  //IMPORTANT  inMenu = false;
 
 	  //and tower button is active
 	  if (scoreboard.towerButtonActive())

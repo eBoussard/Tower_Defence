@@ -5,6 +5,7 @@
 
 #ifndef BOARD_HPP
 #define BOARD_HPP
+#include <allegro.h>
 
 
 
@@ -76,6 +77,9 @@ private:
 
   //! The size of a tile on Board
   const unsigned int tileSize_;
+
+  //! The grassy green background filling Board
+  ALLEGRO_BITMAP *Background_;
 };
 
 
