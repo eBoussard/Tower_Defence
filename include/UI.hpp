@@ -13,20 +13,36 @@ public:
   UI();
   void Draw();  
 
-  unsigned int menuWidth;
-  unsigned int menuHeight;
 
-  unsigned int highResWidth;
-  unsigned int highResHeight;
+  //! Width of the menu screen
+  const unsigned int menuDisplayWidth;
 
-  unsigned int lowResWidth;
-  unsigned int lowResHeight;
+  //! Height of the menu screen
+  const unsigned int menuDisplayHeight;
+
+  //! High resolution screen width
+  const unsigned int highResWidth;
+  //! High resolution screen height
+  const unsigned int highResDisplayHeight;
+  //! High resolution Board height
+  const unsigned int highResBoardHeight;
+
+  //! Low resolution screen width
+  const unsigned int lowResWidth;
+  //! Low resolution screen height
+  const unsigned int lowResDisplayHeight;
+  //! Low resolution Board height
+  const unsigned int lowResBoardHeight;
 
 private:
   UI(const UI&);
   UI & operator = (const UI&);
 
+  //! To draw the text on the menu screen showing the available resolutions
   void drawResolutionTexts();
+
+  //! To show if one of the available resolutions from
+  //! drawResolutionTexts() is currently selected
   void drawResolutionSelector();
 
   ALLEGRO_FONT *resolutionText_;

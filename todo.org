@@ -1,29 +1,15 @@
-* ENEMY
-** TODO [[file:src/enemy.cpp][Make Enemy move on Board]] 				      
-** TODO [[file:src/Enemy.cpp][Make several Enemy summonable (waves)]] 			      
-** TODO [[file:src/Enemy.cpp][Make Enemy avoid Tower while moving on Board]] 		      
-
-* TOWER
-** TODO [[file:src/Rules.cpp][Only allow placing Tower that doesn't block Enemy from exit]]    
-
-* BOARD
-** DONE [[file:src/Board.cpp][Make an ALLEGRO_COLOR variable for grid color]]
-** DONE [[file:src/Board.cpp][Change file names of image files]]
-** DONE [[file:src/Board.cpp][Write functions for both high resolution and low resolution]]		      
-** DONE [[file:include/Board.hpp][Correct screen resolution variable names]]
-** TODO [[file:src/Board.cpp][Fix high resolution grid (only horizontal lines are shown at the moment]]
-** TODO [[file:src/Board.cpp][Fix grid drawing (should stop drawing horizontal lines X pixels above screen height)]]
-
-* UI
-** DONE [[file:src/UI.cpp][Create several resolution options]]			
-** TODO [[file:src/UI.cpp][Make the resolution options selectable]]	
-*** The resolution texts should be clickable and then applicable with an "APPLY" button
-** TODO [[file:src/UI.cpp][Rewrite screen creation to let UI handle resolution options]]		
-
-* TOWERDEFENCE
+* Todos
+** DONE Fix the vertical line drawing
+  
+  [[file:~/Tower_Defence/src/Board.cpp::/al_draw_line%5B%20\t%5D*(%5B%20\t%5D*highResVPos%5B%20\t%5D*,%5B%20\t%5D*0%5B%20\t%5D*,%5B%20\t%5D*highResBoardHeight_%5B%20\t%5D*,%5B%20\t%5D*highResVPos%5B%20\t%5D*,%5B%20\t%5D*gridColor_%5B%20\t%5D*,%5B%20\t%5D*2%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
 
 
-* PLAYER
-** TODO [[file:src/Player.cpp][Create a functional economy system]]
-** TODO [[file:src/Player.cpp][Create a functional score system]]
-** TODO [[file:src/Player.cpp][Create a functional health point system]]
+** TODO Fix ScoreBoard drawing methods and variables to match both resolutions
+  
+  [[file:~/Tower_Defence/src/ScoreBoard.cpp::/ScoreBoard%5B%20\t%5D*::%5B%20\t%5D*ScoreBoard%5B%20\t%5D*(%5B%20\t%5D*)%5B%20\t%5D*:%5B%20\t%5D*buttonSize_%5B%20\t%5D*(%5B%20\t%5D*32%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*scoreBoardWidth_%5B%20\t%5D*(%5B%20\t%5D*1280%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*scoreBoardHeight_%5B%20\t%5D*(%5B%20\t%5D*80%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*topLinePosition_%5B%20\t%5D*(%5B%20\t%5D*640%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*Score_%5B%20\t%5D*(%5B%20\t%5D*100%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*healthPoints_%5B%20\t%5D*(%5B%20\t%5D*100%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*Money_%5B%20\t%5D*(%5B%20\t%5D*100%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*towerButtonActive_%5B%20\t%5D*(%5B%20\t%5D*false%5B%20\t%5D*)#1/][clnk]]
+
+
+
+** TODO Fix segmentation fault when clicking on Board
+  
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/if%5B%20\t%5D*(%5B%20\t%5D*menuDisplay%5B%20\t%5D*!%3D%5B%20\t%5D*NULL%5B%20\t%5D*)%5B%20\t%5D*al_destroy_display%5B%20\t%5D*(%5B%20\t%5D*menuDisplay%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]

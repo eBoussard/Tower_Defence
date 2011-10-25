@@ -1,6 +1,8 @@
 //! The playable area
 
-//! Board is 1280 pixels wide and 640 pixels high. The grid, Enemy,
+//! Board's size is either 1280 by 640 pixels (low resolution) or 1920
+//! by 640 pixels (high resolution),
+//! depending on the user's choice. The grid, Enemy,
 //! Tower, entrance and exit are all drawn on Board.
 
 #ifndef BOARD_HPP
@@ -9,17 +11,30 @@
 
 
 
+
+
+
 class Board
 {
 public:
   Board();
+
+  //! Method to draw elements designed for the high resolution
   void highResDraw() const;
+
+  //! Method to draw elements designed for the low resolution
   void lowResDraw() const;
+
+
+
 
   //! Detect where on Board mouse has been clicked
   //! @param x pixel position on x-axis
   //! @param y pixel position on y-axis
   void mouseClick(unsigned int x, unsigned int y);
+
+
+
 
   //! Detect if the pixel coordinate is on a tile
   //!
@@ -35,11 +50,19 @@ public:
   //! @return true if the pixel position is on a tile
   bool getTileCoordinates(unsigned int x, unsigned int y, unsigned int &gridPositionX, unsigned int &gridPositionY) const;
 
+
+
+
+
   //! Get the tile position of the @ref entranceTile_ "entrance tile"
   //! 
   //! The @ref entranceTile_ "entrance tile" is always located along the left wall of Board.
   //! @return entrance tile position on y-axis
   unsigned int getEntranceTile() const;
+
+
+
+
 
   //! Get the tile position of the @ref exitTile_ "exit tile"
   //!
@@ -49,9 +72,12 @@ public:
 
 
 
+
+
 private:
   Board(const Board&);
   Board & operator = (const Board&);
+
 
 
   void drawLowResBackground() const;
@@ -60,16 +86,36 @@ private:
   void drawLowResGrid() const;
   void drawHighResGrid() const;
 
+  void drawLowResExit() const;
+  void drawHighResExit() const;
+
   void drawEntrance() const;
-  void drawExit() const;
 
 
 
-  //Properties
+
+
+
+  //! Width of the low resolution
   unsigned int lowResWidth_;
-  unsigned int lowResHeight_;
+
+  //! Height of the whole low resolution screen (both Board and ScoreBoard)
+  unsigned int lowResDisplayHeight_;
+
+  //! Height of Board on low resolution
+  unsigned int lowResBoardHeight_;
+
+  //! Width of the high resolution
   unsigned int highResWidth_;
-  unsigned int highResHeight_;
+
+  //! Height of the whole high resolution screen (both Board and ScoreBoard)
+  unsigned int highResDisplayHeight_;
+
+  //! Height of Board on high resolution
+  unsigned int highResBoardHeight_;
+
+
+
 
   //! Location of entrance on Board
   const unsigned int entranceTile_;

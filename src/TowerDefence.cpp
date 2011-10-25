@@ -135,7 +135,7 @@ int main()
 
 
 
-  menuDisplay = al_create_display (ui.menuWidth, ui.menuHeight);
+  menuDisplay = al_create_display (ui.menuDisplayWidth, ui.menuDisplayHeight);
 
 
 
@@ -192,9 +192,13 @@ int main()
 	  scoreboard.buttonClicked(x, y);
 
 
+
+
+
 	  if (menuDisplay != NULL) al_destroy_display (menuDisplay);
 
-	  lowResDisplay = al_create_display (ui.lowResWidth, ui.lowResHeight);
+	  lowResDisplay = al_create_display (ui.lowResWidth, ui.lowResDisplayHeight);
+	  cout << "W: " << ui.lowResWidth << "\nH: " << ui.lowResDisplayHeight << endl;
 	  al_set_window_title (lowResDisplay, "Low resolution display @ 1280 * 720");
 	  al_set_target_bitmap (al_get_backbuffer (lowResDisplay));
 
@@ -203,6 +207,9 @@ int main()
 	      board.lowResDraw();
 	      scoreboard.Draw();
 	    }
+
+
+
 
 
 	  if (scoreboard.towerButtonActive())
@@ -229,8 +236,13 @@ int main()
       if (mouseTwoClick(x, y))
 	{
 
+
+
+
+
 	  if (menuDisplay != NULL) al_destroy_display (menuDisplay);
-	  highResDisplay = al_create_display (ui.highResWidth, ui.highResHeight);
+	  highResDisplay = al_create_display (ui.highResWidth, ui.highResDisplayHeight);
+	  cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
 	  al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
 	  al_set_target_bitmap (al_get_backbuffer (highResDisplay));
 
@@ -239,6 +251,10 @@ int main()
 	      board.highResDraw();
 	      scoreboard.Draw();
 	    }
+
+
+
+
 
 	  if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY))
 	    {
