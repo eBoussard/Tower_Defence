@@ -1,20 +1,34 @@
 #include <Board.hpp>
+#include <UI.hpp>
+
 #include <iostream>
+
 #include <allegro.h>
 #include <allegro_primitives.h>
 #include <allegro_image.h>
 
 
 
-Board::Board():screenWidth_(1280), screenHeight_(640), entranceTile_(1), exitTile_(8), tileSize_(64)
+Board::Board():entranceTile_(1), exitTile_(8), tileSize_(64)
 {
   al_init();
   al_init_primitives_addon();
   al_init_image_addon();
-  Background_ = al_load_bitmap ("gfx/BG1.bmp");
-  Entrance_ = al_load_bitmap ("gfx/Spawn1.bmp");
-  Exit_ = al_load_bitmap ("gfx/Exit.bmp");
 
+  Background_ = al_load_bitmap ("gfx/background.bmp");
+  Entrance_ = al_load_bitmap ("gfx/entrance.bmp");
+  Exit_ = al_load_bitmap ("gfx/exit.bmp");
+
+  gridColor_ = al_map_rgb (255, 0, 0);
+  temporaryBlackBackground_ = al_map_rgb (0, 0, 0);
+
+  UI ui;
+
+  screenWidth_ = ui.lowResolutionWidth;
+  screenHeight_ = ui.lowResolutionHeight;
+
+  highResolutionHeight_ = ui.highResolutionHeight;
+  highResolutionWidth_ = ui.highResolutionWidth;
 }
 
 
@@ -60,7 +74,8 @@ bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gr
 
 void Board::drawBackground() const
 {
-  al_draw_bitmap (Background_, 0, 0, 0);
+  //al_draw_bitmap (Background_, 0, 0, 0);
+  al_clear_to_color (temporaryBlackBackground_);
 }
 
 
@@ -68,15 +83,33 @@ void Board::drawBackground() const
 
 void Board::drawGrid() const
 {
-  for(int hPos = tileSize_; hPos <= screenHeight_; hPos += tileSize_)
+  if (screenWidth_ == 1280 && screenHeight_ == 720)
     {
-      al_draw_line(0, hPos, screenWidth_, hPos, al_map_rgb(255, 0, 0), 2);
+      for(int lowResHPos = tileSize_; lowResHPos <= screenHeight_; lowResHPos += tileSize_)
+	{
+	  al_draw_line(0, lowResHPos, screenWidth_, lowResHPos, gridColor_, 2);
+	}
+
+      for(int lowResVPos = tileSize_; lowResVPos < screenWidth_; lowResVPos += tileSize_)
+	{
+	  al_draw_line(lowResVPos, 0, lowResVPos, screenHeight_, gridColor_, 2);
+	}
     }
-  for(int vPos = tileSize_; vPos < screenWidth_; vPos += tileSize_)
-    {
-      al_draw_line(vPos, 0, vPos, screenHeight_, al_map_rgb(255, 0, 0), 2);
-    }
+
+    if (screenWidth_ == 1920 && screenHeight_ == 1080)
+      {
+	for(int highResHPos = tileSize_; highResHPos <= screenHeight_; highResHPos += tileSize_)
+	  {
+	    al_draw_line (0, highResHPos, screenWidth_, highResHPos, gridColor_, 2);
+	  }
+
+	for(int highResVPos = tileSize_; highResVPos < screenWidth_; highResVPos += tileSize_)
+	  {
+	    al_draw_line(0, highResVPos, screenHeight_, highResVPos, gridColor_, 2);
+	  }	
+      }
 }
+	
 
 
 

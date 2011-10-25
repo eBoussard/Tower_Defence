@@ -13,6 +13,15 @@ public:
   UI();
   void Draw();  
 
+  unsigned int menuDisplayWidth;
+  unsigned int menuDisplayHeight;
+
+  unsigned int highResolutionWidth;
+  unsigned int highResolutionHeight;
+
+  unsigned int lowResolutionWidth;
+  unsigned int lowResolutionHeight;
+
 private:
   UI(const UI&);
   UI & operator = (const UI&);

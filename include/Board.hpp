@@ -66,8 +66,10 @@ private:
 
 
   //Properties
-  const unsigned int screenWidth_;
-  const unsigned int screenHeight_;
+  unsigned int screenWidth_;
+  unsigned int screenHeight_;
+  unsigned int highResolutionWidth_;
+  unsigned int highResolutionHeight_;
 
   //! Location of entrance on Board
   const unsigned int entranceTile_;
@@ -78,11 +80,17 @@ private:
   //! The size of a tile on Board
   const unsigned int tileSize_;
 
-  //! The grassy green background filling Board
+  //! The 1280 by 640 pixel background
   ALLEGRO_BITMAP *Background_;
 
+  //! The 32 by 64 pixel green colored "fading light"-style entrance
   ALLEGRO_BITMAP *Entrance_;
+
+  //! The 32 by 64 pixel red colored "fading light"-style exit
   ALLEGRO_BITMAP *Exit_;
+
+  ALLEGRO_COLOR gridColor_;
+  ALLEGRO_COLOR temporaryBlackBackground_;
 };
 
 

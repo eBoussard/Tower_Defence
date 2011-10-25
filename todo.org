@@ -1,18 +1,25 @@
-* TODO ENEMY:[[file:src/Enemy.cpp][ Make Enemy move on Board]]
-* TODO [[file:src/Enemy.cpp][ENEMY: Make several Enemy summonable (waves)]]
-* TODO [[file:src/Enemy.cpp][ENEMY: Make Enemy avoid Tower while moving on Board]]
+* ENEMY
+** TODO [[file:src/enemy.cpp][Make Enemy move on Board]] 				      
+** TODO [[file:src/Enemy.cpp][Make several Enemy summonable (waves)]] 			      
+** TODO [[file:src/Enemy.cpp][Make Enemy avoid Tower while moving on Board]] 		      
 
-RULES
-* TODO [[file:src/Rules.cpp][RULES: Only allow placing Tower that doesn't block Enemy from exit]]
+* TOWER
+** TODO [[file:src/Rules.cpp][Only allow placing Tower that doesn't block Enemy from exit]]    
 
-BOARD
-* TODO [[file:src/Board.cpp::al_draw_line(0,%20hPos,%20screenWidth_,%20hPos,%20al_map_rgb(255,%200,%200),%202)%3B][BOARD: Make an ALLEGRO_COLOR variable for grid color]]
-* TODO [[file:src/Board.cpp][BOARD: Change file names of image files]]
+* BOARD
+** DONE [[file:src/Board.cpp][Make an ALLEGRO_COLOR variable for grid color]]
+** DONE [[file:src/Board.cpp][Change file names of image files]]
+** TODO [[file:src/Board.cpp][Rewrite grid size to match 1920*1080 resolution]]			      
+** TODO [[file:include/Board.hpp][Correct screen resolution variable names]]
 
-UI
-* TODO [[file:src/UI.cpp][UI: Create several resolution options]]
-* TODO [[file:src/UI.cpp][UI: Make the resolution options selectable]]
+* UI
+** DONE [[file:src/UI.cpp][Create several resolution options]]			
+** TODO [[file:src/UI.cpp][Make the resolution options selectable]]	
+*** The resolution texts should be clickable and then applicable with an "APPLY" button
+** TODO [[file:src/UI.cpp][Rewrite screen creation to let UI handle resolution options]]		
 
-TOWERDEFENCE
-* TODO [[file:src/TowerDefence.cpp::const%20float%20FPS%20%3D%2060.%3B][TOWERDEFENCE: Tweak the framerate variable to fix the slowdown problem]]
-* TODO [[file:src/Rules.cpp][the description]]
+* TOWERDEFENCE
+
+
+* PLAYER
+** TODO [[file:src/Player.cpp][Create a functional economy system]]

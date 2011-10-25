@@ -25,7 +25,7 @@ ScoreBoard::ScoreBoard():buttonSize_(32), scoreBoardWidth_(1280), scoreBoardHeig
   colorRed_ = al_map_rgb (255, 0, 0);
 
 
-  towerButton_ = al_load_bitmap ("gfx/T1test.bmp");
+  towerButton_ = al_load_bitmap ("gfx/towerbutton.bmp");
 
 
   infoFont_ =  al_load_ttf_font ("pirulen.ttf", 18, 0);

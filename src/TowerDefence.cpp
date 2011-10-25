@@ -17,8 +17,6 @@ using namespace std;
 
 
 
-const unsigned int startupScreenWidth = 1280;
-const unsigned int startupScreenHeight = 720;
 const float FPS = 60.;
 
 
@@ -77,7 +75,11 @@ bool mouseTwoClick (unsigned int & x, unsigned int & y)
 
 int main()
 {
-  ALLEGRO_DISPLAY *Display = NULL;
+  ALLEGRO_DISPLAY *menuDisplay = NULL;
+  ALLEGRO_DISPLAY *highResolutionDisplay = NULL;
+  ALLEGRO_DISPLAY *lowResolutionDisplay = NULL;
+
+
   ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
   ALLEGRO_TIMER *framerateTimer = NULL;
 
@@ -106,8 +108,6 @@ int main()
 
 
 
-  Display = al_create_display (startupScreenWidth, startupScreenHeight);
-
 
   if (!al_install_mouse())
     {
@@ -135,23 +135,18 @@ int main()
 
 
 
+  menuDisplay = al_create_display (ui.menuDisplayWidth, ui.menuDisplayHeight);
 
 
-  al_register_event_source (eventQueue, al_get_display_event_source (Display));
+
+
+  al_register_event_source (eventQueue, al_get_display_event_source (menuDisplay));
 
   al_register_event_source (eventQueue, al_get_timer_event_source (framerateTimer));
 
   al_start_timer(framerateTimer);
 
-  al_set_target_bitmap(al_get_backbuffer(Display)); 
-
-
-
-
-
-
-
-  bool inMenu = true;
+  al_set_target_bitmap(al_get_backbuffer(menuDisplay)); 
 
 
 
@@ -163,18 +158,17 @@ int main()
       unsigned int x, y, tilePositionX, tilePositionY;
 
 
-
       al_wait_for_event(eventQueue, &Event);
+
 
       if (Event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
 	{
 	  break;
 	}
+      
 
 
-
-
-      if (inMenu)
+      if (menuDisplay != NULL)
       	{
 	  {
 	    ui.Draw();
@@ -188,6 +182,7 @@ int main()
 	  scoreboard.Draw();
 	}
 	
+
 	  for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
 	    {
 	      Tower * pTower = *it;
@@ -196,7 +191,7 @@ int main()
 	
 
 
-      //If mouse one is clicked
+
       if (mouseOneClick(x, y))
 	{
 	  board.mouseClick(x, y);
@@ -204,12 +199,15 @@ int main()
 	  scoreboard.buttonClicked(x, y);
 
 
-	  inMenu = false;
+	  if (menuDisplay != NULL) al_destroy_display (menuDisplay);
+	  lowResolutionDisplay = al_create_display (ui.lowResolutionWidth, ui.lowResolutionHeight);
+	  al_set_window_title (lowResolutionDisplay, "Low resolution display @ 1280 * 720");
+	  al_set_target_bitmap (al_get_backbuffer (lowResolutionDisplay));
 
-	  //and tower button is active
+
 	  if (scoreboard.towerButtonActive())
 	    {	   
-	      if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY)) //x and y means pixel coordinates, tilePositionX and tilePositionY means tile position (on grid)
+	      if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY))
 		{
 		  if (rules.towerPlacementValid(board, Towers, tilePositionX, tilePositionY))
 		    {
@@ -230,6 +228,12 @@ int main()
 
       if (mouseTwoClick(x, y))
 	{
+
+	  if (menuDisplay != NULL) al_destroy_display (menuDisplay);
+	  highResolutionDisplay = al_create_display (ui.highResolutionWidth, ui.highResolutionHeight);
+	  al_set_window_title (highResolutionDisplay, "High resolution display @ 1920 * 1080");
+	  al_set_target_bitmap (al_get_backbuffer (highResolutionDisplay));
+
 	  if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY))
 	    {
 	      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
