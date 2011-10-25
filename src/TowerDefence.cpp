@@ -76,8 +76,8 @@ bool mouseTwoClick (unsigned int & x, unsigned int & y)
 int main()
 {
   ALLEGRO_DISPLAY *menuDisplay = NULL;
-  ALLEGRO_DISPLAY *highResolutionDisplay = NULL;
-  ALLEGRO_DISPLAY *lowResolutionDisplay = NULL;
+  ALLEGRO_DISPLAY *highResDisplay = NULL;
+  ALLEGRO_DISPLAY *lowResDisplay = NULL;
 
 
   ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
@@ -135,7 +135,7 @@ int main()
 
 
 
-  menuDisplay = al_create_display (ui.menuDisplayWidth, ui.menuDisplayHeight);
+  menuDisplay = al_create_display (ui.menuWidth, ui.menuHeight);
 
 
 
@@ -174,13 +174,6 @@ int main()
 	    ui.Draw();
 	  }
 	}
-
-      else
-	{
-	  board.Draw();
-
-	  scoreboard.Draw();
-	}
 	
 
 	  for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
@@ -200,9 +193,16 @@ int main()
 
 
 	  if (menuDisplay != NULL) al_destroy_display (menuDisplay);
-	  lowResolutionDisplay = al_create_display (ui.lowResolutionWidth, ui.lowResolutionHeight);
-	  al_set_window_title (lowResolutionDisplay, "Low resolution display @ 1280 * 720");
-	  al_set_target_bitmap (al_get_backbuffer (lowResolutionDisplay));
+
+	  lowResDisplay = al_create_display (ui.lowResWidth, ui.lowResHeight);
+	  al_set_window_title (lowResDisplay, "Low resolution display @ 1280 * 720");
+	  al_set_target_bitmap (al_get_backbuffer (lowResDisplay));
+
+	  if (lowResDisplay != NULL)
+	    {
+	      board.lowResDraw();
+	      scoreboard.Draw();
+	    }
 
 
 	  if (scoreboard.towerButtonActive())
@@ -230,9 +230,15 @@ int main()
 	{
 
 	  if (menuDisplay != NULL) al_destroy_display (menuDisplay);
-	  highResolutionDisplay = al_create_display (ui.highResolutionWidth, ui.highResolutionHeight);
-	  al_set_window_title (highResolutionDisplay, "High resolution display @ 1920 * 1080");
-	  al_set_target_bitmap (al_get_backbuffer (highResolutionDisplay));
+	  highResDisplay = al_create_display (ui.highResWidth, ui.highResHeight);
+	  al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
+	  al_set_target_bitmap (al_get_backbuffer (highResDisplay));
+
+	  if (highResDisplay != NULL)
+	    {
+	      board.highResDraw();
+	      scoreboard.Draw();
+	    }
 
 	  if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY))
 	    {

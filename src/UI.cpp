@@ -5,7 +5,7 @@
 #include <allegro_font.h>
 #include <allegro_ttf.h>
 
-UI::UI():menuDisplayWidth(640), menuDisplayHeight(480), highResolutionWidth(1920), highResolutionHeight(1080), lowResolutionWidth(1280), lowResolutionHeight(720)
+UI::UI():menuWidth(640), menuHeight(480), highResWidth(1920), highResHeight(1080), lowResWidth(1280), lowResHeight(720)
 {
   al_init();
   al_init_font_addon();
@@ -30,8 +30,8 @@ void UI::Draw()
 void UI::drawResolutionTexts()
 {
 
-  al_draw_text (resolutionText_, Unselected_, (menuDisplayWidth / 2), (menuDisplayHeight / 2) - 10, ALLEGRO_ALIGN_CENTRE, "1280*720");
-  al_draw_text (resolutionText_, Unselected_, (menuDisplayWidth / 2), (menuDisplayHeight / 2) + 10, ALLEGRO_ALIGN_CENTRE, "1920*1080");
+  al_draw_text (resolutionText_, Unselected_, (menuWidth / 2), (menuHeight / 2) - 10, ALLEGRO_ALIGN_CENTRE, "1280*720");
+  al_draw_text (resolutionText_, Unselected_, (menuWidth / 2), (menuHeight / 2) + 10, ALLEGRO_ALIGN_CENTRE, "1920*1080");
 }
 
 

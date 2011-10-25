@@ -13,14 +13,14 @@ public:
   UI();
   void Draw();  
 
-  unsigned int menuDisplayWidth;
-  unsigned int menuDisplayHeight;
+  unsigned int menuWidth;
+  unsigned int menuHeight;
 
-  unsigned int highResolutionWidth;
-  unsigned int highResolutionHeight;
+  unsigned int highResWidth;
+  unsigned int highResHeight;
 
-  unsigned int lowResolutionWidth;
-  unsigned int lowResolutionHeight;
+  unsigned int lowResWidth;
+  unsigned int lowResHeight;
 
 private:
   UI(const UI&);

@@ -13,7 +13,8 @@ class Board
 {
 public:
   Board();
-  void Draw() const;
+  void highResDraw() const;
+  void lowResDraw() const;
 
   //! Detect where on Board mouse has been clicked
   //! @param x pixel position on x-axis
@@ -53,23 +54,22 @@ private:
   Board & operator = (const Board&);
 
 
-  void drawBackground() const;
+  void drawLowResBackground() const;
+  void drawHighResBackground() const;
 
-  //! Draw the grid
+  void drawLowResGrid() const;
+  void drawHighResGrid() const;
 
-  //! The grid consists of 200 tiles, ranging from 0-19 on the y-axis and 0-9 on
-  //! the x-axis. The grid is zero-based.
-  void drawGrid() const;
   void drawEntrance() const;
   void drawExit() const;
 
 
 
   //Properties
-  unsigned int screenWidth_;
-  unsigned int screenHeight_;
-  unsigned int highResolutionWidth_;
-  unsigned int highResolutionHeight_;
+  unsigned int lowResWidth_;
+  unsigned int lowResHeight_;
+  unsigned int highResWidth_;
+  unsigned int highResHeight_;
 
   //! Location of entrance on Board
   const unsigned int entranceTile_;

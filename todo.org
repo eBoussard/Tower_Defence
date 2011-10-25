@@ -9,8 +9,10 @@
 * BOARD
 ** DONE [[file:src/Board.cpp][Make an ALLEGRO_COLOR variable for grid color]]
 ** DONE [[file:src/Board.cpp][Change file names of image files]]
-** TODO [[file:src/Board.cpp][Rewrite grid size to match 1920*1080 resolution]]			      
-** TODO [[file:include/Board.hpp][Correct screen resolution variable names]]
+** DONE [[file:src/Board.cpp][Write functions for both high resolution and low resolution]]		      
+** DONE [[file:include/Board.hpp][Correct screen resolution variable names]]
+** TODO [[file:src/Board.cpp][Fix high resolution grid (only horizontal lines are shown at the moment]]
+** TODO [[file:src/Board.cpp][Fix grid drawing (should stop drawing horizontal lines X pixels above screen height)]]
 
 * UI
 ** DONE [[file:src/UI.cpp][Create several resolution options]]			
@@ -23,3 +25,5 @@
 
 * PLAYER
 ** TODO [[file:src/Player.cpp][Create a functional economy system]]
+** TODO [[file:src/Player.cpp][Create a functional score system]]
+** TODO [[file:src/Player.cpp][Create a functional health point system]]

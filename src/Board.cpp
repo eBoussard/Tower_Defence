@@ -24,19 +24,29 @@ Board::Board():entranceTile_(1), exitTile_(8), tileSize_(64)
 
   UI ui;
 
-  screenWidth_ = ui.lowResolutionWidth;
-  screenHeight_ = ui.lowResolutionHeight;
+  lowResWidth_ = ui.lowResWidth;
+  lowResHeight_ = ui.lowResHeight;
 
-  highResolutionHeight_ = ui.highResolutionHeight;
-  highResolutionWidth_ = ui.highResolutionWidth;
+  highResWidth_ = ui.highResWidth;
+  highResHeight_ = ui.highResHeight;
 }
 
 
 
-void Board::Draw() const
+void Board::lowResDraw() const
 {
-  drawBackground();
-  drawGrid();
+  drawLowResBackground();
+  drawLowResGrid();
+  drawEntrance();
+  drawExit();
+}
+
+
+
+void Board::highResDraw() const
+{
+  drawHighResBackground();
+  drawHighResGrid();
   drawEntrance();
   drawExit();
 }
@@ -49,7 +59,7 @@ void Board::mouseClick(unsigned int x, unsigned int y)
 
   x_leftBorder = tileSize_ * (x / tileSize_);
   y_topBorder = tileSize_ * (y / tileSize_);
-  if (y < screenHeight_)
+  if (y < lowResHeight_)
     {
       std::cout << "mouse clicked on board\n";
       std::cout << "X: " << x_leftBorder << "\nY: " << y_topBorder << std::endl;
@@ -60,7 +70,7 @@ void Board::mouseClick(unsigned int x, unsigned int y)
 
 bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gridPositionX, unsigned int &gridPositionY) const
 {
-  if (y < screenHeight_)
+  if (y < lowResHeight_)
     {
       gridPositionX = x / tileSize_;
       gridPositionY = y / tileSize_;
@@ -72,42 +82,44 @@ bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gr
 
 
 
-void Board::drawBackground() const
+void Board::drawLowResBackground() const
 {
   //al_draw_bitmap (Background_, 0, 0, 0);
   al_clear_to_color (temporaryBlackBackground_);
 }
 
 
-
-
-void Board::drawGrid() const
+void Board::drawHighResBackground() const
 {
-  if (screenWidth_ == 1280 && screenHeight_ == 720)
-    {
-      for(int lowResHPos = tileSize_; lowResHPos <= screenHeight_; lowResHPos += tileSize_)
-	{
-	  al_draw_line(0, lowResHPos, screenWidth_, lowResHPos, gridColor_, 2);
-	}
+  al_clear_to_color (temporaryBlackBackground_);
+}
 
-      for(int lowResVPos = tileSize_; lowResVPos < screenWidth_; lowResVPos += tileSize_)
-	{
-	  al_draw_line(lowResVPos, 0, lowResVPos, screenHeight_, gridColor_, 2);
-	}
+
+void Board::drawLowResGrid() const
+{
+  for(int lowResHPos = tileSize_; lowResHPos <= lowResHeight_; lowResHPos += tileSize_)
+    {
+      al_draw_line(0, lowResHPos, lowResWidth_, lowResHPos, gridColor_, 2);
     }
 
-    if (screenWidth_ == 1920 && screenHeight_ == 1080)
-      {
-	for(int highResHPos = tileSize_; highResHPos <= screenHeight_; highResHPos += tileSize_)
-	  {
-	    al_draw_line (0, highResHPos, screenWidth_, highResHPos, gridColor_, 2);
-	  }
+  for(int lowResVPos = tileSize_; lowResVPos < lowResWidth_; lowResVPos += tileSize_)
+    {
+      al_draw_line(lowResVPos, 0, lowResVPos, lowResHeight_, gridColor_, 2);
+    }
+}
 
-	for(int highResVPos = tileSize_; highResVPos < screenWidth_; highResVPos += tileSize_)
-	  {
-	    al_draw_line(0, highResVPos, screenHeight_, highResVPos, gridColor_, 2);
-	  }	
-      }
+
+void Board::drawHighResGrid() const
+{
+  for(int highResHPos = tileSize_; highResHPos <= lowResHeight_; highResHPos += tileSize_)
+    {
+      al_draw_line (0, highResHPos, lowResWidth_, highResHPos, gridColor_, 2);
+    }
+
+  for(int highResVPos = tileSize_; highResVPos < lowResWidth_; highResVPos += tileSize_)
+    {
+      al_draw_line(0, highResVPos, lowResHeight_, highResVPos, gridColor_, 2);
+    }	
 }
 	
 
