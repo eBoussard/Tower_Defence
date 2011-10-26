@@ -189,13 +189,19 @@ int main()
 	{
 	  board.mouseClick(x, y);
 
-	  scoreboard.buttonClicked(x, y);
+	  scoreboard.lowResButtonClicked(x, y);
+
+	  scoreboard.highResButtonClicked(x, y);
 
 
 
 
 
-	  if (menuDisplay != NULL) al_destroy_display (menuDisplay);
+	  if (menuDisplay != NULL) 
+	    {
+	      al_destroy_display (menuDisplay);
+	      menuDisplay = NULL;
+	    }
 
 	  lowResDisplay = al_create_display (ui.lowResWidth, ui.lowResDisplayHeight);
 	  cout << "W: " << ui.lowResWidth << "\nH: " << ui.lowResDisplayHeight << endl;
@@ -205,7 +211,7 @@ int main()
 	  if (lowResDisplay != NULL)
 	    {
 	      board.lowResDraw();
-	      scoreboard.Draw();
+	      scoreboard.lowResDraw();
 	    }
 
 
@@ -240,7 +246,12 @@ int main()
 
 
 
-	  if (menuDisplay != NULL) al_destroy_display (menuDisplay);
+	  if (menuDisplay != NULL) 
+	    {
+	      al_destroy_display (menuDisplay);
+	      menuDisplay = NULL;
+	    }
+
 	  highResDisplay = al_create_display (ui.highResWidth, ui.highResDisplayHeight);
 	  cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
 	  al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
@@ -249,7 +260,7 @@ int main()
 	  if (highResDisplay != NULL)
 	    {
 	      board.highResDraw();
-	      scoreboard.Draw();
+	      scoreboard.highResDraw();
 	    }
 
 
