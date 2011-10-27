@@ -48,8 +48,6 @@ ScoreBoard::ScoreBoard():buttonSize_(32), Score_(100), healthPoints_(100), Money
 
 ScoreBoard::~ScoreBoard()
 {
-  al_destroy_font (infoFont_); 
-  al_shutdown_ttf_addon();
   delete(infoText_);
 }
 

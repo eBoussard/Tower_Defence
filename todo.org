@@ -62,4 +62,8 @@
    CLOCK: [2011-10-27 Thu 19:08]--[2011-10-27 Thu 19:08] =>  0:00
   
   [[file:~/Tower_Defence/src/ScoreBoard.cpp]]
-
+** INPROGRESS Install and make use of keyboard
+   CLOCK: [2011-10-27 Thu 20:13]
+   CLOCK: [2011-10-27 Thu 19:52]--[2011-10-27 Thu 19:52] =>  0:00
+  
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/#include%5B%20\t%5D*<%5B%20\t%5D*UI%5B%20\t%5D*\.%5B%20\t%5D*hpp%5B%20\t%5D*>#1/][clnk]]

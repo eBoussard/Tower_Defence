@@ -17,7 +17,7 @@ using namespace std;
 
 
 
-const float FPS = 60.;
+const float FPS = 10.;
 
 
 
