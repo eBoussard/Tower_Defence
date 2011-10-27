@@ -149,7 +149,7 @@ int main()
   al_set_target_bitmap(al_get_backbuffer(menuDisplay)); 
 
 
-
+  bool resizable = true;
 
   while(1)
     {
@@ -194,27 +194,15 @@ int main()
 	  scoreboard.highResButtonClicked(x, y);
 
 
-
-
-
-	  if (menuDisplay != NULL) 
+	  if (al_get_display_width (menuDisplay) == 640 && resizable == true)
 	    {
-	      al_destroy_display (menuDisplay);
-	      menuDisplay = NULL;
-	    }
-
-	  lowResDisplay = al_create_display (ui.lowResWidth, ui.lowResDisplayHeight);
-	  cout << "W: " << ui.lowResWidth << "\nH: " << ui.lowResDisplayHeight << endl;
-	  al_set_window_title (lowResDisplay, "Low resolution display @ 1280 * 720");
-	  al_set_target_bitmap (al_get_backbuffer (lowResDisplay));
-
-	  if (lowResDisplay != NULL)
-	    {
+	      al_resize_display (menuDisplay, ui.lowResWidth, ui.lowResDisplayHeight);
+	      cout << "W: " << ui.lowResWidth << "\nH: " << ui.lowResDisplayHeight << endl;
+	      al_set_window_title (menuDisplay, "Low resolution display @ 1280 * 720");
 	      board.lowResDraw();
 	      scoreboard.lowResDraw();
+	      resizable = false;
 	    }
-
-
 
 
 
@@ -230,7 +218,7 @@ int main()
 		      //and puts it in the list
 		      Towers.push_back(pTower);
 
-		      cout << "new tower created on\nX: " << tilePositionX << "\nY: " << tilePositionY << endl; //Temporary
+		      cout << "new tower created on\nX: " << tilePositionX << "\nY: " << tilePositionY << endl;
 
 		      cout << "Amount of towers: " << Towers.size() << endl;
 		    }
@@ -245,23 +233,16 @@ int main()
 
 
 
+	  if (al_get_display_width (menuDisplay) == 640 && resizable == true)
+	  {
+	    al_resize_display (menuDisplay, ui.highResWidth, ui.highResDisplayHeight);
+	    cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
+	    al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
+	    board.highResDraw();
+	    scoreboard.highResDraw();
+	    resizable = false;
+	  }
 
-	  if (menuDisplay != NULL) 
-	    {
-	      al_destroy_display (menuDisplay);
-	      menuDisplay = NULL;
-	    }
-
-	  highResDisplay = al_create_display (ui.highResWidth, ui.highResDisplayHeight);
-	  cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
-	  al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
-	  al_set_target_bitmap (al_get_backbuffer (highResDisplay));
-
-	  if (highResDisplay != NULL)
-	    {
-	      board.highResDraw();
-	      scoreboard.highResDraw();
-	    }
 
 
 
@@ -282,6 +263,8 @@ int main()
 		}
 	    }
 	}
+
+
 
 
       al_flip_display();
