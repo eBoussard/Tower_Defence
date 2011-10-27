@@ -83,6 +83,9 @@ int main()
   ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
   ALLEGRO_TIMER *framerateTimer = NULL;
 
+  enum KEYS {KEY_H, KEY_L};
+  bool key[2] = {false, false};
+
 
 
 
@@ -117,6 +120,14 @@ int main()
 
 
 
+  if (!al_install_keyboard())
+    {
+      cout << "keyboard fail\n";
+      return 1;
+    }
+
+
+
   eventQueue = al_create_event_queue();
   if (!eventQueue)
     {
@@ -144,6 +155,9 @@ int main()
 
   al_register_event_source (eventQueue, al_get_timer_event_source (framerateTimer));
 
+  al_register_event_source (eventQueue, al_get_keyboard_event_source());
+
+
   al_start_timer(framerateTimer);
 
   al_set_target_bitmap(al_get_backbuffer(Display)); 
@@ -164,6 +178,22 @@ int main()
       if (Event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
 	{
 	  break;
+	}
+
+
+      if (Event.type == ALLEGRO_EVENT_KEY_DOWN)
+	{
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_H) key[KEY_H] = true;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_L) key[KEY_L] = true;
+	}
+
+      
+      if (Event.type == ALLEGRO_EVENT_KEY_UP)
+	{
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_H) key[KEY_H] = false;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_L) key[KEY_L] = false;
 	}
       
 
@@ -207,13 +237,7 @@ int main()
 	  scoreboard.highResButtonClicked(x, y);
 
 
-	  if (al_get_display_width (Display) == 640 && displayResizable == true)
-	    {
-	      al_resize_display (Display, ui.lowResWidth, ui.lowResDisplayHeight);
-	      cout << "W: " << ui.lowResWidth << "\nH: " << ui.lowResDisplayHeight << endl;
-	      al_set_window_title (Display, "Low resolution display @ 1280 * 720");
-	      displayResizable = false;
-	    }
+
 
 
 
@@ -241,13 +265,7 @@ int main()
       if (mouseTwoClick(x, y))
 	{
 
-	  if (al_get_display_width (Display) == 640 && displayResizable == true)
-	    {
-	      al_resize_display (Display, ui.highResWidth, ui.highResDisplayHeight);
-	      cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
-	      al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
-	      displayResizable = false;
-	    }
+
 
 
 
@@ -266,6 +284,28 @@ int main()
 		}
 	    }
 	}
+
+	  if (key[KEY_L] && al_get_display_width (Display) == 640 && displayResizable == true)
+	    {
+	      al_resize_display (Display, ui.lowResWidth, ui.lowResDisplayHeight);
+	      cout << "W: " << ui.lowResWidth << "\nH: " << ui.lowResDisplayHeight << endl;
+	      al_set_window_title (Display, "Low resolution display @ 1280 * 720");
+	      displayResizable = false;
+	    }
+
+
+
+
+	  if (key[KEY_H] && al_get_display_width (Display) == 640 && displayResizable == true)
+	    {
+	      al_resize_display (Display, ui.highResWidth, ui.highResDisplayHeight);
+	      if (al_get_display_width (Display) < ui.highResWidth || al_get_display_width (Display) < ui.highResDisplayHeight) al_resize_display (Display, ui.lowResWidth, ui.lowResDisplayHeight);
+	      cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
+	      al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
+	      displayResizable = false;
+	    }
+
+
 
 
 
