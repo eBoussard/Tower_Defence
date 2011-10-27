@@ -1,5 +1,6 @@
 #+STARTUP: showall
 
+
 * Todos
 
 ** DONE Fix the vertical line drawing
@@ -21,12 +22,19 @@
   [[file:~/Tower_Defence/src/TowerDefence.cpp::/if%5B%20\t%5D*(%5B%20\t%5D*menuDisplay%5B%20\t%5D*!%3D%5B%20\t%5D*NULL%5B%20\t%5D*)%5B%20\t%5D*al_destroy_display%5B%20\t%5D*(%5B%20\t%5D*menuDisplay%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
 
 
+
 ** DONE Fix loop break on display close
    CLOSED: [2011-10-27 Thu 18:30]
    CLOCK: [2011-10-27 Thu 17:58]--[2011-10-27 Thu 18:30] =>  0:32
    CLOCK: [2011-10-27 Thu 17:56]--[2011-10-27 Thu 17:56] =>  0:00
    CLOCK: [2011-10-27 Thu 17:51]--[2011-10-27 Thu 17:52] =>  0:01
      
+
+
+** DONE Fix loop break on display close
+   CLOSED: [2011-10-27 Thu 18:47]
+
+
   
   [[file:~/Tower_Defence/src/TowerDefence.cpp::/al_get_mouse_state%5B%20\t%5D*(%5B%20\t%5D*&%5B%20\t%5D*mouseState%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
 
