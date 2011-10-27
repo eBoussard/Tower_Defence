@@ -47,13 +47,19 @@
   
   
   [[file:~/Tower_Defence/src/TowerDefence.cpp::/if%5B%20\t%5D*(%5B%20\t%5D*menuDisplay%5B%20\t%5D*!%3D%5B%20\t%5D*NULL%5B%20\t%5D*)#2/][clnk]]
-** TODO Remove towers on mouse two click
+** DONE Remove towers on mouse two click
+   CLOSED: [2011-10-27 Thu 19:08]
+   CLOCK: [2011-10-27 Thu 18:52]--[2011-10-27 Thu 19:08] =>  0:16
   
   [[file:~/Tower_Defence/src/TowerDefence.cpp]]
-** TODO Remove resolution text when resized
+** DONE Remove resolution text when resized
+   CLOSED: [2011-10-27 Thu 19:08]
+   CLOCK: [2011-10-27 Thu 19:08]--[2011-10-27 Thu 19:08] =>  0:00
   
   [[file:~/Tower_Defence/src/UI.cpp::void%20UI::drawResolutionTexts()][file:~/Tower_Defence/src/UI.cpp::void UI::drawResolutionTexts()]]
-** TODO Fix drawing done here
+** DONE Fix drawing done here
+   CLOSED: [2011-10-27 Thu 19:08]
+   CLOCK: [2011-10-27 Thu 19:08]--[2011-10-27 Thu 19:08] =>  0:00
   
   [[file:~/Tower_Defence/src/ScoreBoard.cpp]]
 

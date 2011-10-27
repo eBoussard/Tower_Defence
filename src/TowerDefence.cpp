@@ -75,7 +75,7 @@ bool mouseTwoClick (unsigned int & x, unsigned int & y)
 
 int main()
 {
-  ALLEGRO_DISPLAY *menuDisplay = NULL;
+  ALLEGRO_DISPLAY *Display = NULL;
   ALLEGRO_DISPLAY *highResDisplay = NULL;
   ALLEGRO_DISPLAY *lowResDisplay = NULL;
 
@@ -135,21 +135,21 @@ int main()
 
 
 
-  menuDisplay = al_create_display (ui.menuDisplayWidth, ui.menuDisplayHeight);
+  Display = al_create_display (ui.menuDisplayWidth, ui.menuDisplayHeight);
 
 
 
 
-  al_register_event_source (eventQueue, al_get_display_event_source (menuDisplay));
+  al_register_event_source (eventQueue, al_get_display_event_source (Display));
 
   al_register_event_source (eventQueue, al_get_timer_event_source (framerateTimer));
 
   al_start_timer(framerateTimer);
 
-  al_set_target_bitmap(al_get_backbuffer(menuDisplay)); 
+  al_set_target_bitmap(al_get_backbuffer(Display)); 
 
 
-  bool resizable = true;
+  bool displayResizable = true;
 
   while(1)
     {
@@ -168,19 +168,32 @@ int main()
       
 
 
-      if (menuDisplay != NULL)
-      	{
-	  {
-	    ui.Draw();
-	  }
+      if (al_get_display_width (Display) == 640)
+      	{	  
+	  ui.Draw();	  
+	}
+
+
+      if (al_get_display_width (Display) == 1280)
+	{
+	  board.lowResDraw();
+	  scoreboard.lowResDraw();
+	}
+
+
+
+      if (al_get_display_width (Display) == 1920)
+	{
+	  board.highResDraw();
+	  scoreboard.highResDraw();
 	}
 	
 
-	  for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
-	    {
-	      Tower * pTower = *it;
-	      pTower->Draw();
-	    }
+      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
+	{
+	  Tower * pTower = *it;
+	  pTower->Draw();
+	}
 	
 
 
@@ -194,14 +207,12 @@ int main()
 	  scoreboard.highResButtonClicked(x, y);
 
 
-	  if (al_get_display_width (menuDisplay) == 640 && resizable == true)
+	  if (al_get_display_width (Display) == 640 && displayResizable == true)
 	    {
-	      al_resize_display (menuDisplay, ui.lowResWidth, ui.lowResDisplayHeight);
+	      al_resize_display (Display, ui.lowResWidth, ui.lowResDisplayHeight);
 	      cout << "W: " << ui.lowResWidth << "\nH: " << ui.lowResDisplayHeight << endl;
-	      al_set_window_title (menuDisplay, "Low resolution display @ 1280 * 720");
-	      board.lowResDraw();
-	      scoreboard.lowResDraw();
-	      resizable = false;
+	      al_set_window_title (Display, "Low resolution display @ 1280 * 720");
+	      displayResizable = false;
 	    }
 
 
@@ -230,21 +241,13 @@ int main()
       if (mouseTwoClick(x, y))
 	{
 
-
-
-
-	  if (al_get_display_width (menuDisplay) == 640 && resizable == true)
-	  {
-	    al_resize_display (menuDisplay, ui.highResWidth, ui.highResDisplayHeight);
-	    cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
-	    al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
-	    board.highResDraw();
-	    scoreboard.highResDraw();
-	    resizable = false;
-	  }
-
-
-
+	  if (al_get_display_width (Display) == 640 && displayResizable == true)
+	    {
+	      al_resize_display (Display, ui.highResWidth, ui.highResDisplayHeight);
+	      cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
+	      al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
+	      displayResizable = false;
+	    }
 
 
 
