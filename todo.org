@@ -67,4 +67,13 @@
    CLOCK: [2011-10-27 Thu 20:39]--[2011-10-27 Thu 20:39] =>  0:00
    CLOCK: [2011-10-27 Thu 19:52]--[2011-10-27 Thu 19:52] =>  0:00
   
-  [[file:~/Tower_Defence/src/TowerDefence.cpp::/#include%5B%20\t%5D*<%5B%20\t%5D*UI%5B%20\t%5D*\.%5B%20\t%5D*hpp%5B%20\t%5D*>#1/][clnk]]
+   [[file:~/Tower_Defence/src/TowerDefence.cpp::/#include%5B%20\t%5D*<%5B%20\t%5D*UI%5B%20\t%5D*\.%5B%20\t%5D*hpp%5B%20\t%5D*>#1/][clnk]]
+** TODO Keyboard shortcut for button
+  
+  [[file:~/Tower_Defence/src/ScoreBoard.cpp]]
+** TODO Fix this mess
+  
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/if%5B%20\t%5D*(%5B%20\t%5D*al_get_display_width%5B%20\t%5D*(%5B%20\t%5D*Display%5B%20\t%5D*)%5B%20\t%5D*<%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*highResWidth%5B%20\t%5D*||%5B%20\t%5D*al_get_display_width%5B%20\t%5D*(%5B%20\t%5D*Display%5B%20\t%5D*)%5B%20\t%5D*<%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*highResDisplayHeight%5B%20\t%5D*)%5B%20\t%5D*al_resize_display%5B%20\t%5D*(%5B%20\t%5D*Display%5B%20\t%5D*,%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*lowResWidth%5B%20\t%5D*,%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*lowResDisplayHeight%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
+** TODO Make use of ESC-key
+  
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/while%5B%20\t%5D*(%5B%20\t%5D*1%5B%20\t%5D*)#1/][clnk]]
