@@ -1,0 +1,164 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/emil/Tower_Defence/todo.org
+
+* DONE Fix the vertical line drawing
+  CLOCK: [2011-10-26 Wed 13:59]--[2011-10-26 Wed 14:03] =>  0:04
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+
+ [[file:~/Tower_Defence/src/Board.cpp::/al_draw_line%5B%20\t%5D*(%5B%20\t%5D*highResVPos%5B%20\t%5D*,%5B%20\t%5D*0%5B%20\t%5D*,%5B%20\t%5D*highResBoardHeight_%5B%20\t%5D*,%5B%20\t%5D*highResVPos%5B%20\t%5D*,%5B%20\t%5D*gridColor_%5B%20\t%5D*,%5B%20\t%5D*2%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
+
+
+  
+* DONE Fix ScoreBoard drawing methods and variables to match both resolutions
+  CLOCK: [2011-10-26 Wed 14:04]--[2011-10-26 Wed 15:18] =>  1:14
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+ 
+ [[file:~/Tower_Defence/src/ScoreBoard.cpp::/ScoreBoard%5B%20\t%5D*::%5B%20\t%5D*ScoreBoard%5B%20\t%5D*(%5B%20\t%5D*)%5B%20\t%5D*:%5B%20\t%5D*buttonSize_%5B%20\t%5D*(%5B%20\t%5D*32%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*scoreBoardWidth_%5B%20\t%5D*(%5B%20\t%5D*1280%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*scoreBoardHeight_%5B%20\t%5D*(%5B%20\t%5D*80%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*topLinePosition_%5B%20\t%5D*(%5B%20\t%5D*640%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*Score_%5B%20\t%5D*(%5B%20\t%5D*100%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*healthPoints_%5B%20\t%5D*(%5B%20\t%5D*100%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*Money_%5B%20\t%5D*(%5B%20\t%5D*100%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*towerButtonActive_%5B%20\t%5D*(%5B%20\t%5D*false%5B%20\t%5D*)#1/][clnk]]
+
+
+
+* DONE Fix segmentation fault when clicking on Board
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+  
+ [[file:~/Tower_Defence/src/TowerDefence.cpp::/if%5B%20\t%5D*(%5B%20\t%5D*menuDisplay%5B%20\t%5D*!%3D%5B%20\t%5D*NULL%5B%20\t%5D*)%5B%20\t%5D*al_destroy_display%5B%20\t%5D*(%5B%20\t%5D*menuDisplay%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
+
+
+
+* DONE Fix loop break on display close
+  CLOSED: [2011-10-27 Thu 18:30]
+  CLOCK: [2011-10-27 Thu 17:58]--[2011-10-27 Thu 18:30] =>  0:32
+  CLOCK: [2011-10-27 Thu 17:56]--[2011-10-27 Thu 17:56] =>  0:00
+  CLOCK: [2011-10-27 Thu 17:51]--[2011-10-27 Thu 17:52] =>  0:01
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+     
+
+
+* DONE Fix loop break on display close
+  CLOSED: [2011-10-27 Thu 18:47]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+
+
+ 
+ [[file:~/Tower_Defence/src/TowerDefence.cpp::/al_get_mouse_state%5B%20\t%5D*(%5B%20\t%5D*&%5B%20\t%5D*mouseState%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
+
+
+
+
+* DONE Clicking Board opens new window
+  CLOSED: [2011-10-27 Thu 18:30]
+  CLOCK: [2011-10-27 Thu 18:30]--[2011-10-27 Thu 18:30] =>  0:00
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+ 
+ 
+ [[file:~/Tower_Defence/src/TowerDefence.cpp::/if%5B%20\t%5D*(%5B%20\t%5D*menuDisplay%5B%20\t%5D*!%3D%5B%20\t%5D*NULL%5B%20\t%5D*)#2/][clnk]]
+* DONE Remove towers on mouse two click
+  CLOSED: [2011-10-28 Fri 17:36]
+  CLOCK: [2011-10-27 Thu 18:52]--[2011-10-27 Thu 19:08] =>  0:16
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+ 
+ [[file:~/Tower_Defence/src/TowerDefence.cpp]]
+* DONE Remove resolution text when resized
+  CLOSED: [2011-10-27 Thu 19:08]
+  CLOCK: [2011-10-27 Thu 19:08]--[2011-10-27 Thu 19:08] =>  0:00
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+ 
+ [[file:~/Tower_Defence/src/UI.cpp::void%20UI::drawResolutionTexts()][file:~/Tower_Defence/src/UI.cpp::void UI::drawResolutionTexts()]]
+* DONE Fix drawing done here
+  CLOSED: [2011-10-27 Thu 19:08]
+  CLOCK: [2011-10-28 Fri 20:24]--[2011-10-28 Fri 20:24] =>  0:00
+  CLOCK: [2011-10-27 Thu 19:08]--[2011-10-27 Thu 19:08] =>  0:00
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+ 
+ [[file:~/Tower_Defence/src/ScoreBoard.cpp]]
+* DONE Install and make use of keyboard
+  CLOSED: [2011-10-28 Fri 22:10]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+
+ 
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/#include%5B%20\t%5D*<%5B%20\t%5D*UI%5B%20\t%5D*\.%5B%20\t%5D*hpp%5B%20\t%5D*>#1/][clnk]]
+* DONE Make use of ESC-key
+  CLOSED: [2011-10-28 Fri 22:11]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-28 Fri 22:14
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+
+ 
+ [[file:~/Tower_Defence/src/TowerDefence.cpp::/while%5B%20\t%5D*(%5B%20\t%5D*1%5B%20\t%5D*)#1/][clnk]]
+
+
+
+
+
+
+
+
+
+
+
+

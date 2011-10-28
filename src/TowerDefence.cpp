@@ -83,8 +83,8 @@ int main()
   ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
   ALLEGRO_TIMER *framerateTimer = NULL;
 
-  enum KEYS {KEY_H, KEY_L};
-  bool key[2] = {false, false};
+  enum KEYS {KEY_H, KEY_L, KEY_ESCAPE};
+  bool Key[3] = {false, false, false};
 
 
 
@@ -165,7 +165,9 @@ int main()
 
   bool displayResizable = true;
 
-  while(1)
+  bool Quit = false;
+
+  while(!Quit)
     {
       ALLEGRO_EVENT Event;
 
@@ -183,17 +185,27 @@ int main()
 
       if (Event.type == ALLEGRO_EVENT_KEY_DOWN)
 	{
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_H) key[KEY_H] = true;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_H) Key[KEY_H] = true;
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_L) key[KEY_L] = true;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_L) Key[KEY_L] = true;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) Key[KEY_ESCAPE] = true;
 	}
+
+
 
       
       if (Event.type == ALLEGRO_EVENT_KEY_UP)
 	{
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_H) key[KEY_H] = false;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_H) Key[KEY_H] = false;
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_L) key[KEY_L] = false;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_L) Key[KEY_L] = false;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) 
+	    {
+	      Key[KEY_ESCAPE] = false;
+	      Quit = true;
+	    }
 	}
       
 
@@ -236,11 +248,6 @@ int main()
 
 	  scoreboard.highResButtonClicked(x, y);
 
-
-
-
-
-
 	  if (scoreboard.towerButtonActive())
 	    {	   
 	      if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY))
@@ -253,7 +260,7 @@ int main()
 		      //and puts it in the list
 		      Towers.push_back(pTower);
 
-		      cout << "new tower created on\nX: " << tilePositionX << "\nY: " << tilePositionY << endl;
+		      cout << "new tower created on\nGX: " << tilePositionX << "\nGY: " << tilePositionY << endl;
 
 		      cout << "Amount of towers: " << Towers.size() << endl;
 		    }
@@ -264,11 +271,6 @@ int main()
 
       if (mouseTwoClick(x, y))
 	{
-
-
-
-
-
 	  if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY))
 	    {
 	      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
@@ -285,23 +287,36 @@ int main()
 	    }
 	}
 
-	  if (key[KEY_L] && al_get_display_width (Display) == 640 && displayResizable == true)
+
+
+
+	  if (Key[KEY_L] && al_get_display_width (Display) == 640 && displayResizable == true)
 	    {
 	      al_resize_display (Display, ui.lowResWidth, ui.lowResDisplayHeight);
+
 	      cout << "W: " << ui.lowResWidth << "\nH: " << ui.lowResDisplayHeight << endl;
+
 	      al_set_window_title (Display, "Low resolution display @ 1280 * 720");
+
 	      displayResizable = false;
 	    }
 
 
 
 
-	  if (key[KEY_H] && al_get_display_width (Display) == 640 && displayResizable == true)
+	  if (Key[KEY_H] && al_get_display_width (Display) == 640 && displayResizable == true)
 	    {
 	      al_resize_display (Display, ui.highResWidth, ui.highResDisplayHeight);
-	      if (al_get_display_width (Display) < ui.highResWidth || al_get_display_width (Display) < ui.highResDisplayHeight) al_resize_display (Display, ui.lowResWidth, ui.lowResDisplayHeight);
+
+	      if (al_get_display_width (Display) < ui.highResWidth || al_get_display_height (Display) < ui.highResDisplayHeight) 
+		{		
+		  al_resize_display (Display, ui.lowResWidth, ui.lowResDisplayHeight);
+		}
+
 	      cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
-	      al_set_window_title (highResDisplay, "High resolution display @ 1920 * 1080");
+
+	      al_set_window_title (Display, "High resolution display @ 1920 * 1080");
+
 	      displayResizable = false;
 	    }
 
