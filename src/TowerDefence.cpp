@@ -167,10 +167,14 @@ int main()
 
   bool Quit = false;
 
+
+  // Experimental
   unsigned int xIndex = 0;
 
   unsigned int yIndex = 0;
 
+
+  // End of experimental
 
   while(!Quit)
     {
@@ -196,13 +200,25 @@ int main()
 
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_E) Key[KEY_E] = true;
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT) Key[KEY_LEFT] = true;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT)
+	    {
+	      Key[KEY_LEFT] = true;
+	    }
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) Key[KEY_RIGHT] = true;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) 
+	    {
+	      Key[KEY_RIGHT] = true;
+	    }
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN) Key[KEY_DOWN] = true;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN)
+	    {
+	      Key[KEY_DOWN] = true;
+	    }
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP) Key[KEY_UP] = true;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP)
+	    {
+	      Key[KEY_UP] = true;
+	    }
 	}
 
 
@@ -220,13 +236,25 @@ int main()
 
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_E) Key[KEY_E] = false;
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT) Key[KEY_LEFT] = false;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT)
+	    {
+	      Key[KEY_LEFT] = false;
+	    }
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) Key[KEY_RIGHT] = false;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT)
+	    {
+	      Key[KEY_RIGHT] = false;
+	    }
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN) Key[KEY_DOWN] = false;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN)
+	    {
+	      Key[KEY_DOWN] = false;
+	    }
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP) Key[KEY_UP] = false;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP)
+	    {
+	      Key[KEY_UP] = false;
+	    }
 	}
       
 
@@ -259,29 +287,45 @@ int main()
 	  if (Key[KEY_RIGHT])
 	    {
 	      cout << "right" << endl;
-	      xIndex = xIndex + 1;
-	      pEnemy = new Enemy (xIndex, yIndex);
+	      if (xIndex < 19)
+		{
+		  xIndex = xIndex + 1;
+		  pEnemy = new Enemy (xIndex, yIndex);
+		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
+		}
 	    }
 
 	  if (Key[KEY_LEFT])
 	    {
 	      cout << "left" << endl;
-	      xIndex = xIndex -1;
-	      pEnemy = new Enemy (xIndex, yIndex);
+	      if (xIndex > 0)
+		{
+		  xIndex = xIndex -1;
+		  pEnemy = new Enemy (xIndex, yIndex);
+		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
+		}
 	    }
 
 	  if (Key[KEY_DOWN])
 	    {
 	      cout << "down" << endl;
-	      yIndex = yIndex + 1;
-	      pEnemy = new Enemy (xIndex, yIndex);
+	      if (yIndex < 9)
+		{
+		  yIndex = yIndex + 1;
+		  pEnemy = new Enemy (xIndex, yIndex);
+		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
+		}
 	    }
 
 	  if (Key[KEY_UP])
 	    {
 	      cout << "up" << endl;
-	      yIndex = yIndex - 1;
-	      pEnemy = new Enemy (xIndex, yIndex);
+	      if (yIndex > 0)
+		{
+		  yIndex = yIndex - 1;
+		  pEnemy = new Enemy (xIndex, yIndex);
+		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
+		}
 	    }
 	}
 
