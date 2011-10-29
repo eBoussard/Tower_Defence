@@ -81,8 +81,8 @@ int main()
   ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
   ALLEGRO_TIMER *framerateTimer = NULL;
 
-  enum KEYS {KEY_S, KEY_ESCAPE};
-  bool Key[2] = {false, false};
+  enum KEYS {KEY_S, KEY_ESCAPE, KEY_E, KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP};
+  bool Key[7] = {false, false, false, false, false, false, false};
 
 
 
@@ -107,6 +107,8 @@ int main()
 
   UI ui;
 
+  Enemy *pEnemy = NULL;
+
 
 
 
@@ -129,7 +131,7 @@ int main()
   eventQueue = al_create_event_queue();
   if (!eventQueue)
     {
-      cout << "EventQueue fail\n";
+      cout << "eventQueue fail\n";
       return 1;
     }
 
@@ -165,6 +167,11 @@ int main()
 
   bool Quit = false;
 
+  unsigned int xIndex = 0;
+
+  unsigned int yIndex = 0;
+
+
   while(!Quit)
     {
       ALLEGRO_EVENT Event;
@@ -186,6 +193,16 @@ int main()
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_S) Key[KEY_S] = true;
 
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) Key[KEY_ESCAPE] = true;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_E) Key[KEY_E] = true;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT) Key[KEY_LEFT] = true;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) Key[KEY_RIGHT] = true;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN) Key[KEY_DOWN] = true;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP) Key[KEY_UP] = true;
 	}
 
 
@@ -200,6 +217,16 @@ int main()
 	      Key[KEY_ESCAPE] = false;
 	      Quit = true;
 	    }
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_E) Key[KEY_E] = false;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT) Key[KEY_LEFT] = false;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) Key[KEY_RIGHT] = false;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN) Key[KEY_DOWN] = false;
+
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP) Key[KEY_UP] = false;
 	}
       
 
@@ -207,6 +234,7 @@ int main()
 	{
 	  board.Draw();
 	  scoreboard.Draw();
+	  if (pEnemy != NULL) pEnemy->Draw();
 	}
 
 	
@@ -217,6 +245,45 @@ int main()
 	  pTower->Draw();
 	}
 
+
+
+
+      if (Key[KEY_E] && pEnemy == NULL)
+	{
+	  pEnemy = new Enemy(0, board.getEntranceTile());
+	}
+
+
+      if (pEnemy != NULL)
+	{
+	  if (Key[KEY_RIGHT])
+	    {
+	      cout << "right" << endl;
+	      xIndex = xIndex + 1;
+	      pEnemy = new Enemy (xIndex, yIndex);
+	    }
+
+	  if (Key[KEY_LEFT])
+	    {
+	      cout << "left" << endl;
+	      xIndex = xIndex -1;
+	      pEnemy = new Enemy (xIndex, yIndex);
+	    }
+
+	  if (Key[KEY_DOWN])
+	    {
+	      cout << "down" << endl;
+	      yIndex = yIndex + 1;
+	      pEnemy = new Enemy (xIndex, yIndex);
+	    }
+
+	  if (Key[KEY_UP])
+	    {
+	      cout << "up" << endl;
+	      yIndex = yIndex - 1;
+	      pEnemy = new Enemy (xIndex, yIndex);
+	    }
+	}
 
 
 

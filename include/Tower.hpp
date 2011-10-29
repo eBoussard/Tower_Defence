@@ -16,7 +16,7 @@ public:
 
   void Draw() const;
 
-  //! Find out if Tower is positioned on a perticular tile
+  //! Find out if Tower is positioned on this tile
   //! @param tilePositionX tile position on x-axis
   //! @param tilePositionY tile position on y-axis
   bool onTile(unsigned int tilePositionX, unsigned int tilePositionY) const;
@@ -40,12 +40,13 @@ private:
 
   //! Tower can be sold back for a certain value
   unsigned int sellValue_;
+
   const unsigned int xIndex_;
   const unsigned int yIndex_;
 
   //! An image representing Tower
   ALLEGRO_BITMAP *towerBitmap_;
-  int towerBitmapSize_;
+  const unsigned int towerBitmapSize_;
 };
 
 

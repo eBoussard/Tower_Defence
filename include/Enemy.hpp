@@ -17,13 +17,13 @@
 class Enemy
 {
 public:
-  Enemy();
+  Enemy(unsigned int xIndex, unsigned int yIndex);
 
-  //! The image representing Tower
-  ALLEGRO_BITMAP * getBitmap() const;
-
+  void Draw() const;
 
 
+
+  
 private:
   Enemy(const Enemy&);
   Enemy & operator = (const Enemy&);
@@ -50,6 +50,11 @@ private:
 
   const unsigned int enemyBitmapSize_;
 
+
+  unsigned int xIndex_;
+  unsigned int yIndex_;
+
+  ALLEGRO_BITMAP *enemyBitmap_;
 
 };
 

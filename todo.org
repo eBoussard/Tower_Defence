@@ -1,8 +1,0 @@
-#+STARTUP: content
-
-
-* Clean
-* Todo
-** TODO Enemy movement
-  
-  [[file:~/Tower_Defence/src/Enemy.cpp::/Enemy%5B%20\t%5D*::%5B%20\t%5D*Enemy%5B%20\t%5D*(%5B%20\t%5D*)%5B%20\t%5D*:%5B%20\t%5D*healthPoints_%5B%20\t%5D*(%5B%20\t%5D*100%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*movementSpeed_%5B%20\t%5D*(%5B%20\t%5D*100%5B%20\t%5D*)%5B%20\t%5D*,%5B%20\t%5D*yieldsMoney_%5B%20\t%5D*(%5B%20\t%5D*100%5B%20\t%5D*)#1/][LINK]]

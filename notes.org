@@ -1,2 +1,15 @@
-* Ideas
+#+STARTUP: headlines
+#+STARTUP: hidestars
+
+
+
+* Anteckningar
+* Idéer
+* Todo
+** TODO Kolla upp hur det här egentligen fungerar
+  
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/enum%5B%20\t%5D%2BKEYS%5B%20\t%5D*{%5B%20\t%5D*KEY_S%5B%20\t%5D*,%5B%20\t%5D*KEY_ESCAPE%5B%20\t%5D*,%5B%20\t%5D*KEY_E%5B%20\t%5D*,%5B%20\t%5D*KEY_LEFT%5B%20\t%5D*,%5B%20\t%5D*KEY_RIGHT%5B%20\t%5D*,%5B%20\t%5D*KEY_DOWN%5B%20\t%5D*,%5B%20\t%5D*KEY_UP%5B%20\t%5D*}%5B%20\t%5D*%3B#1/][clnk]]
+** TODO Enemy kan bara röra sig på Board
+  
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/cout%5B%20\t%5D*<<%5B%20\t%5D*"down"%5B%20\t%5D*<<%5B%20\t%5D*endl%5B%20\t%5D*%3B#1/][clnk]]
 
