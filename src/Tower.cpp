@@ -31,3 +31,27 @@ bool Tower::onTile (unsigned int tilePositionX, unsigned int tilePositionY) cons
 {
   return ((tilePositionX == xIndex_) && (tilePositionY == yIndex_));
 }
+
+
+
+unsigned int Tower::getPrice() const
+{
+  return Price_;
+}
+
+void Tower::setPrice(unsigned int Price)
+{
+  Price = Price_;
+}
+
+
+
+unsigned int Tower::getSellValue()
+{
+  return sellValue_;
+}
+
+void Tower::setSellValue(unsigned int sellValue)
+{
+  sellValue = sellValue_;
+}

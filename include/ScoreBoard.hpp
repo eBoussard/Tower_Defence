@@ -7,6 +7,8 @@
 #ifndef SCOREBOARD_HPP
 #define SCOREBOARD_HPP
 
+#include <Player.hpp>
+
 #include <allegro.h>
 #include <allegro_font.h>
 #include <allegro_ttf.h>
@@ -15,7 +17,7 @@
 class ScoreBoard
 {
 public: 
-  ScoreBoard();
+  ScoreBoard(Player&);
   ~ScoreBoard();
 
   void Draw() const;
@@ -51,6 +53,8 @@ private:
   char * getHealthPointsInfoText() const;
   char * getMoneyInfoText() const;
 
+
+  Player &player;
 
 
   //Properties

@@ -22,6 +22,14 @@ public:
   bool onTile(unsigned int tilePositionX, unsigned int tilePositionY) const;
 
 
+  unsigned int getPrice() const;
+  void setPrice(unsigned int Price);
+
+  unsigned int getSellValue();
+  void setSellValue(unsigned int sellValue);
+
+
+
 private:
   Tower(const Tower&);
   Tower & operator = (const Tower&);
@@ -29,8 +37,6 @@ private:
 
 
   //Properties
-  unsigned int Price_;
-  unsigned int Damage_;
 
   //! Tower shoots at a certain pace
   unsigned int shootingSpeed_;
@@ -38,7 +44,13 @@ private:
   //! Tower can only shoot within a certain range of itself
   unsigned int Range_;
 
-  //! Tower can be sold back for a certain value
+  //! The number of money required to purchase Tower
+  unsigned int Price_;
+
+  //! The number of health Tower will remove from Enemy per attack
+  unsigned int Damage_;
+
+  //! Tower may be sold back for money
   unsigned int sellValue_;
 
   const unsigned int xIndex_;

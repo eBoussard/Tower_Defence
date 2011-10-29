@@ -10,7 +10,7 @@ class Engine
 public:
   Engine();
 
-
+  int test();
 
 private:
   Engine(const Engine&);

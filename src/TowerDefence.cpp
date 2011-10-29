@@ -17,7 +17,6 @@ using namespace std;
 
 
 
-const float FPS = 10.;
 
 
 
@@ -77,29 +76,29 @@ int main()
 {
   ALLEGRO_DISPLAY *Display = NULL;
 
-
   ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
+
   ALLEGRO_TIMER *framerateTimer = NULL;
 
+
+
   enum KEYS {KEY_S, KEY_ESCAPE, KEY_E, KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP};
+
   bool Key[7] = {false, false, false, false, false, false, false};
 
+  const float FPS = 10.;
 
 
+  bool displayResizable = true;
 
-
-
-  if (!al_init())
-    {
-      cout << "failed to initialize Allegro!\n";
-      return 1;
-    }
-
+  bool Quit = false;
 
 
   list <Tower *> Towers;
 
-  ScoreBoard scoreboard;
+  Player player;
+
+  ScoreBoard scoreboard(player);
 
   Rules rules;
 
@@ -109,6 +108,14 @@ int main()
 
   Enemy *pEnemy = NULL;
 
+
+
+
+  if (!al_init())
+    {
+      cout << "Failed to initialize Allegro in TowerDefence.cpp" << endl;
+      return 1;
+    }
 
 
 
@@ -150,7 +157,6 @@ int main()
 
 
 
-
   al_register_event_source (eventQueue, al_get_display_event_source (Display));
 
   al_register_event_source (eventQueue, al_get_timer_event_source (framerateTimer));
@@ -158,29 +164,28 @@ int main()
   al_register_event_source (eventQueue, al_get_keyboard_event_source());
 
 
+
   al_start_timer(framerateTimer);
 
   al_set_target_bitmap(al_get_backbuffer(Display)); 
 
 
-  bool displayResizable = true;
-
-  bool Quit = false;
 
 
-  // Experimental
-  unsigned int xIndex = 0;
-
-  unsigned int yIndex = 0;
-
-
-  // End of experimental
 
   while(!Quit)
     {
       ALLEGRO_EVENT Event;
 
+      // x and y are pixel coordinates, tilePositionX and
+      // tilePositionY are grid coordinates
       unsigned int x, y, tilePositionX, tilePositionY;
+
+      // Grid coordinates, for enemy movement
+      unsigned int xIndex = 0;
+
+      unsigned int yIndex = 0;
+
 
 
       al_wait_for_event(eventQueue, &Event);
@@ -192,6 +197,7 @@ int main()
 	}
 
 
+
       if (Event.type == ALLEGRO_EVENT_KEY_DOWN)
 	{
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_S) Key[KEY_S] = true;
@@ -200,25 +206,13 @@ int main()
 
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_E) Key[KEY_E] = true;
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT)
-	    {
-	      Key[KEY_LEFT] = true;
-	    }
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) 
-	    {
-	      Key[KEY_RIGHT] = true;
-	    }
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN)
-	    {
-	      Key[KEY_DOWN] = true;
-	    }
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP)
-	    {
-	      Key[KEY_UP] = true;
-	    }
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT) Key[KEY_LEFT] = true;
+	    
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) Key[KEY_RIGHT] = true;
+	    
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN) Key[KEY_DOWN] = true;
+	    
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP) Key[KEY_UP] = true;
 	}
 
 
@@ -236,27 +230,17 @@ int main()
 
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_E) Key[KEY_E] = false;
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT)
-	    {
-	      Key[KEY_LEFT] = false;
-	    }
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT) Key[KEY_LEFT] = false;
+	    
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) Key[KEY_RIGHT] = false;
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT)
-	    {
-	      Key[KEY_RIGHT] = false;
-	    }
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN)
-	    {
-	      Key[KEY_DOWN] = false;
-	    }
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP)
-	    {
-	      Key[KEY_UP] = false;
-	    }
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN) Key[KEY_DOWN] = false;
+	    
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP) Key[KEY_UP] = false;	    
 	}
       
+
+
 
       if (al_get_display_width (Display) == 1280)
 	{
@@ -282,6 +266,7 @@ int main()
 	}
 
 
+
       if (pEnemy != NULL)
 	{
 	  if (Key[KEY_RIGHT])
@@ -295,6 +280,7 @@ int main()
 		}
 	    }
 
+
 	  if (Key[KEY_LEFT])
 	    {
 	      cout << "left" << endl;
@@ -305,6 +291,7 @@ int main()
 		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
 		}
 	    }
+
 
 	  if (Key[KEY_DOWN])
 	    {
@@ -317,6 +304,7 @@ int main()
 		}
 	    }
 
+
 	  if (Key[KEY_UP])
 	    {
 	      cout << "up" << endl;
@@ -328,6 +316,7 @@ int main()
 		}
 	    }
 	}
+
 
 
 
@@ -350,13 +339,15 @@ int main()
 		      //and puts it in the list
 		      Towers.push_back(pTower);
 
-		      cout << "new tower created on\nGX: " << tilePositionX << "\nGY: " << tilePositionY << endl;
+		      cout << "new tower created on\nT-GX: " << tilePositionX << "\nT-GY: " << tilePositionY << endl;
 
 		      cout << "Amount of towers: " << Towers.size() << endl;
 		    }
 		} 
 	    } 
 	}
+
+
 
 
       if (mouseTwoClick(x, y))
@@ -370,7 +361,9 @@ int main()
 		  if (pTower->onTile(tilePositionX, tilePositionY))
 		    {
 		      delete pTower;
+
 		      Towers.erase(it);
+
 		      break;
 		    }
 		}
@@ -379,7 +372,7 @@ int main()
 
 
 
-
+      // If menu is being shown and S is pressed
       if (Key[KEY_S] && al_get_display_width (Display) == 640 && displayResizable == true)
 	{
 	  al_resize_display (Display, ui.displayWidth, ui.displayHeight);

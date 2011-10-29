@@ -14,7 +14,7 @@
 
 
 
-ScoreBoard::ScoreBoard():buttonSize_(32), Score_(100), healthPoints_(100), Money_(100), towerButtonActive_(false)
+ScoreBoard::ScoreBoard(Player& aPlayer):player(aPlayer), buttonSize_(32), towerButtonActive_(false)
 {
   al_init();
   al_init_primitives_addon();
@@ -39,6 +39,11 @@ ScoreBoard::ScoreBoard():buttonSize_(32), Score_(100), healthPoints_(100), Money
 									     
 
   topLinePosition_ = ui.boardHeight;
+
+
+  Money_ = player.getMoney();
+  healthPoints_ = player.getHealthPoints();
+  Score_ = player.getScore();
 }
 
 

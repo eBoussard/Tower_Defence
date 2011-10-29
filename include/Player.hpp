@@ -12,6 +12,15 @@ class Player
 public:
   Player();
 
+  unsigned int getMoney() const;
+  void setMoney(unsigned int Money);
+
+  unsigned int getHealthPoints() const;
+  void setHealthPoints(unsigned int healthPoints);
+
+  unsigned int getScore() const;
+  void setScore(unsigned int Score);
+
 
 
 private:
@@ -22,17 +31,15 @@ private:
 
   //Properties
 
-  //! Player's money
-
-  //! Killing Enemy will earn Player more money. The amount of money
-  //! is decided by Enemy's @ref yieldsMoney_ "value".
+  //! Purchasing Tower requires Player to have Money, obtainable by
+  //! killing Enemy
   unsigned int Money_;
 
-  //! Player's health points, which decreases when Enemy reaches @ref
-  //! exitTile_ "exit"
+  //! Player's health points will decrease for every Enemy that
+  //! reaches @ref exitTile_ "exit".
   unsigned int healthPoints_;
 
-  //! Player's score increases for every killed Enemy
+  //! Score is earned by killing Enemy
   unsigned int Score_;
 };
 
