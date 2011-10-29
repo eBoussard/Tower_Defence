@@ -76,15 +76,13 @@ bool mouseTwoClick (unsigned int & x, unsigned int & y)
 int main()
 {
   ALLEGRO_DISPLAY *Display = NULL;
-  ALLEGRO_DISPLAY *highResDisplay = NULL;
-  ALLEGRO_DISPLAY *lowResDisplay = NULL;
 
 
   ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
   ALLEGRO_TIMER *framerateTimer = NULL;
 
-  enum KEYS {KEY_H, KEY_L, KEY_ESCAPE};
-  bool Key[3] = {false, false, false};
+  enum KEYS {KEY_S, KEY_ESCAPE};
+  bool Key[2] = {false, false};
 
 
 
@@ -185,9 +183,7 @@ int main()
 
       if (Event.type == ALLEGRO_EVENT_KEY_DOWN)
 	{
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_H) Key[KEY_H] = true;
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_L) Key[KEY_L] = true;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_S) Key[KEY_S] = true;
 
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) Key[KEY_ESCAPE] = true;
 	}
@@ -197,9 +193,7 @@ int main()
       
       if (Event.type == ALLEGRO_EVENT_KEY_UP)
 	{
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_H) Key[KEY_H] = false;
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_L) Key[KEY_L] = false;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_S) Key[KEY_S] = false;
 
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) 
 	    {
@@ -209,26 +203,12 @@ int main()
 	}
       
 
-
-      if (al_get_display_width (Display) == 640)
-      	{	  
-	  ui.Draw();	  
-	}
-
-
       if (al_get_display_width (Display) == 1280)
 	{
-	  board.lowResDraw();
-	  scoreboard.lowResDraw();
+	  board.Draw();
+	  scoreboard.Draw();
 	}
 
-
-
-      if (al_get_display_width (Display) == 1920)
-	{
-	  board.highResDraw();
-	  scoreboard.highResDraw();
-	}
 	
 
       for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
@@ -236,7 +216,8 @@ int main()
 	  Tower * pTower = *it;
 	  pTower->Draw();
 	}
-	
+
+
 
 
 
@@ -244,9 +225,7 @@ int main()
 	{
 	  board.mouseClick(x, y);
 
-	  scoreboard.lowResButtonClicked(x, y);
-
-	  scoreboard.highResButtonClicked(x, y);
+	  scoreboard.ButtonClicked(x, y);
 
 	  if (scoreboard.towerButtonActive())
 	    {	   
@@ -290,37 +269,16 @@ int main()
 
 
 
-	  if (Key[KEY_L] && al_get_display_width (Display) == 640 && displayResizable == true)
-	    {
-	      al_resize_display (Display, ui.lowResWidth, ui.lowResDisplayHeight);
+      if (Key[KEY_S] && al_get_display_width (Display) == 640 && displayResizable == true)
+	{
+	  al_resize_display (Display, ui.displayWidth, ui.displayHeight);
 
-	      cout << "W: " << ui.lowResWidth << "\nH: " << ui.lowResDisplayHeight << endl;
+	  cout << "W: " << ui.displayWidth << "\nH: " << ui.displayHeight << endl;
 
-	      al_set_window_title (Display, "Low resolution display @ 1280 * 720");
+	  al_set_window_title (Display, "Low resolution display @ 1280 * 720");
 
-	      displayResizable = false;
-	    }
-
-
-
-
-	  if (Key[KEY_H] && al_get_display_width (Display) == 640 && displayResizable == true)
-	    {
-	      al_resize_display (Display, ui.highResWidth, ui.highResDisplayHeight);
-
-	      if (al_get_display_width (Display) < ui.highResWidth || al_get_display_height (Display) < ui.highResDisplayHeight) 
-		{		
-		  al_resize_display (Display, ui.lowResWidth, ui.lowResDisplayHeight);
-		}
-
-	      cout << "X: " << ui.highResWidth << "\nH: " << ui.highResDisplayHeight << endl;
-
-	      al_set_window_title (Display, "High resolution display @ 1920 * 1080");
-
-	      displayResizable = false;
-	    }
-
-
+	  displayResizable = false;
+	}
 
 
 

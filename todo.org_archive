@@ -150,6 +150,80 @@ Archived entries from file /home/emil/Tower_Defence/todo.org
 
  
  [[file:~/Tower_Defence/src/TowerDefence.cpp::/while%5B%20\t%5D*(%5B%20\t%5D*1%5B%20\t%5D*)#1/][clnk]]
+* DONE Keyboard shortcut for button				    :ARCHIVE:
+  CLOSED: [2011-10-28 Fri 22:18]
+  CLOCK: [2011-10-28 Fri 22:18]--[2011-10-28 Fri 22:18] =>  0:00
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-29 Sat 10:28
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+ 
+ [[file:~/Tower_Defence/src/ScoreBoard.cpp::/#include%5B%20\t%5D*<%5B%20\t%5D*allegro_font%5B%20\t%5D*\.%5B%20\t%5D*h%5B%20\t%5D*>#1/][clnk]]
+* CLEAN Display variables and such
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-29 Sat 10:28
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: CLEAN
+  :END:
+ 
+ [[file:~/Tower_Defence/src/TowerDefence.cpp::/ALLEGRO_DISPLAY%5B%20\t%5D*\*%5B%20\t%5D*lowResDisplay%5B%20\t%5D*%3D%5B%20\t%5D*NULL%5B%20\t%5D*%3B#1/][LINK]]
+* DONE Keyboard shortcut for button				    :ARCHIVE:
+  CLOSED: [2011-10-28 Fri 22:18]
+  CLOCK: [2011-10-28 Fri 22:18]--[2011-10-28 Fri 22:18] =>  0:00
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-29 Sat 10:28
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todos
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+ 
+ [[file:~/Tower_Defence/src/ScoreBoard.cpp::/#include%5B%20\t%5D*<%5B%20\t%5D*allegro_font%5B%20\t%5D*\.%5B%20\t%5D*h%5B%20\t%5D*>#1/][clnk]]
+* DONE Enemy movement
+  CLOSED: [2011-10-29 Sat 11:48]
+  CLOCK: [2011-10-29 Sat 11:10]--[2011-10-29 Sat 11:11] =>  0:01
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-29 Sat 11:48
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todo
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+ 
+ [[file:~/Tower_Defence/src/Enemy.cpp::/#include%5B%20\t%5D*<%5B%20\t%5D*allegro%5B%20\t%5D*\.%5B%20\t%5D*h%5B%20\t%5D*>#1/][LINK]]
+* DONE Fix scoreboard for high res display			    :ARCHIVE:
+  CLOSED: [2011-10-29 Sat 11:03]
+  CLOCK: [2011-10-29 Sat 10:39]--[2011-10-29 Sat 11:03] =>  0:24
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-29 Sat 11:48
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Todo
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: DONE
+  :END:
+ 
+ [[file:~/Tower_Defence/src/ScoreBoard.cpp::/#include%5B%20\t%5D*<%5B%20\t%5D*ScoreBoard%5B%20\t%5D*\.%5B%20\t%5D*hpp%5B%20\t%5D*>#1/][LINK]]
+* CLEAN Display variables and such
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2011-10-29 Sat 11:48
+  :ARCHIVE_FILE: ~/Tower_Defence/todo.org
+  :ARCHIVE_OLPATH: Clean
+  :ARCHIVE_CATEGORY: todo
+  :ARCHIVE_TODO: CLEAN
+  :END:
+ 
+ [[file:~/Tower_Defence/src/TowerDefence.cpp::/ALLEGRO_DISPLAY%5B%20\t%5D*\*%5B%20\t%5D*lowResDisplay%5B%20\t%5D*%3D%5B%20\t%5D*NULL%5B%20\t%5D*%3B#1/][LINK]]
+
+
+
+
+
+
 
 
 

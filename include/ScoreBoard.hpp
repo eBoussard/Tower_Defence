@@ -18,20 +18,13 @@ public:
   ScoreBoard();
   ~ScoreBoard();
 
-  void lowResDraw() const;
-  void highResDraw() const;
+  void Draw() const;
 
   //! Check if the @ref towerButton_ "button" has been pressed
   //! @param x check if mouse is clicked on the @ref towerButton_ "button's" x-axis
   //! @param y check if mouse is clicked on the @ref towerButton_ "button's" y-axis
-  void lowResButtonClicked(unsigned int x, unsigned int y);
+  void ButtonClicked(unsigned int x, unsigned int y);
 
-  //! Check if the @ref towerButton_ "button" has been pressed
-  //! @param x check if mouse is clicked on the @ref towerButton_
-  //! "button's" x-axis
-  //! @param y check if mouse is clicked on the @ref towerButton_
-  //! "button's" y-axis
-  void highResButtonClicked(unsigned int x, unsigned int y);
 
   //! Check if @ref towerButton_ "button" has been clicked
   //! @returns true if mouse has been clicked on @ref towerButton_ "button's" position
@@ -43,15 +36,13 @@ private:
   ScoreBoard(const ScoreBoard&);
   ScoreBoard & operator = (const ScoreBoard&);
 
-  void drawHighResTowerButton() const;
-  void drawLowResTowerButton() const;
+  void drawTowerButton() const;
 
   //! Draws text on screen
 
   //! Draw the text "SCORE", "LIFE" and "MONEY" on
   //! the left side of ScoreBoard.
-  void drawLowResInfoText() const;
-  void drawHighResInfoText() const;
+  void drawInfoText() const;
 
   //! Buffer for formatting text (score, health points and money)
   char * infoText_;
@@ -63,24 +54,19 @@ private:
 
 
   //Properties
+
+  //! Pixel size of the (square) button on ScoreBoard
   const unsigned int buttonSize_;
 
-  unsigned int scoreBoardLowResWidth_;
-  unsigned int scoreBoardLowResHeight_;
-
-  unsigned int scoreBoardHighResWidth_;
-  unsigned int scoreBoardHighResHeight_;
+  unsigned int scoreBoardWidth_;
+  unsigned int scoreBoardHeight_;
 
 
   //! The y-axis position of the top border of ScoreBoard
 
   //! The pixel position on the y-axis of the lowest line drawn on
-  //! Board's grid on low resolution. This line acts as a border.
-  unsigned int lowResTopLinePosition_;
-
-  //! The pixel position on the y-axis of the lowest line drawn on
-  //! Board's grid on high resolution. This line acts as a border.
-  unsigned int highResTopLinePosition_;
+  //! Board's grid. This line acts as a border.
+  unsigned int topLinePosition_;
 
    unsigned int Score_;
    unsigned int healthPoints_;

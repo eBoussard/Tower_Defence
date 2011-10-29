@@ -28,35 +28,20 @@ Board::Board():entranceTile_(1), exitTile_(8), tileSize_(64)
 
   UI ui;
 
-  lowResWidth_ = ui.lowResWidth;
-  lowResDisplayHeight_ = ui.lowResDisplayHeight;
-  lowResBoardHeight_ = ui.lowResBoardHeight;
-
-  highResWidth_ = ui.highResWidth;
-  highResDisplayHeight_ = ui.highResDisplayHeight;
-  highResBoardHeight_ = ui.highResBoardHeight;
+  displayWidth_ = ui.displayWidth;
+  displayHeight_ = ui.displayHeight;
+  boardHeight_ = ui.boardHeight;
 }
 
 
 
-void Board::lowResDraw() const
+void Board::Draw() const
 {
-  drawLowResBackground();
-  drawLowResGrid();
+  drawBackground();
+  drawGrid();
   drawEntrance();
-  drawLowResExit();
+  drawExit();
 }
-
-
-
-void Board::highResDraw() const
-{
-  drawHighResBackground();
-  drawHighResGrid();
-  drawEntrance();
-  drawHighResExit();
-}
-
 
 
 void Board::mouseClick(unsigned int x, unsigned int y)
@@ -65,10 +50,10 @@ void Board::mouseClick(unsigned int x, unsigned int y)
 
   x_leftBorder = tileSize_ * (x / tileSize_);
   y_topBorder = tileSize_ * (y / tileSize_);
-  if (y < lowResBoardHeight_)
+  if (y < boardHeight_)
     {
       std::cout << "mouse clicked on board\n";
-      std::cout << "X: " << x_leftBorder << "\nY: " << y_topBorder << std::endl;
+      std::cout << "PX: " << x_leftBorder << "\nPY: " << y_topBorder << std::endl;
     }
 }
 
@@ -76,7 +61,7 @@ void Board::mouseClick(unsigned int x, unsigned int y)
 
 bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gridPositionX, unsigned int &gridPositionY) const
 {
-  if (y < lowResBoardHeight_)
+  if (y < boardHeight_)
     {
       gridPositionX = x / tileSize_;
       gridPositionY = y / tileSize_;
@@ -88,47 +73,25 @@ bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gr
 
 
 
-void Board::drawLowResBackground() const
+void Board::drawBackground() const
 {
   //al_draw_bitmap (Background_, 0, 0, 0);
   al_clear_to_color (temporaryBlackBackground_);
 }
 
 
-void Board::drawHighResBackground() const
+void Board::drawGrid() const
 {
-  al_clear_to_color (temporaryBlackBackground_);
-}
-
-
-void Board::drawLowResGrid() const
-{
-  for(int lowResHPos = tileSize_; lowResHPos <= lowResBoardHeight_; lowResHPos += tileSize_)
+  for(int hPos = tileSize_; hPos <= boardHeight_; hPos += tileSize_)
     {
-      al_draw_line(0, lowResHPos, lowResWidth_, lowResHPos, gridColor_, 2);
+      al_draw_line(0, hPos, displayWidth_, hPos, gridColor_, 2);
     }
 
-  for(int lowResVPos = tileSize_; lowResVPos < lowResWidth_; lowResVPos += tileSize_)
+  for(int vPos = tileSize_; vPos < displayWidth_; vPos += tileSize_)
     {
-      al_draw_line(lowResVPos, 0, lowResVPos, lowResBoardHeight_, gridColor_, 2);
+      al_draw_line(vPos, 0, vPos, boardHeight_, gridColor_, 2);
     }
 }
-
-
-void Board::drawHighResGrid() const
-{
-  for(int highResHPos = tileSize_; highResHPos <= highResBoardHeight_; highResHPos += tileSize_)
-    {
-      al_draw_line (0, highResHPos, highResWidth_, highResHPos, gridColor_, 2);
-    }
-
-  for(int highResVPos = tileSize_; highResVPos < highResWidth_; highResVPos += tileSize_)
-    {
-      al_draw_line(highResVPos, 0, highResVPos, highResWidth_, gridColor_, 2);
-    }	
-}
-	
-
 
 
 
@@ -140,18 +103,10 @@ void Board::drawEntrance() const
 
 
 
-void Board::drawLowResExit() const
+void Board::drawExit() const
 {
-  al_draw_bitmap (Exit_, (lowResWidth_ - (tileSize_ / 2)), (exitTile_ * 64), 0);
+  al_draw_bitmap (Exit_, (displayWidth_ - (tileSize_ / 2)), (exitTile_ * 64), 0);
 }
-
-
-
-void Board::drawHighResExit() const
-{
-  al_draw_bitmap (Exit_, (highResWidth_ - (tileSize_ / 2)), (exitTile_ * 64), 0);
-}
-
 
 
 

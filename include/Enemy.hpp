@@ -46,6 +46,11 @@ private:
   //! Money collected from slain Enemy is used to purchase and/or
   //! upgrade Tower.
   unsigned int yieldsMoney_;
+
+
+  const unsigned int enemyBitmapSize_;
+
+
 };
 
 

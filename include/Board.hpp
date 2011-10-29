@@ -19,13 +19,7 @@ class Board
 public:
   Board();
 
-  //! Method to draw elements designed for the high resolution
-  void highResDraw() const;
-
-  //! Method to draw elements designed for the low resolution
-  void lowResDraw() const;
-
-
+  void Draw() const;
 
 
   //! Detect where on Board mouse has been clicked
@@ -79,42 +73,24 @@ private:
   Board & operator = (const Board&);
 
 
+  void drawBackground() const;
 
-  void drawLowResBackground() const;
-  void drawHighResBackground() const;
+  void drawGrid() const;
 
-  void drawLowResGrid() const;
-  void drawHighResGrid() const;
-
-  void drawLowResExit() const;
-  void drawHighResExit() const;
+  void drawExit() const;
 
   void drawEntrance() const;
 
 
 
 
-
-
-  //! Width of the low resolution
-  unsigned int lowResWidth_;
+  unsigned int displayWidth_;
 
   //! Height of the whole low resolution screen (both Board and ScoreBoard)
-  unsigned int lowResDisplayHeight_;
+  unsigned int displayHeight_;
 
   //! Height of Board on low resolution
-  unsigned int lowResBoardHeight_;
-
-  //! Width of the high resolution
-  unsigned int highResWidth_;
-
-  //! Height of the whole high resolution screen (both Board and ScoreBoard)
-  unsigned int highResDisplayHeight_;
-
-  //! Height of Board on high resolution
-  unsigned int highResBoardHeight_;
-
-
+  unsigned int boardHeight_;
 
 
   //! Location of entrance on Board
@@ -126,7 +102,7 @@ private:
   //! The size of a tile on Board
   const unsigned int tileSize_;
 
-  //! The 1280 by 640 pixel background
+
   ALLEGRO_BITMAP *Background_;
 
   //! The 32 by 64 pixel green colored "fading light"-style entrance
@@ -136,6 +112,7 @@ private:
   ALLEGRO_BITMAP *Exit_;
 
   ALLEGRO_COLOR gridColor_;
+
   ALLEGRO_COLOR temporaryBlackBackground_;
 };
 
