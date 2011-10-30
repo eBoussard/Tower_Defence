@@ -5,7 +5,7 @@
 
 
 
-Enemy::Enemy(unsigned int xIndex, unsigned int yIndex):healthPoints_(100), movementSpeed_(100), yieldsMoney_(100), enemyBitmapSize_(48), xIndex_(xIndex), yIndex_(yIndex)
+Enemy::Enemy(unsigned int xIndex, unsigned int yIndex):healthPoints_(100), movementSpeed_(100), yieldsMoney_(100), enemyBitmapSize_(48), xIndex_(xIndex), yIndex_(yIndex), newPosRight_(xIndex + 1), newPosLeft_(xIndex - 1), newPosDown_(yIndex + 1), newPosUp_(yIndex - 1)
 { 
   al_init();
 
@@ -24,4 +24,22 @@ void Enemy::Draw() const
 }
 
 
+int Enemy::moveRight() const
+{
+  return newPosRight_;
+}
 
+int Enemy::moveLeft() const
+{
+  return newPosLeft_;
+}
+
+int Enemy::moveDown() const
+{
+  return newPosDown_;
+}
+
+int Enemy::moveUp() const
+{
+  return newPosUp_;
+}

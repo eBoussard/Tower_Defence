@@ -274,8 +274,7 @@ int main()
 	      cout << "right" << endl;
 	      if (xIndex < 19)
 		{
-		  xIndex = xIndex + 1;
-		  pEnemy = new Enemy (xIndex, yIndex);
+		  pEnemy->moveRight();
 		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
 		}
 	    }
@@ -286,8 +285,7 @@ int main()
 	      cout << "left" << endl;
 	      if (xIndex > 0)
 		{
-		  xIndex = xIndex -1;
-		  pEnemy = new Enemy (xIndex, yIndex);
+		  pEnemy->moveLeft();
 		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
 		}
 	    }
@@ -298,8 +296,7 @@ int main()
 	      cout << "down" << endl;
 	      if (yIndex < 9)
 		{
-		  yIndex = yIndex + 1;
-		  pEnemy = new Enemy (xIndex, yIndex);
+		  pEnemy->moveDown();
 		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
 		}
 	    }
@@ -310,8 +307,7 @@ int main()
 	      cout << "up" << endl;
 	      if (yIndex > 0)
 		{
-		  yIndex = yIndex - 1;
-		  pEnemy = new Enemy (xIndex, yIndex);
+		  pEnemy->moveUp();
 		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
 		}
 	    }

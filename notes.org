@@ -19,3 +19,9 @@
 ** TODO Gör alla getters const
   
   [[file:~/Tower_Defence/src/Tower.cpp::/void%5B%20\t%5D%2BTower%5B%20\t%5D*::%5B%20\t%5D*setSellValue%5B%20\t%5D*(%5B%20\t%5D*unsigned%5B%20\t%5D%2Bint%5B%20\t%5D%2BsellValue%5B%20\t%5D*)#1/][clnk]]
+** TODO Funktion för att flytta Enemy (skapa inte ny)
+  
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/pEnemy%5B%20\t%5D*%3D%5B%20\t%5D*new%5B%20\t%5D%2BEnemy%5B%20\t%5D*(%5B%20\t%5D*xIndex%5B%20\t%5D*,%5B%20\t%5D*yIndex%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
+** TODO Fixa den här röran
+  
+  [[file:~/Tower_Defence/src/Enemy.cpp::/int%5B%20\t%5D%2BEnemy%5B%20\t%5D*::%5B%20\t%5D*moveRight%5B%20\t%5D*(%5B%20\t%5D*)%5B%20\t%5D*const#1/][clnk]]
