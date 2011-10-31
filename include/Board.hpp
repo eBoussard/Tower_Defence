@@ -1,14 +1,13 @@
 //! The playable area
 
-//! Board's size is either 1280 by 640 pixels (low resolution) or 1920
-//! by 640 pixels (high resolution),
-//! depending on the user's choice. The grid, Enemy,
+//! Board's size is 1280 by 640 pixels (the last 80 pixels on the
+//! Y-axis being ScoreBoard). The grid, Enemy,
 //! Tower, entrance and exit are all drawn on Board.
 
 #ifndef BOARD_HPP
 #define BOARD_HPP
 #include <allegro.h>
-
+#include <vector>
 
 
 
@@ -73,6 +72,8 @@ private:
   Board & operator = (const Board&);
 
 
+  void generateRandomPositions();
+
   void drawBackground() const;
 
   void drawGrid() const;
@@ -81,7 +82,11 @@ private:
 
   void drawEntrance() const;
 
+  //! Method to draw (or rather mark) the path for Enemy to walk on
+  void drawEnemyPath() const;
 
+  //! All tiles of the Enemy path
+  std::vector<std::pair<unsigned int, unsigned int> > enemyPath_;
 
 
   unsigned int displayWidth_;
@@ -94,10 +99,14 @@ private:
 
 
   //! Location of entrance on Board
-  const unsigned int entranceTile_;
+  unsigned int entranceTile_;
 
   //! Location of exit on Board
-  const unsigned int exitTile_;
+  unsigned int exitTile_;
+
+  unsigned int enemyPathX_;
+
+  unsigned int enemyPathY_;
 
   //! The size of a tile on Board
   const unsigned int tileSize_;
@@ -114,6 +123,8 @@ private:
   ALLEGRO_COLOR gridColor_;
 
   ALLEGRO_COLOR temporaryBlackBackground_;
+
+  ALLEGRO_BITMAP *enemyPathBitmap_;
 };
 
 

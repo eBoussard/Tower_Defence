@@ -242,7 +242,6 @@ int main()
 	  board.Draw();
 	  scoreboard.Draw();
 	  if (pEnemy != NULL) pEnemy->Draw();
-	  else cout << "pEnemy not drawn" << endl;
 	}
 
 	
@@ -268,10 +267,10 @@ int main()
 	  if (Key[KEY_RIGHT])
 	    {
 	      cout << "right" << endl;
-	      if (xIndex < 19)
+	      //	      if (xIndex < 19)
 		{
 		  pEnemy->moveRight();
-		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
+		  //		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
 		}
 	    }
 
@@ -279,10 +278,10 @@ int main()
 	  if (Key[KEY_LEFT])
 	    {
 	      cout << "left" << endl;
-	      if (xIndex > 0)
+	      //	      if (xIndex > 0)
 		{
 		  pEnemy->moveLeft();
-		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
+		  //		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
 		}
 	    }
 
@@ -290,10 +289,10 @@ int main()
 	  if (Key[KEY_DOWN])
 	    {
 	      cout << "down" << endl;
-	      if (yIndex < 9)
+	      //	      if (yIndex < 9)
 		{
 		  pEnemy->moveDown();
-		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
+		  //		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
 		}
 	    }
 
@@ -301,10 +300,10 @@ int main()
 	  if (Key[KEY_UP])
 	    {
 	      cout << "up" << endl;
-	      if (yIndex > 0)
+	      //	      if (yIndex > 0)
 		{
 		  pEnemy->moveUp();
-		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
+		  //		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
 		}
 	    }
 	}

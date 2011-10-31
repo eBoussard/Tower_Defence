@@ -50,3 +50,15 @@ getValue();
 ** TODO Gör om till getters och setters
   
   [[file:~/Tower_Defence/src/Enemy.cpp::/xIndex_%5B%20\t%5D*\%2B%3D%5B%20\t%5D*1%5B%20\t%5D*%3B#1/][LINK]]
+** TODO Städa upp i koden här 
+  
+  [[file:~/Tower_Defence/src/Board.cpp::/ALLEGRO_BITMAP%5B%20\t%5D*\*%5B%20\t%5D*pOldTargetBitmap%5B%20\t%5D*%3B#1/][clnk]]
+** TODO Förbättra genereringskoden: se till att entrance och exit alltid är minst 5 eller så ifrån varandra
+  
+  [[file:~/Tower_Defence/src/Board.cpp::/generateRandomPositions%5B%20\t%5D*(%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
+** TODO Se till att Enemy bara kan gå på enemy path
+  
+  [[file:~/Tower_Defence/src/Board.cpp::/displayHeight_%5B%20\t%5D*%3D%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*displayHeight%5B%20\t%5D*%3B#1/][clnk]]
+** TODO Se till att tower inte kan placeras på enemy path
+  
+  [[file:~/Tower_Defence/src/Board.cpp::/displayHeight_%5B%20\t%5D*%3D%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*displayHeight%5B%20\t%5D*%3B#1/][clnk]]

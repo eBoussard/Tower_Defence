@@ -2,6 +2,7 @@
 #include <UI.hpp>
 
 #include <iostream>
+#include <time.h>
 
 #include <allegro.h>
 #include <allegro_primitives.h>
@@ -9,7 +10,7 @@
 
 
 
-Board::Board():entranceTile_(1), exitTile_(8), tileSize_(64)
+Board::Board(): tileSize_(64)
 {
   al_init();
   al_init_primitives_addon();
@@ -19,8 +20,21 @@ Board::Board():entranceTile_(1), exitTile_(8), tileSize_(64)
   Entrance_ = al_load_bitmap ("gfx/entrance.bmp");
   Exit_ = al_load_bitmap ("gfx/exit.bmp");
 
+  enemyPathBitmap_ = al_create_bitmap (tileSize_, tileSize_);
+
   gridColor_ = al_map_rgb (255, 0, 0);
   temporaryBlackBackground_ = al_map_rgb (0, 0, 0);
+
+
+
+  ALLEGRO_BITMAP *pOldTargetBitmap;
+  pOldTargetBitmap = al_get_target_bitmap();
+
+  enemyPathBitmap_ = al_create_bitmap (tileSize_, tileSize_);
+  al_set_target_bitmap (enemyPathBitmap_);
+  al_clear_to_color (al_map_rgb (255, 255, 255));
+
+  al_set_target_bitmap (pOldTargetBitmap);
 
 
 
@@ -31,6 +45,46 @@ Board::Board():entranceTile_(1), exitTile_(8), tileSize_(64)
   displayWidth_ = ui.displayWidth;
   displayHeight_ = ui.displayHeight;
   boardHeight_ = ui.boardHeight;
+
+
+  generateRandomPositions();
+
+
+  enemyPathX_ = 0;
+  enemyPathY_ = entranceTile_;
+
+  enemyPath_.push_back(std::make_pair(enemyPathX_, enemyPathY_));
+
+  std::cout << "Adding enemy path tiles:\nX: " << enemyPathX_ << "\nY: " << enemyPathY_ << std::endl;
+
+
+  while(!((enemyPathX_ == 19) && (enemyPathY_ == exitTile_)))
+    {
+      if (rand() % 2 && enemyPathX_ < 19)	// Even number
+	{
+				
+	  ++enemyPathX_;
+	}
+      else					// Odd number
+	{			
+	  if (enemyPathY_ > exitTile_)
+	    {
+	      --enemyPathY_;
+	    }
+	  else
+	    {
+	      ++enemyPathY_;
+	    }
+	}
+      std::cout << "Adding enemy path tiles:\nX: " << enemyPathX_ << "\nY: " << enemyPathY_ << std::endl;
+      enemyPath_.push_back(std::make_pair(enemyPathX_,enemyPathY_));
+
+
+
+
+      std::cout << "Entrance: " << entranceTile_ << "\nExit: " << exitTile_ << std::endl;
+    }
+
 }
 
 
@@ -41,6 +95,16 @@ void Board::Draw() const
   drawGrid();
   drawEntrance();
   drawExit();
+  drawEnemyPath();
+}
+
+
+void Board::generateRandomPositions()
+{
+  srand (time (NULL));
+
+  entranceTile_ = rand() % 10;
+  exitTile_ = rand() % 10;
 }
 
 
@@ -106,6 +170,18 @@ void Board::drawEntrance() const
 void Board::drawExit() const
 {
   al_draw_bitmap (Exit_, (displayWidth_ - (tileSize_ / 2)), (exitTile_ * 64), 0);
+}
+
+
+
+void Board::drawEnemyPath() const
+{
+  for (std::vector<std::pair<unsigned int, unsigned int> >::const_iterator it = enemyPath_.begin(); it != enemyPath_.end(); ++it)
+    {
+      const std::pair<unsigned int, unsigned int> & enemyTile = *it;
+
+      al_draw_bitmap (enemyPathBitmap_, (enemyTile.first * tileSize_), (enemyTile.second * tileSize_), 0);
+    }
 }
 
 
