@@ -181,11 +181,6 @@ int main()
       // tilePositionY are grid coordinates
       unsigned int x, y, tilePositionX, tilePositionY;
 
-      // Grid coordinates, for enemy movement
-      unsigned int xIndex = 0;
-
-      unsigned int yIndex = 0;
-
 
 
       al_wait_for_event(eventQueue, &Event);
@@ -247,6 +242,7 @@ int main()
 	  board.Draw();
 	  scoreboard.Draw();
 	  if (pEnemy != NULL) pEnemy->Draw();
+	  else cout << "pEnemy not drawn" << endl;
 	}
 
 	
@@ -262,7 +258,7 @@ int main()
 
       if (Key[KEY_E] && pEnemy == NULL)
 	{
-	  pEnemy = new Enemy(0, board.getEntranceTile());
+	  pEnemy = new Enemy(0, 1);
 	}
 
 
@@ -312,7 +308,6 @@ int main()
 		}
 	    }
 	}
-
 
 
 

@@ -22,10 +22,10 @@ public:
   void Draw() const;
 
 
-  int moveRight() const;
-  int moveLeft() const;
-  int moveDown() const;
-  int moveUp() const;
+  void moveRight();
+  void moveLeft();
+  void moveDown();
+  void moveUp();
 
 
   
@@ -59,10 +59,6 @@ private:
   unsigned int xIndex_;
   unsigned int yIndex_;
 
-  unsigned int newPosRight_;
-  unsigned int newPosLeft_;
-  unsigned int newPosDown_;
-  unsigned int newPosUp_;
 
 
   ALLEGRO_BITMAP *enemyBitmap_;
