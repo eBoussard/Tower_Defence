@@ -73,7 +73,8 @@ Board::Board(): tileSize_(64)
 	    }
 	  else
 	    {
-	      ++enemyPathY_;
+	      if (enemyPathY_ != 9)
+		++enemyPathY_;
 	    }
 	}
       std::cout << "Adding enemy path tiles:\nX: " << enemyPathX_ << "\nY: " << enemyPathY_ << std::endl;
@@ -102,9 +103,14 @@ void Board::Draw() const
 void Board::generateRandomPositions()
 {
   srand (time (NULL));
+  entranceTile_ = 0;
+  exitTile_ = 0;
 
-  entranceTile_ = rand() % 10;
-  exitTile_ = rand() % 10;
+  while ((entranceTile_ - exitTile_ < 4) || (exitTile_ - entranceTile_ < 4))
+    {
+      entranceTile_ = rand() % 9 + 1;
+      exitTile_ = rand() % 9 + 1;
+    }
 }
 
 

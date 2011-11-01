@@ -36,7 +36,10 @@ getValue();
 
  - att returnera 10.
 * Idéer
-
+** Flygande fiender, rörelse
+[2011-11-01 Tue 10:22]
+ - Flygande fiender flyger långt ifrån enemy path för att tvinga
+   spelaren att placera torn även långt ifrån enemy path.
 * Todo
 ** TODO Kolla upp hur det här egentligen fungerar
   
