@@ -12,6 +12,9 @@
 
 Board::Board(): tileSize_(64)
 {
+  srand (time (NULL));
+
+
   al_init();
   al_init_primitives_addon();
   al_init_image_addon();
@@ -60,33 +63,25 @@ Board::Board(): tileSize_(64)
 
   while(!((enemyPathX_ == 19) && (enemyPathY_ == exitTile_)))
     {
-      if (rand() % 2 && enemyPathX_ < 19)	// Even number
-	{
-				
-	  ++enemyPathX_;
-	}
-      else					// Odd number
-	{			
-	  if (enemyPathY_ > exitTile_)
-	    {
-	      --enemyPathY_;
-	    }
-	  else
-	    {
-	      if (enemyPathY_ != 9)
-		++enemyPathY_;
-	    }
-	}
-      std::cout << "Adding enemy path tiles:\nX: " << enemyPathX_ << "\nY: " << enemyPathY_ << std::endl;
+      if ((rand() % 2) && (enemyPathX_ < 19))			// Even number					
+	++enemyPathX_;
+      
+      else if ((enemyPathY_ > exitTile_) && (enemyPathY_ != 0))	// Odd number
+	--enemyPathY_;
+  
+  
+      else if ((enemyPathY_ < exitTile_) && (enemyPathY_ != 9)) 
+	++enemyPathY_;
+  
+  
       enemyPath_.push_back(std::make_pair(enemyPathX_,enemyPathY_));
-
-
-
-
-      std::cout << "Entrance: " << entranceTile_ << "\nExit: " << exitTile_ << std::endl;
+      std::cout << "Adding enemy path tiles:\nX: " << enemyPathX_ << "\nY: " << enemyPathY_ << std::endl;
     }
-
+  
+  std::cout << "Entrance: " << entranceTile_ << "\nExit: " << exitTile_ << std::endl;
 }
+
+
 
 
 
@@ -102,7 +97,6 @@ void Board::Draw() const
 
 void Board::generateRandomPositions()
 {
-  srand (time (NULL));
   entranceTile_ = 0;
   exitTile_ = 0;
 
