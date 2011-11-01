@@ -58,27 +58,32 @@ Board::Board(): tileSize_(64)
 
   enemyPath_.push_back(std::make_pair(enemyPathX_, enemyPathY_));
 
-  std::cout << "Adding enemy path tiles:\nX: " << enemyPathX_ << "\nY: " << enemyPathY_ << std::endl;
-
-
-  while(!((enemyPathX_ == 19) && (enemyPathY_ == exitTile_)))
+  if (entranceTile_ < 5)
     {
-      if ((rand() % 2) && (enemyPathX_ < 19))			// Even number					
-	++enemyPathX_;
-      
-      else if ((enemyPathY_ > exitTile_) && (enemyPathY_ != 0))	// Odd number
-	--enemyPathY_;
-  
-  
-      else if ((enemyPathY_ < exitTile_) && (enemyPathY_ != 9)) 
-	++enemyPathY_;
-  
-  
-      enemyPath_.push_back(std::make_pair(enemyPathX_,enemyPathY_));
-      std::cout << "Adding enemy path tiles:\nX: " << enemyPathX_ << "\nY: " << enemyPathY_ << std::endl;
+      generatePath(8, 8);
+
+      generatePath(14, 3);
+
+      generatePath(18, 5);
+
+      generatePath(19, exitTile_);
     }
-  
-  std::cout << "Entrance: " << entranceTile_ << "\nExit: " << exitTile_ << std::endl;
+
+
+  if (entranceTile_ > 5)
+    {
+      generatePath (8, 3);
+
+      generatePath(14, 8);
+
+      generatePath(18, 5);
+
+      generatePath(19, exitTile_);
+    }
+
+
+
+    
 }
 
 
@@ -100,12 +105,49 @@ void Board::generateRandomPositions()
   entranceTile_ = 0;
   exitTile_ = 0;
 
-  while ((entranceTile_ - exitTile_ < 4) || (exitTile_ - entranceTile_ < 4))
+  while ((entranceTile_ - exitTile_ < 6) || (exitTile_ - entranceTile_ < 6))
     {
       entranceTile_ = rand() % 9 + 1;
       exitTile_ = rand() % 9 + 1;
     }
 }
+
+
+
+void Board::generatePath (unsigned int endPointX, unsigned int endPointY)
+{
+  while(!((enemyPathX_ == endPointX) && (enemyPathY_ == endPointY)))
+    {
+      if ((rand() % 2) && (enemyPathX_ < endPointX) && (!onEnemyPath(enemyPathX_ + 1, enemyPathY_)))
+  	++enemyPathX_;
+      
+	else if ((enemyPathY_ > endPointY) && (enemyPathY_ != 0) && (!onEnemyPath(enemyPathX_, enemyPathY_ - 1)))
+  	--enemyPathY_;
+  
+  
+	else if ((enemyPathY_ < endPointY) && (enemyPathY_ != endPointY) && (!onEnemyPath(enemyPathX_, enemyPathY_ + 1)))
+  	++enemyPathY_;
+      
+  
+      enemyPath_.push_back(std::make_pair(enemyPathX_,enemyPathY_));
+      std::cout << "Adding enemy path tiles:\nX: " << enemyPathX_ << "\nY: " << enemyPathY_ << std::endl;      
+    }
+}
+
+
+
+bool Board::onEnemyPath (unsigned int tileX, unsigned int tileY) const
+{
+    for (std::vector<std::pair<unsigned int, unsigned int> >::const_iterator it = enemyPath_.begin(); it != enemyPath_.end(); ++it)
+      {
+	const std::pair<unsigned int, unsigned int> & enemyTile = *it;
+
+	if ((tileX == enemyTile.first) && (tileY == enemyTile.second))
+	  return true;
+      }
+    return false;
+}
+
 
 
 void Board::mouseClick(unsigned int x, unsigned int y)

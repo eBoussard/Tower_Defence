@@ -41,27 +41,15 @@ getValue();
  - Flygande fiender flyger långt ifrån enemy path för att tvinga
    spelaren att placera torn även långt ifrån enemy path.
 * Todo
-** TODO Kolla upp hur det här egentligen fungerar
-  
-  [[file:~/Tower_Defence/src/TowerDefence.cpp::/enum%5B%20\t%5D%2BKEYS%5B%20\t%5D*{%5B%20\t%5D*KEY_S%5B%20\t%5D*,%5B%20\t%5D*KEY_ESCAPE%5B%20\t%5D*,%5B%20\t%5D*KEY_E%5B%20\t%5D*,%5B%20\t%5D*KEY_LEFT%5B%20\t%5D*,%5B%20\t%5D*KEY_RIGHT%5B%20\t%5D*,%5B%20\t%5D*KEY_DOWN%5B%20\t%5D*,%5B%20\t%5D*KEY_UP%5B%20\t%5D*}%5B%20\t%5D*%3B#1/][clnk]]
 ** TODO Enemy försvinner vid exit tile
   
   [[file:~/Tower_Defence/src/TowerDefence.cpp::/if%5B%20\t%5D*(%5B%20\t%5D*yIndex%5B%20\t%5D*<%5B%20\t%5D*9%5B%20\t%5D*)#1/][clnk]]
-** TODO Gör alla getters const
-  
-  [[file:~/Tower_Defence/src/Tower.cpp::/void%5B%20\t%5D%2BTower%5B%20\t%5D*::%5B%20\t%5D*setSellValue%5B%20\t%5D*(%5B%20\t%5D*unsigned%5B%20\t%5D%2Bint%5B%20\t%5D%2BsellValue%5B%20\t%5D*)#1/][clnk]]
-** TODO Gör om till getters och setters
-  
-  [[file:~/Tower_Defence/src/Enemy.cpp::/xIndex_%5B%20\t%5D*\%2B%3D%5B%20\t%5D*1%5B%20\t%5D*%3B#1/][LINK]]
-** TODO Städa upp i koden här 
-  
-  [[file:~/Tower_Defence/src/Board.cpp::/ALLEGRO_BITMAP%5B%20\t%5D*\*%5B%20\t%5D*pOldTargetBitmap%5B%20\t%5D*%3B#1/][clnk]]
-** TODO Förbättra genereringskoden: se till att entrance och exit alltid är minst 5 eller så ifrån varandra
-  
-  [[file:~/Tower_Defence/src/Board.cpp::/generateRandomPositions%5B%20\t%5D*(%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
 ** TODO Se till att Enemy bara kan gå på enemy path
   
   [[file:~/Tower_Defence/src/Board.cpp::/displayHeight_%5B%20\t%5D*%3D%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*displayHeight%5B%20\t%5D*%3B#1/][clnk]]
 ** TODO Se till att tower inte kan placeras på enemy path
   
   [[file:~/Tower_Defence/src/Board.cpp::/displayHeight_%5B%20\t%5D*%3D%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*displayHeight%5B%20\t%5D*%3B#1/][clnk]]
+** TODO Förbättra genereringen av enemy path: den ska spridas ut mer över Board
+  
+  [[file:~/Tower_Defence/src/Board.cpp::/if%5B%20\t%5D*(%5B%20\t%5D*(%5B%20\t%5D*rand%5B%20\t%5D*(%5B%20\t%5D*)%5B%20\t%5D*%25%5B%20\t%5D*2%5B%20\t%5D*)%5B%20\t%5D*&&%5B%20\t%5D*(%5B%20\t%5D*enemyPathX_%5B%20\t%5D*<%5B%20\t%5D*19%5B%20\t%5D*)%5B%20\t%5D*)#1/][clnk]]

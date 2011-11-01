@@ -71,8 +71,11 @@ private:
   Board(const Board&);
   Board & operator = (const Board&);
 
+  void generatePath (unsigned int endPointX, unsigned int endPointY);
 
   void generateRandomPositions();
+
+  bool onEnemyPath(unsigned int tileX, unsigned int tileY) const;
 
   void drawBackground() const;
 
