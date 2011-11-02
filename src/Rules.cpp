@@ -32,6 +32,12 @@ bool Rules::towerPlacementValid (const Board & board, const std::list<Tower *> &
 	}
     }
 
+
+  if (board.onEnemyPath(tilePositionX, tilePositionY))
+    {
+      return false;
+    }
+
   return true;
 }
 

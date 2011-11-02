@@ -86,7 +86,7 @@ int main()
 
   bool Key[7] = {false, false, false, false, false, false, false};
 
-  const float FPS = 10.;
+  const unsigned int FPS = 1;
 
 
   bool displayResizable = true;
@@ -265,46 +265,26 @@ int main()
       if (pEnemy != NULL)
 	{
 	  if (Key[KEY_RIGHT])
-	    {
-	      cout << "right" << endl;
-	      //	      if (xIndex < 19)
-		{
-		  pEnemy->moveRight();
-		  //		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
-		}
+	    {	
+	      pEnemy->moveRight();	
 	    }
 
 
 	  if (Key[KEY_LEFT])
 	    {
-	      cout << "left" << endl;
-	      //	      if (xIndex > 0)
-		{
-		  pEnemy->moveLeft();
-		  //		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
-		}
+	      pEnemy->moveLeft();
 	    }
 
 
 	  if (Key[KEY_DOWN])
 	    {
-	      cout << "down" << endl;
-	      //	      if (yIndex < 9)
-		{
-		  pEnemy->moveDown();
-		  //		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
-		}
+	      pEnemy->moveDown();
 	    }
 
 
 	  if (Key[KEY_UP])
 	    {
-	      cout << "up" << endl;
-	      //	      if (yIndex > 0)
-		{
-		  pEnemy->moveUp();
-		  //		  cout << "E-GX: " << xIndex << "\nE-GY: " << yIndex << endl;
-		}
+	      pEnemy->moveUp();
 	    }
 	}
 

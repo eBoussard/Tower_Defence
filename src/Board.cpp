@@ -23,8 +23,6 @@ Board::Board(): tileSize_(64)
   Entrance_ = al_load_bitmap ("gfx/entrance.bmp");
   Exit_ = al_load_bitmap ("gfx/exit.bmp");
 
-  enemyPathBitmap_ = al_create_bitmap (tileSize_, tileSize_);
-
   gridColor_ = al_map_rgb (255, 0, 0);
   temporaryBlackBackground_ = al_map_rgb (0, 0, 0);
 
@@ -33,7 +31,7 @@ Board::Board(): tileSize_(64)
   ALLEGRO_BITMAP *pOldTargetBitmap;
   pOldTargetBitmap = al_get_target_bitmap();
 
-  enemyPathBitmap_ = al_create_bitmap (tileSize_, tileSize_);
+  enemyPathBitmap_ = al_create_bitmap (tileSize_ / 2, tileSize_ / 2);
   al_set_target_bitmap (enemyPathBitmap_);
   al_clear_to_color (al_map_rgb (255, 255, 255));
 
@@ -60,11 +58,15 @@ Board::Board(): tileSize_(64)
 
   if (entranceTile_ < 5)
     {
-      generatePath(8, 8);
+      generatePath(getRand(2, 3), getRand(7, 9));
 
-      generatePath(14, 3);
+      generatePath(getRand(5, 6), getRand(0, 2));
 
-      generatePath(18, 5);
+      generatePath(getRand(8, 10), getRand(7, 9));
+
+      generatePath(getRand(12, 14), getRand(0, 2));
+
+      generatePath(getRand(16, 18), getRand(7, 9));
 
       generatePath(19, exitTile_);
     }
@@ -72,16 +74,18 @@ Board::Board(): tileSize_(64)
 
   if (entranceTile_ > 5)
     {
-      generatePath (8, 3);
+      generatePath (getRand(2, 3), getRand(0, 2));
 
-      generatePath(14, 8);
+      generatePath(getRand(5, 6), getRand(7, 9));
 
-      generatePath(18, 5);
+      generatePath(getRand(8, 10), getRand(0, 2));
+
+      generatePath(getRand(12, 14), getRand(7, 9));
+
+      generatePath(getRand(16, 18), getRand(7, 9));
 
       generatePath(19, exitTile_);
     }
-
-
 
     
 }
@@ -97,6 +101,13 @@ void Board::Draw() const
   drawEntrance();
   drawExit();
   drawEnemyPath();
+}
+
+
+
+int Board::getRand(int Min, int Max)
+{
+  return (rand() % (Max - Min) + Min);
 }
 
 
@@ -222,7 +233,7 @@ void Board::drawEnemyPath() const
     {
       const std::pair<unsigned int, unsigned int> & enemyTile = *it;
 
-      al_draw_bitmap (enemyPathBitmap_, (enemyTile.first * tileSize_), (enemyTile.second * tileSize_), 0);
+      al_draw_bitmap (enemyPathBitmap_, ((enemyTile.first * tileSize_) + 16), ((enemyTile.second * tileSize_) + 16), 0);
     }
 }
 

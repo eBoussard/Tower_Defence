@@ -26,22 +26,26 @@ void Enemy::Draw() const
 
 void Enemy::moveRight()
 {
-  xIndex_ += 1;
+  if (xIndex_ != 19)
+    xIndex_ += 1;
 }
 
 void Enemy::moveLeft()
 {
-  xIndex_ -= 1;
+  if (xIndex_ != 0)
+    xIndex_ -= 1;
 }
 
 void Enemy::moveUp()
 {
-  yIndex_ -= 1;
+  if (yIndex_ != 0)
+    yIndex_ -= 1;
 }
 
 void Enemy::moveDown()
 {
-  yIndex_ += 1;
+  if (yIndex_ != 9)
+    yIndex_ += 1;
 }
 
 

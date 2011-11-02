@@ -63,6 +63,8 @@ public:
   //! @return exit tile position on y-axis
   unsigned int getExitTile() const;
 
+  bool onEnemyPath(unsigned int tileX, unsigned int tileY) const;
+
 
 
 
@@ -71,11 +73,13 @@ private:
   Board(const Board&);
   Board & operator = (const Board&);
 
+  int getRand(int Min, int Max);
+
   void generatePath (unsigned int endPointX, unsigned int endPointY);
 
   void generateRandomPositions();
 
-  bool onEnemyPath(unsigned int tileX, unsigned int tileY) const;
+
 
   void drawBackground() const;
 

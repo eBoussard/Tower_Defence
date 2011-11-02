@@ -47,9 +47,3 @@ getValue();
 ** TODO Se till att Enemy bara kan gå på enemy path
   
   [[file:~/Tower_Defence/src/Board.cpp::/displayHeight_%5B%20\t%5D*%3D%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*displayHeight%5B%20\t%5D*%3B#1/][clnk]]
-** TODO Se till att tower inte kan placeras på enemy path
-  
-  [[file:~/Tower_Defence/src/Board.cpp::/displayHeight_%5B%20\t%5D*%3D%5B%20\t%5D*ui%5B%20\t%5D*\.%5B%20\t%5D*displayHeight%5B%20\t%5D*%3B#1/][clnk]]
-** TODO Förbättra genereringen av enemy path: den ska spridas ut mer över Board
-  
-  [[file:~/Tower_Defence/src/Board.cpp::/if%5B%20\t%5D*(%5B%20\t%5D*(%5B%20\t%5D*rand%5B%20\t%5D*(%5B%20\t%5D*)%5B%20\t%5D*%25%5B%20\t%5D*2%5B%20\t%5D*)%5B%20\t%5D*&&%5B%20\t%5D*(%5B%20\t%5D*enemyPathX_%5B%20\t%5D*<%5B%20\t%5D*19%5B%20\t%5D*)%5B%20\t%5D*)#1/][clnk]]
