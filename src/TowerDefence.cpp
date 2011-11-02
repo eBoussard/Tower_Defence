@@ -12,6 +12,7 @@
 #include <Engine.hpp>
 #include <UI.hpp>
 #include <ScoreBoard.hpp>
+#include <definitions.hpp>
 using namespace std;
 
 
@@ -21,7 +22,7 @@ using namespace std;
 
 
 
-bool mouseNClick (unsigned int & x, unsigned int & y, unsigned int n, bool & isDown)
+bool mouseNClick (pixelPosition & x, pixelPosition & y, unsigned int n, bool & isDown)
 {
   ALLEGRO_MOUSE_STATE mouseState;
 
@@ -50,7 +51,7 @@ bool mouseNClick (unsigned int & x, unsigned int & y, unsigned int n, bool & isD
 
 
 
-bool mouseOneClick (unsigned int & x, unsigned int & y)
+bool mouseOneClick (pixelPosition & x, pixelPosition & y)
 {
   static bool isDown = false;
   return mouseNClick(x, y, 1, isDown);
@@ -58,7 +59,7 @@ bool mouseOneClick (unsigned int & x, unsigned int & y)
 
 
 
-bool mouseTwoClick (unsigned int & x, unsigned int & y)
+bool mouseTwoClick (pixelPosition & x, pixelPosition & y)
 {
   static bool isDown = false;
   return mouseNClick(x, y, 2, isDown);
@@ -86,12 +87,8 @@ int main()
 
   bool Key[7] = {false, false, false, false, false, false, false};
 
-  const unsigned int FPS = 1;
+  const unsigned int FPS = 5;
 
-
-  bool displayResizable = true;
-
-  bool Quit = false;
 
 
   list <Tower *> Towers;
@@ -172,14 +169,21 @@ int main()
 
 
 
+  bool displayResizable = true;
+
+  bool Quit = false;
+
+  unsigned int enemyStepCounter = 0;
 
   while(!Quit)
     {
       ALLEGRO_EVENT Event;
 
-      // x and y are pixel coordinates, tilePositionX and
-      // tilePositionY are grid coordinates
-      unsigned int x, y, tilePositionX, tilePositionY;
+      // x and y are pixel coordinates, gridX and
+      // gridY are grid coordinates
+      pixelPosition x, y;
+      gridPosition gridX, gridY; 
+
 
 
 
@@ -255,38 +259,68 @@ int main()
 
 
 
-      if (Key[KEY_E] && pEnemy == NULL)
-	{
-	  pEnemy = new Enemy(0, 1);
-	}
-
-
-
       if (pEnemy != NULL)
 	{
-	  if (Key[KEY_RIGHT])
-	    {	
-	      pEnemy->moveRight();	
+	  if ((gridX == 19) && (gridY == board.getExitTile()))
+	    {
+	      delete pEnemy;
+	      pEnemy = NULL;
+	      enemyStepCounter = 0;
+	      gridX = 0;
+	      gridY = 0;
 	    }
 
-
-	  if (Key[KEY_LEFT])
+	  else
 	    {
-	      pEnemy->moveLeft();
-	    }
+	      board.getEnemyPosition(enemyStepCounter, gridX, gridY);
+	      
+	      pEnemy->setXIndex(gridX);
+	      pEnemy->setYIndex(gridY);
+	      
+	      ++enemyStepCounter;
 
-
-	  if (Key[KEY_DOWN])
-	    {
-	      pEnemy->moveDown();
-	    }
-
-
-	  if (Key[KEY_UP])
-	    {
-	      pEnemy->moveUp();
+	      cout << "E-X: " << gridX << "\nE-Y: " << gridY << endl;
 	    }
 	}
+
+
+
+
+      if (Key[KEY_E] && pEnemy == NULL)
+	{
+	  pEnemy = new Enemy(0, board.getEntranceTile());
+	}
+
+
+
+
+      // if (pEnemy != NULL && rules.enemyPositionValid(board, gridX, gridY) == true)
+      // 	{
+
+      // 	}
+	  // If (Key[KEY_RIGHT])
+	  //   {	
+	  //     pEnemy->moveRight();	
+	  //   }
+
+
+	  // if (Key[KEY_LEFT])
+	  //   {
+	  //     pEnemy->moveLeft();
+	  //   }
+
+
+	  // if (Key[KEY_DOWN])
+	  //   {
+	  //     pEnemy->moveDown();
+	  //   }
+
+
+	  // if (Key[KEY_UP])
+	  //   {
+	  //     pEnemy->moveUp();
+	  //   }
+	
 
 
 
@@ -299,17 +333,17 @@ int main()
 
 	  if (scoreboard.towerButtonActive())
 	    {	   
-	      if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY))
+	      if (board.getTileCoordinates(x, y, gridX, gridY))
 		{
-		  if (rules.towerPlacementValid(board, Towers, tilePositionX, tilePositionY))
+		  if (rules.towerPlacementValid(board, Towers, gridX, gridY))
 		    {
 		      //Creates a new tower
-		      Tower * pTower = new Tower(tilePositionX, tilePositionY);
+		      Tower * pTower = new Tower(gridX, gridY);
 
 		      //and puts it in the list
 		      Towers.push_back(pTower);
 
-		      cout << "new tower created on\nT-GX: " << tilePositionX << "\nT-GY: " << tilePositionY << endl;
+		      cout << "new tower created on\nT-GX: " << gridX << "\nT-GY: " << gridY << endl;
 
 		      cout << "Amount of towers: " << Towers.size() << endl;
 		    }
@@ -322,13 +356,13 @@ int main()
 
       if (mouseTwoClick(x, y))
 	{
-	  if (board.getTileCoordinates(x, y, tilePositionX, tilePositionY))
+	  if (board.getTileCoordinates(x, y, gridX, gridY))
 	    {
 	      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
 		{
 		  Tower *pTower = *it;
 
-		  if (pTower->onTile(tilePositionX, tilePositionY))
+		  if (pTower->onTile(gridX, gridY))
 		    {
 		      delete pTower;
 

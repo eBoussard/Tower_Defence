@@ -30,6 +30,8 @@ public:
   //! @returns true if placement of Tower is valid
   bool towerPlacementValid (const Board & board, const std::list<Tower *> & Towers, unsigned int tilePositionX, unsigned int tilePositionY) const;
 
+  bool enemyPositionValid (const Board & board, unsigned int tilePositionX, unsigned int tilePositionY) const;
+
 
 private:
   Rules(const Rules&);

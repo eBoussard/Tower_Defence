@@ -27,7 +27,11 @@ public:
   void moveDown();
   void moveUp();
 
+  unsigned int getXIndex() const;
+  unsigned int getYIndex() const;
 
+  void setXIndex(unsigned int xIndex);
+  void setYIndex(unsigned int yIndex);
   
 private:
   Enemy(const Enemy&);

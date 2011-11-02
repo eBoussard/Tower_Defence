@@ -43,4 +43,13 @@ bool Rules::towerPlacementValid (const Board & board, const std::list<Tower *> &
 
 
 
+bool Rules::enemyPositionValid (const Board & board, unsigned int tilePositionX, unsigned int tilePositionY) const
+{
+  if (board.onEnemyPath(tilePositionX, tilePositionY))
+    {
+      return true;
+    }
+  return false;
+}
+
 

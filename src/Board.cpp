@@ -161,6 +161,14 @@ bool Board::onEnemyPath (unsigned int tileX, unsigned int tileY) const
 
 
 
+void Board::getEnemyPosition(unsigned int enemyStep, unsigned int & xIndex, unsigned int & yIndex)
+{
+  xIndex = enemyPath_[enemyStep].first;
+  yIndex = enemyPath_[enemyStep].second;
+}
+
+
+
 void Board::mouseClick(unsigned int x, unsigned int y)
 {
   unsigned int x_leftBorder, y_topBorder;

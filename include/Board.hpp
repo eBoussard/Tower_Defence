@@ -65,8 +65,7 @@ public:
 
   bool onEnemyPath(unsigned int tileX, unsigned int tileY) const;
 
-
-
+  void getEnemyPosition (unsigned int stepNumber, unsigned int & xIndex, unsigned int & yIndex);
 
 
 private:

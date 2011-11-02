@@ -49,4 +49,24 @@ void Enemy::moveDown()
 }
 
 
+unsigned int Enemy::getXIndex() const
+{
+  return xIndex_;
+}
 
+unsigned int Enemy::getYIndex() const
+{
+  return yIndex_;
+}
+
+
+void Enemy::setXIndex(unsigned int xIndex)
+{
+  xIndex_ = xIndex;
+}
+
+
+void Enemy::setYIndex(unsigned int yIndex)
+{
+  yIndex_ = yIndex;
+}
