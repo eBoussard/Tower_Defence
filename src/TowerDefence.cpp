@@ -83,9 +83,6 @@ int main()
 
 
 
-  enum KEYS {KEY_S, KEY_ESCAPE, KEY_E, KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP};
-
-  bool Key[7] = {false, false, false, false, false, false, false};
 
   const unsigned int FPS = 5;
 
@@ -150,7 +147,9 @@ int main()
 
 
 
-  Display = al_create_display (ui.menuDisplayWidth, ui.menuDisplayHeight);
+  Display = al_create_display (ui.displayWidth, ui.displayHeight);
+
+  al_set_window_title (Display, "MENU");
 
 
 
@@ -169,20 +168,39 @@ int main()
 
 
 
-  bool displayResizable = true;
+
+
+
+
+
+
+
+
+
+
+  bool gameStarted = false;
 
   bool Quit = false;
 
   unsigned int enemyStepCounter = 0;
 
+  pixelPosition x, y;
+      
+  gridPosition gridX, gridY; 
+
+
+
+
+
+
+
+
+
+
+
   while(!Quit)
     {
       ALLEGRO_EVENT Event;
-
-      // x and y are pixel coordinates, gridX and
-      // gridY are grid coordinates
-      pixelPosition x, y;
-      gridPosition gridX, gridY; 
 
 
 
@@ -197,51 +215,51 @@ int main()
 
 
 
-      if (Event.type == ALLEGRO_EVENT_KEY_DOWN)
-	{
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_S) Key[KEY_S] = true;
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) Key[KEY_ESCAPE] = true;
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_E) Key[KEY_E] = true;
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT) Key[KEY_LEFT] = true;
-	    
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) Key[KEY_RIGHT] = true;
-	    
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN) Key[KEY_DOWN] = true;
-	    
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP) Key[KEY_UP] = true;
-	}
 
 
 
       
       if (Event.type == ALLEGRO_EVENT_KEY_UP)
 	{
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_S) Key[KEY_S] = false;
+	  if (Event.keyboard.keycode == ALLEGRO_KEY_S)
+	    {
+	      if (gameStarted == false)
+		{
+		  al_set_window_title (Display, "GAME");
+
+		  gameStarted = true;
+		}
+
+
+	      else if (gameStarted == true)
+		{
+		  al_set_window_title (Display, "MENU");
+
+		  gameStarted = false;
+
+		  al_clear_to_color (al_map_rgb (0, 0, 0));
+		}
+	    }
+
+
+
+
 
 	  if (Event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) 
 	    {
-	      Key[KEY_ESCAPE] = false;
 	      Quit = true;
 	    }
 
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_E) Key[KEY_E] = false;
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_LEFT) Key[KEY_LEFT] = false;
-	    
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_RIGHT) Key[KEY_RIGHT] = false;
-
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_DOWN) Key[KEY_DOWN] = false;
-	    
-	  if (Event.keyboard.keycode == ALLEGRO_KEY_UP) Key[KEY_UP] = false;	    
+	  if ((Event.keyboard.keycode == ALLEGRO_KEY_E) && (pEnemy == NULL))
+	    {
+	      pEnemy = new Enemy(0, board.getEntranceTile());
+	    }
 	}
       
 
 
 
-      if (al_get_display_width (Display) == 1280)
+      if (gameStarted == true)
 	{
 	  board.Draw();
 	  scoreboard.Draw();
@@ -284,43 +302,6 @@ int main()
 	}
 
 
-
-
-      if (Key[KEY_E] && pEnemy == NULL)
-	{
-	  pEnemy = new Enemy(0, board.getEntranceTile());
-	}
-
-
-
-
-      // if (pEnemy != NULL && rules.enemyPositionValid(board, gridX, gridY) == true)
-      // 	{
-
-      // 	}
-	  // If (Key[KEY_RIGHT])
-	  //   {	
-	  //     pEnemy->moveRight();	
-	  //   }
-
-
-	  // if (Key[KEY_LEFT])
-	  //   {
-	  //     pEnemy->moveLeft();
-	  //   }
-
-
-	  // if (Key[KEY_DOWN])
-	  //   {
-	  //     pEnemy->moveDown();
-	  //   }
-
-
-	  // if (Key[KEY_UP])
-	  //   {
-	  //     pEnemy->moveUp();
-	  //   }
-	
 
 
 
@@ -376,17 +357,7 @@ int main()
 
 
 
-      // If menu is being shown and S is pressed
-      if (Key[KEY_S] && al_get_display_width (Display) == 640 && displayResizable == true)
-	{
-	  al_resize_display (Display, ui.displayWidth, ui.displayHeight);
 
-	  cout << "W: " << ui.displayWidth << "\nH: " << ui.displayHeight << endl;
-
-	  al_set_window_title (Display, "Low resolution display @ 1280 * 720");
-
-	  displayResizable = false;
-	}
 
 
 
