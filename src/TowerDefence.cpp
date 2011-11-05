@@ -84,7 +84,7 @@ int main()
 
 
 
-  const unsigned int FPS = 5;
+  const unsigned int FPS = 30;
 
 
 
@@ -186,16 +186,12 @@ int main()
 
   pixelPosition x, y;
       
-  gridPosition gridX, gridY; 
+  gridPosition gridX, gridY;
 
+  bool redraw;
 
-
-
-
-
-
-
-
+  unsigned int updateEnemyPosition = 0;
+  
 
 
   while(!Quit)
@@ -204,10 +200,19 @@ int main()
 
 
 
+      if (!al_get_next_event(eventQueue, &Event))
+	{
+	  al_wait_for_event(eventQueue, &Event);
+	  redraw = true;
+	}
 
-      al_wait_for_event(eventQueue, &Event);
 
-
+      else
+	{
+	  redraw = false;
+	}
+      
+      
       if (Event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
 	{
 	  break;
@@ -253,13 +258,14 @@ int main()
 	  if ((Event.keyboard.keycode == ALLEGRO_KEY_E) && (pEnemy == NULL))
 	    {
 	      pEnemy = new Enemy(0, board.getEntranceTile());
+	      al_set_timer_count (framerateTimer, 0);
 	    }
 	}
       
 
 
 
-      if (gameStarted == true)
+      if (gameStarted == true && redraw == true)
 	{
 	  board.Draw();
 	  scoreboard.Draw();
@@ -267,13 +273,15 @@ int main()
 	}
 
 	
-
-      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
+      if (redraw == true)
 	{
-	  Tower * pTower = *it;
-	  pTower->Draw();
+	  for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
+	    {
+	      Tower * pTower = *it;
+	      pTower->Draw();
+	    }
 	}
-
+      
 
 
 
@@ -286,18 +294,17 @@ int main()
 	      enemyStepCounter = 0;
 	      gridX = 0;
 	      gridY = 0;
+	      al_set_timer_count(framerateTimer, 0);
 	    }
 
 	  else
 	    {
+	      enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
 	      board.getEnemyPosition(enemyStepCounter, gridX, gridY);
-	      
 	      pEnemy->setXIndex(gridX);
 	      pEnemy->setYIndex(gridY);
 	      
-	      ++enemyStepCounter;
-
-	      cout << "E-X: " << gridX << "\nE-Y: " << gridY << endl;
+	      cout << "E-X: " << gridX << "\nE-Y: " << gridY << endl;	      
 	    }
 	}
 
