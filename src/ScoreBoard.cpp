@@ -55,8 +55,18 @@ ScoreBoard::~ScoreBoard()
 
 
 
-void ScoreBoard::Draw() const
+void ScoreBoard::updateTextInfo()
 {
+  Money_ = player.getMoney();
+  healthPoints_ = player.getHealthPoints();
+  Score_ = player.getScore();
+}
+
+
+
+void ScoreBoard::Draw()
+{
+  updateTextInfo();
   drawTowerButton();
   drawInfoText();
 }

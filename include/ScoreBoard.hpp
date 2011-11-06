@@ -20,7 +20,7 @@ public:
   ScoreBoard(Player&);
   ~ScoreBoard();
 
-  void Draw() const;
+  void Draw();
 
   //! Check if the @ref towerButton_ "button" has been pressed
   //! @param x check if mouse is clicked on the @ref towerButton_ "button's" x-axis
@@ -37,6 +37,8 @@ public:
 private:
   ScoreBoard(const ScoreBoard&);
   ScoreBoard & operator = (const ScoreBoard&);
+
+  void updateTextInfo();
 
   void drawTowerButton() const;
 

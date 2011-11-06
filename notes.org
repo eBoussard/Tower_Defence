@@ -41,3 +41,9 @@ getValue();
  - Flygande fiender flyger långt ifrån enemy path för att tvinga
    spelaren att placera torn även långt ifrån enemy path.
 * Todo
+** TODO Tower skadar Enemy
+  
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/{#2/][clnk]]
+** TODO Enemys rörelse är ojämn när den går på timern
+  
+  [[file:~/Tower_Defence/src/TowerDefence.cpp::/{#2/][clnk]]

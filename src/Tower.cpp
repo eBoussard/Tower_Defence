@@ -5,7 +5,7 @@
 
 
 
-Tower::Tower(unsigned int xIndex, unsigned int yIndex):Price_(100), Damage_(100), shootingSpeed_(100), Range_(100), sellValue_(100), xIndex_(xIndex), yIndex_(yIndex), towerBitmapSize_(48)
+Tower::Tower(unsigned int xIndex, unsigned int yIndex):Price_(20), Damage_(100), shootingSpeed_(100), Range_(100), sellValue_(15), xIndex_(xIndex), yIndex_(yIndex), towerBitmapSize_(48)
 {
   al_init();
   al_init_image_addon();

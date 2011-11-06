@@ -8,4 +8,4 @@ TowerDefence: Player.o Board.o Tower.o Ammunition.o Enemy.o Engine.o TowerDefenc
 	g++ -o TowerDefence Player.o Board.o Tower.o Ammunition.o Enemy.o Engine.o TowerDefence.o ScoreBoard.o Rules.o UI.o $(LDFLAGS)
 
 clean:
-	rm -f core *.o TowerDefence
+	rm -f core *.o TowerDefence *~
