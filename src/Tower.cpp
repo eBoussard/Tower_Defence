@@ -13,10 +13,10 @@ Tower::Tower(unsigned int xIndex, unsigned int yIndex):Price_(20), Damage_(100),
   towerBitmap_ = al_create_bitmap (towerBitmapSize_, towerBitmapSize_);
 
 
-  //  ALLEGRO_BITMAP *pOldTargetBitmap = al_get_target_bitmap();
+  targetBitmapHolder_ = al_get_target_bitmap();
   al_set_target_bitmap (towerBitmap_);
   al_clear_to_color (al_map_rgb (0, 255, 0));
-  //  al_set_target_bitmap(pOldTargetBitmap);
+  al_set_target_bitmap(targetBitmapHolder_);
 }
 
 
@@ -34,12 +34,30 @@ bool Tower::onTile (unsigned int tilePositionX, unsigned int tilePositionY) cons
 
 
 
-unsigned int Tower::getPrice() const
+
+unsigned int Tower::getDamage() const
 {
-  return Price_;
+    return Damage_;
 }
 
-unsigned int Tower::getSellValue()
+unsigned int Tower::getPrice() const
 {
-  return sellValue_;
+    return Price_;
 }
+
+unsigned int Tower::getRange() const
+{
+    return Range_;
+}
+
+unsigned int Tower::getSellValue() const
+{
+    return sellValue_;
+}
+
+unsigned int Tower::getShootingSpeed() const
+{
+    return shootingSpeed_;
+}
+
+

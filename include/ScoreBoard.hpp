@@ -74,9 +74,9 @@ private:
   //! Board's grid. This line acts as a border.
   unsigned int topLinePosition_;
 
-   unsigned int Score_;
-   unsigned int healthPoints_;
-   unsigned int Money_;
+  unsigned int Score_;
+  unsigned int healthPoints_;
+  unsigned int Money_;
 
   //! @return true if @ref towerButton_ "tower button" has been
   //! clicked once

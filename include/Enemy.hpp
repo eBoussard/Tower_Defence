@@ -22,17 +22,13 @@ public:
   void Draw() const;
 
 
-  void moveRight();
-  void moveLeft();
-  void moveDown();
-  void moveUp();
 
   unsigned int getXIndex() const;
   unsigned int getYIndex() const;
 
   void setXIndex(unsigned int xIndex);
   void setYIndex(unsigned int yIndex);
-  
+
 private:
   Enemy(const Enemy&);
   Enemy & operator = (const Enemy&);
@@ -66,6 +62,7 @@ private:
 
 
   ALLEGRO_BITMAP *enemyBitmap_;
+  ALLEGRO_BITMAP *targetBitmapHolder_;
 
 };
 

@@ -11,10 +11,10 @@ Enemy::Enemy(unsigned int xIndex, unsigned int yIndex):healthPoints_(100), movem
 
   enemyBitmap_ = al_create_bitmap (enemyBitmapSize_, enemyBitmapSize_);
 
-  //  ALLEGRO_BITMAP *pOldTargetBitmap = al_get_target_bitmap();
+  targetBitmapHolder_ = al_get_target_bitmap();
   al_set_target_bitmap (enemyBitmap_);
   al_clear_to_color (al_map_rgb (255, 0, 0));
-  //  al_set_target_bitmap (pOldTargetBitmap);
+  al_set_target_bitmap (targetBitmapHolder_);
 }
 
 
@@ -24,29 +24,6 @@ void Enemy::Draw() const
 }
 
 
-void Enemy::moveRight()
-{
-  if (xIndex_ != 19)
-    xIndex_ += 1;
-}
-
-void Enemy::moveLeft()
-{
-  if (xIndex_ != 0)
-    xIndex_ -= 1;
-}
-
-void Enemy::moveUp()
-{
-  if (yIndex_ != 0)
-    yIndex_ -= 1;
-}
-
-void Enemy::moveDown()
-{
-  if (yIndex_ != 9)
-    yIndex_ += 1;
-}
 
 
 unsigned int Enemy::getXIndex() const

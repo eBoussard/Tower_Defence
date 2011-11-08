@@ -22,22 +22,19 @@ public:
   bool onTile(unsigned int tilePositionX, unsigned int tilePositionY) const;
 
 
+  unsigned int getDamage() const;
   unsigned int getPrice() const;
-  void setPrice(unsigned int Price);
-
-  unsigned int getSellValue();
-  void setSellValue(unsigned int sellValue);
-
+  unsigned int getRange() const;
+  unsigned int getSellValue() const;
+  unsigned int getShootingSpeed() const;
 
 
 private:
-  Tower(const Tower&);
-  Tower & operator = (const Tower&);
-
+  Tower(const Tower& );
+  Tower & operator =(const Tower&);
 
 
   //Properties
-
   //! Tower shoots at a certain pace
   unsigned int shootingSpeed_;
 
@@ -53,12 +50,14 @@ private:
   //! Tower may be sold back for money
   unsigned int sellValue_;
 
+
   const unsigned int xIndex_;
   const unsigned int yIndex_;
-
   //! An image representing Tower
   ALLEGRO_BITMAP *towerBitmap_;
   const unsigned int towerBitmapSize_;
+
+  ALLEGRO_BITMAP *targetBitmapHolder_;
 };
 
 

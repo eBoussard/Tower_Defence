@@ -36,7 +36,7 @@ ScoreBoard::ScoreBoard(Player& aPlayer):player(aPlayer), buttonSize_(32), towerB
 
   scoreBoardWidth_ = ui.displayWidth;
   scoreBoardHeight_ = (ui.displayHeight - ui.boardHeight); // 720 - 640 = 80                                                            
-									     
+
 
   topLinePosition_ = ui.boardHeight;
 
@@ -77,13 +77,13 @@ void ScoreBoard::Draw()
 void ScoreBoard::ButtonClicked(unsigned int x, unsigned int y)
 {
   if (y > topLinePosition_ + (buttonSize_ / 2) && y < topLinePosition_ + (buttonSize_ * 1.5))
+  {
+    if (x > scoreBoardWidth_ - (buttonSize_ * 2) && x < scoreBoardWidth_ - buttonSize_)
     {
-      if (x > scoreBoardWidth_ - (buttonSize_ * 2) && x < scoreBoardWidth_ - buttonSize_)
-	{
-	  std::cout << "button clicked\n";
-	  towerButtonActive_ = !towerButtonActive_;
-	}
+      std::cout << "button clicked\n";
+      towerButtonActive_ = !towerButtonActive_;
     }
+  }
 }
 
 
@@ -101,9 +101,9 @@ void ScoreBoard::drawTowerButton() const
   al_draw_bitmap (towerButton_, scoreBoardWidth_ - (buttonSize_ * 2), topLinePosition_ + (buttonSize_ / 2), 0);
 
   if (towerButtonActive_)
-    {
-      al_draw_rectangle ((scoreBoardWidth_ - 2) - (buttonSize_ * 2), (topLinePosition_ - 2) + (buttonSize_ / 2), (scoreBoardWidth_ + 2) - buttonSize_, (topLinePosition_ + 2) + (buttonSize_ * 1.5), colorRed_, 2);
-    }
+  {
+    al_draw_rectangle ((scoreBoardWidth_ - 2) - (buttonSize_ * 2), (topLinePosition_ - 2) + (buttonSize_ / 2), (scoreBoardWidth_ + 2) - buttonSize_, (topLinePosition_ + 2) + (buttonSize_ * 1.5), colorRed_, 2);
+  }
 }
 
 
@@ -112,16 +112,16 @@ void ScoreBoard::drawTowerButton() const
 void ScoreBoard::drawInfoText() const
 {
   if (infoFont_ != NULL)
-    {
-      al_draw_text (infoFont_, colorWhite_, 10, (topLinePosition_ + 2), ALLEGRO_ALIGN_LEFT, "SCORE");
-      al_draw_text (infoFont_, colorWhite_, 10, (topLinePosition_ + ((scoreBoardHeight_ - 20) / 2)), ALLEGRO_ALIGN_LEFT, "LIFE");
-      al_draw_text (infoFont_, colorWhite_, 10, (topLinePosition_ + (scoreBoardHeight_ - 20)), ALLEGRO_ALIGN_LEFT, "MONEY");
+  {
+    al_draw_text (infoFont_, colorWhite_, 10, (topLinePosition_ + 2), ALLEGRO_ALIGN_LEFT, "SCORE");
+    al_draw_text (infoFont_, colorWhite_, 10, (topLinePosition_ + ((scoreBoardHeight_ - 20) / 2)), ALLEGRO_ALIGN_LEFT, "LIFE");
+    al_draw_text (infoFont_, colorWhite_, 10, (topLinePosition_ + (scoreBoardHeight_ - 20)), ALLEGRO_ALIGN_LEFT, "MONEY");
 
 
-      al_draw_text (infoFont_, colorWhite_, 180, (topLinePosition_ + 2), ALLEGRO_ALIGN_RIGHT, getScoreInfoText());
-      al_draw_text (infoFont_, colorWhite_, 180, (topLinePosition_ + ((scoreBoardHeight_ - 20) / 2)), ALLEGRO_ALIGN_RIGHT, getHealthPointsInfoText());
-      al_draw_text (infoFont_, colorWhite_, 180, (topLinePosition_ + (scoreBoardHeight_ - 20)), ALLEGRO_ALIGN_RIGHT, getMoneyInfoText());
-    }
+    al_draw_text (infoFont_, colorWhite_, 180, (topLinePosition_ + 2), ALLEGRO_ALIGN_RIGHT, getScoreInfoText());
+    al_draw_text (infoFont_, colorWhite_, 180, (topLinePosition_ + ((scoreBoardHeight_ - 20) / 2)), ALLEGRO_ALIGN_RIGHT, getHealthPointsInfoText());
+    al_draw_text (infoFont_, colorWhite_, 180, (topLinePosition_ + (scoreBoardHeight_ - 20)), ALLEGRO_ALIGN_RIGHT, getMoneyInfoText());
+  }
 }
 
 

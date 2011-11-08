@@ -126,10 +126,9 @@ private:
   ALLEGRO_BITMAP *Exit_;
 
   ALLEGRO_COLOR gridColor_;
-
   ALLEGRO_COLOR blackBackground_;
-
   ALLEGRO_BITMAP *enemyPathBitmap_;
+  ALLEGRO_BITMAP *targetBitmapHolder_;
 };
 
 
