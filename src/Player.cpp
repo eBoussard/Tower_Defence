@@ -27,7 +27,7 @@ unsigned int Player::getHealthPoints() const
 
 void Player::setHealthPoints(unsigned int healthPoints)
 {
-  healthPoints = healthPoints_;
+  healthPoints_ = healthPoints;
 }
 
 

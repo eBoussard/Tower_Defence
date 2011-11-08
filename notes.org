@@ -47,3 +47,6 @@ getValue();
 ** TODO Enemys rörelse är ojämn när den går på timern
   
   [[file:~/Tower_Defence/src/TowerDefence.cpp::/{#2/][clnk]]
+** TODO Prova att ta bort pOldTargetBitmap (och lägg till en if i Main.cpp)
+  
+  [[file:~/Tower_Defence/src/Tower.cpp::/al_set_target_bitmap%5B%20\t%5D*(%5B%20\t%5D*towerBitmap_%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]

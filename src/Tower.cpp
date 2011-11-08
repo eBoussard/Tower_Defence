@@ -13,10 +13,10 @@ Tower::Tower(unsigned int xIndex, unsigned int yIndex):Price_(20), Damage_(100),
   towerBitmap_ = al_create_bitmap (towerBitmapSize_, towerBitmapSize_);
 
 
-  ALLEGRO_BITMAP *pOldTargetBitmap = al_get_target_bitmap();
+  //  ALLEGRO_BITMAP *pOldTargetBitmap = al_get_target_bitmap();
   al_set_target_bitmap (towerBitmap_);
   al_clear_to_color (al_map_rgb (0, 255, 0));
-  al_set_target_bitmap(pOldTargetBitmap);
+  //  al_set_target_bitmap(pOldTargetBitmap);
 }
 
 
@@ -39,19 +39,7 @@ unsigned int Tower::getPrice() const
   return Price_;
 }
 
-void Tower::setPrice(unsigned int Price)
-{
-  Price = Price_;
-}
-
-
-
 unsigned int Tower::getSellValue()
 {
   return sellValue_;
-}
-
-void Tower::setSellValue(unsigned int sellValue)
-{
-  sellValue = sellValue_;
 }

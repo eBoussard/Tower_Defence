@@ -19,23 +19,22 @@ Board::Board(): tileSize_(64)
   al_init_primitives_addon();
   al_init_image_addon();
 
-  Background_ = al_load_bitmap ("gfx/background.bmp");
   Entrance_ = al_load_bitmap ("gfx/entrance.bmp");
   Exit_ = al_load_bitmap ("gfx/exit.bmp");
 
   gridColor_ = al_map_rgb (255, 0, 0);
-  temporaryBlackBackground_ = al_map_rgb (0, 0, 0);
+  blackBackground_ = al_map_rgb (0, 0, 0);
 
 
 
-  ALLEGRO_BITMAP *pOldTargetBitmap;
-  pOldTargetBitmap = al_get_target_bitmap();
+  //  ALLEGRO_BITMAP *pOldTargetBitmap;
+  //  pOldTargetBitmap = al_get_target_bitmap();
 
   enemyPathBitmap_ = al_create_bitmap (tileSize_ / 2, tileSize_ / 2);
   al_set_target_bitmap (enemyPathBitmap_);
   al_clear_to_color (al_map_rgb (255, 255, 255));
 
-  al_set_target_bitmap (pOldTargetBitmap);
+  //  al_set_target_bitmap (pOldTargetBitmap);
 
 
 
@@ -200,8 +199,7 @@ bool Board::getTileCoordinates (unsigned int x, unsigned int y, unsigned int &gr
 
 void Board::drawBackground() const
 {
-  //al_draw_bitmap (Background_, 0, 0, 0);
-  al_clear_to_color (temporaryBlackBackground_);
+  al_clear_to_color (blackBackground_);
 }
 
 

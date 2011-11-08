@@ -11,10 +11,10 @@ Enemy::Enemy(unsigned int xIndex, unsigned int yIndex):healthPoints_(100), movem
 
   enemyBitmap_ = al_create_bitmap (enemyBitmapSize_, enemyBitmapSize_);
 
-  ALLEGRO_BITMAP *pOldTargetBitmap = al_get_target_bitmap();
+  //  ALLEGRO_BITMAP *pOldTargetBitmap = al_get_target_bitmap();
   al_set_target_bitmap (enemyBitmap_);
   al_clear_to_color (al_map_rgb (255, 0, 0));
-  al_set_target_bitmap (pOldTargetBitmap);
+  //  al_set_target_bitmap (pOldTargetBitmap);
 }
 
 

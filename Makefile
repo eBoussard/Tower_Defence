@@ -4,8 +4,8 @@ LDFLAGS = -L/usr/local/lib -lallegro -lallegro_primitives -lallegro_font -lalleg
 
 all: TowerDefence
 
-TowerDefence: Player.o Board.o Tower.o Ammunition.o Enemy.o Engine.o TowerDefence.o ScoreBoard.o Rules.o UI.o
-	g++ -o TowerDefence Player.o Board.o Tower.o Ammunition.o Enemy.o Engine.o TowerDefence.o ScoreBoard.o Rules.o UI.o $(LDFLAGS)
+TowerDefence: Player.o Board.o Tower.o Ammunition.o Enemy.o Engine.o Main.o ScoreBoard.o Rules.o UI.o
+	g++ -o TowerDefence Player.o Board.o Tower.o Ammunition.o Enemy.o Engine.o Main.o ScoreBoard.o Rules.o UI.o $(LDFLAGS)
 
 clean:
 	rm -f core *.o TowerDefence *~

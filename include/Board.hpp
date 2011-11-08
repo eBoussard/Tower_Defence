@@ -118,7 +118,6 @@ private:
   const unsigned int tileSize_;
 
 
-  ALLEGRO_BITMAP *Background_;
 
   //! The 32 by 64 pixel green colored "fading light"-style entrance
   ALLEGRO_BITMAP *Entrance_;
@@ -128,7 +127,7 @@ private:
 
   ALLEGRO_COLOR gridColor_;
 
-  ALLEGRO_COLOR temporaryBlackBackground_;
+  ALLEGRO_COLOR blackBackground_;
 
   ALLEGRO_BITMAP *enemyPathBitmap_;
 };
