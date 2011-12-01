@@ -1,0 +1,44 @@
+#+STARTUP: hidestars
+#+STARTUP: showall
+
+* Ammunition
+
+* Board
+** Bakgrundsbild
+** Rutnät
+*** 20x10
+** Ingång
+** Utgång
+** Väg mellan ingång och utgång
+
+* Enemy
+** HP
+** Pengavärde
+** Hastighet
+** Poängvärde
+
+* Engine
+** Förflyttning av Enemy
+** Kollar om Enemy och Tower är nära varandra
+** Timer(s)
+
+* Player
+** HP
+** Poäng
+** Pengar
+
+* Rules
+** Kontroll av placering av Tower
+
+* ScoreBoard
+** HP (Player)
+** Poäng (Player)
+** Pengar (Player)
+** Knapp för att välja Tower
+
+* Tower
+** Pris
+** Säljvärde
+** Skada
+
+* UI

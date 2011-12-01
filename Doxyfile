@@ -37,7 +37,7 @@ PROJECT_NUMBER         =
 # for a project that appears at the top of each page and should give viewer 
 # a quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "Programming project for school"
+PROJECT_BRIEF          = "Projektarbete 11/12"
 
 # With the PROJECT_LOGO tag one can specify an logo or icon that is 
 # included in the documentation. The maximum height of the logo should not 
@@ -73,7 +73,7 @@ CREATE_SUBDIRS         = NO
 # Polish, Portuguese, Romanian, Russian, Serbian, Serbian-Cyrillic, Slovak, 
 # Slovene, Spanish, Swedish, Ukrainian, and Vietnamese.
 
-OUTPUT_LANGUAGE        = English
+OUTPUT_LANGUAGE        = Swedish
 
 # If the BRIEF_MEMBER_DESC tag is set to YES (the default) Doxygen will 
 # include brief member descriptions after the members that are listed in 

@@ -8,20 +8,19 @@
 class Engine
 {
 public:
-  Engine();
-
-  int test();
-
-private:
-  Engine(const Engine&);
-  Engine & operator = (const Engine&);
+      Engine();
 
 
+      private:
+      Engine(const Engine&);
+      Engine & operator = (const Engine&);
 
-  //Properties
 
-  //! Makes the game run at a certain pace
-  unsigned int playSpeed_;
+
+      //Properties
+
+      //! Makes the game run at a certain pace
+      unsigned int playSpeed_;
 };
 
 
