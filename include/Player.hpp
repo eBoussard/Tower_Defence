@@ -1,48 +1,35 @@
-//! Place Tower on Board
-
-//! Player may place and remove Tower.
+//! Spelaren, placerar torn på Board
 
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-
-
 class Player
 {
 public:
-  Player();
+      Player();
 
-  unsigned int getMoney() const;
-  void setMoney(unsigned int Money);
+      unsigned int getMoney() const;
+      void setMoney(unsigned int Money);
 
-  unsigned int getHealthPoints() const;
-  void setHealthPoints(unsigned int healthPoints);
+      unsigned int getHealthPoints() const;
+      void setHealthPoints(unsigned int healthPoints);
 
-  unsigned int getScore() const;
-  void setScore(unsigned int Score);
-
+      unsigned int getScore() const;
+      void setScore(unsigned int Score);
 
 
 private:
-  Player(const Player&);
-  Player & operator = (const Player&);
+      Player(const Player&);
+      Player & operator = (const Player&);
 
+      //! Player får sina pengar genom att skjuta ner Enemy med hjälp av Tower
+      unsigned int Money_;
 
+      //! För varje Enemy som når @ref Board::exitTile_ "utgången" minskar Players HP med ett
+      unsigned int healthPoints_;
 
-  //Properties
-
-  //! Purchasing Tower requires Player to have Money, obtainable by
-  //! killing Enemy
-  unsigned int Money_;
-
-  //! Player's health points will decrease for every Enemy that
-  //! reaches @ref exitTile_ "exit".
-  unsigned int healthPoints_;
-
-  //! Score is earned by killing Enemy
-  unsigned int Score_;
+      //! För varje fiende som dör ökar Players poäng
+      unsigned int Score_;
 };
-
-
 
 #endif //PLAYER_HPP

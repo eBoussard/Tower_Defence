@@ -1,69 +1,43 @@
-//! Moves from @ref entranceTile_ "entrance" to @ref exitTile_ "exit" and avoids Tower
+//! "The bad guy"
 
-//! Enemy moves from @ref entranceTile_ "entrance" to @ref exitTile_
-//! "exit". It spawns with a set number of @ref healthPoints_ "health
-//! points" which decreases when shot by Tower. When Enemy's health
-//! points reaches zero it will despawn (die).
-
-//! Enemy tries to find the shortest route to @ref exitTile_ "exit"
-//! while avoiding Tower.
+//! Går från vänster sida (0 på X-axeln) till höger sida (19 på X-axeln) på sin @ref
+//! Board::generatePath() "gång". @ref Tower "Torn" skadar @ref Enemy "fienden" när de är nära varanda.
 
 #ifndef ENEMY_HPP
 #define ENEMY_HPP
 #include <allegro.h>
-
+#include <definitions.hpp>
 
 
 class Enemy
 {
 public:
-  Enemy(unsigned int xIndex, unsigned int yIndex);
+      Enemy(gridPosition gridX, gridPosition gridY);
 
-  void Draw() const;
+      void Draw() const;
 
+      unsigned int getXIndex() const;
+      unsigned int getYIndex() const;
 
-
-  unsigned int getXIndex() const;
-  unsigned int getYIndex() const;
-
-  void setXIndex(unsigned int xIndex);
-  void setYIndex(unsigned int yIndex);
+      void setXIndex(gridPosition gridX);
+      void setYIndex(gridPosition gridY);
 
 private:
-  Enemy(const Enemy&);
-  Enemy & operator = (const Enemy&);
+      Enemy(const Enemy&);
+      Enemy & operator = (const Enemy&);
 
+      //! Ett värde som anger hur många skott av X värde @ref Enemy "fienden" kan ta innan den dör
+      unsigned int healthPoints_;
+      unsigned int movementSpeed_;
 
-
-  //Properties
-
-  //! Enemy's health points
-
-  //! Enemy spawns with a certain number of health points. These
-  //! health points are decreased when shot by Tower. Upon reaching
-  //! zero, Enemy despawns.
-  unsigned int healthPoints_;
-
-  unsigned int movementSpeed_;
-
-  //! Enemy will yield a set amount of money when killed
-
-  //! Money collected from slain Enemy is used to purchase and/or
-  //! upgrade Tower.
-  unsigned int yieldsMoney_;
-
-
-  const unsigned int enemyBitmapSize_;
-
-
-  unsigned int xIndex_;
-  unsigned int yIndex_;
-
-
-
-  ALLEGRO_BITMAP *enemyBitmap_;
-  ALLEGRO_BITMAP *targetBitmapHolder_;
-
+      //! @ref Enemy "Fienden" ger @ref Player "spelaren" pengar när den dör
+      unsigned int yieldsMoney_;
+      const unsigned int enemyBitmapSize_;
+      gridPosition gridX_;
+      gridPosition gridY_;
+      
+      ALLEGRO_BITMAP *enemyBitmap_;
+      ALLEGRO_BITMAP *targetBitmapHolder_;
 };
 
 

@@ -1,97 +1,67 @@
-//! Bar at the bottom of the screen
+//! Rutan längst ner på skärmen
 
-//! Includes information about Player's @ref Player::Money_ "money",
-//! @ref Player::healthPoints_ "health points" and @ref Player::Score_
-//! "score". It also includes a clickable @ref towerButton_ "button".
+//! Visar information såsom @ref Player::healthPoints_ "Players HP", @ref Player::Money_ "Players
+//! pengar" och @ref Player::Score_ "Players poäng"
 
 #ifndef SCOREBOARD_HPP
 #define SCOREBOARD_HPP
 
 #include <Player.hpp>
-
 #include <allegro.h>
 #include <allegro_font.h>
 #include <allegro_ttf.h>
-
+#include <definitions.hpp>
 
 class ScoreBoard
 {
 public: 
-  ScoreBoard(Player&);
-  ~ScoreBoard();
+      ScoreBoard(Player&);
+      ~ScoreBoard();
 
-  void Draw();
+      void Draw();
 
-  //! Check if the @ref towerButton_ "button" has been pressed
-  //! @param x check if mouse is clicked on the @ref towerButton_ "button's" x-axis
-  //! @param y check if mouse is clicked on the @ref towerButton_ "button's" y-axis
-  void ButtonClicked(unsigned int x, unsigned int y);
+      //! Gör saker och ting om en musknapp har klickats på knappen
+      void ButtonClicked(pixelPosition x, pixelPosition y);
 
-
-  //! Check if @ref towerButton_ "button" has been clicked
-  //! @returns true if mouse has been clicked on @ref towerButton_ "button's" position
-  bool towerButtonActive() const;
-
-
+      //! Kollar om knappen har klickats
+      //! @return true om en musknapp har klickats på knappen
+      bool towerButtonActive() const;
 
 private:
-  ScoreBoard(const ScoreBoard&);
-  ScoreBoard & operator = (const ScoreBoard&);
+      ScoreBoard(const ScoreBoard&);
+      ScoreBoard & operator = (const ScoreBoard&);
 
-  void updateTextInfo();
+      //! Metod för att uppdatera infotexten i realtid
+      void updateTextInfo();
+      void drawTowerButton() const;
+      void drawInfoText() const;
 
-  void drawTowerButton() const;
+      //! Buffer för att formatera texten
+      char * infoText_;
 
-  //! Draws text on screen
+      char * getScoreInfoText() const;
+      char * getHealthPointsInfoText() const;
+      char * getMoneyInfoText() const;
 
-  //! Draw the text "SCORE", "LIFE" and "MONEY" on
-  //! the left side of ScoreBoard.
-  void drawInfoText() const;
+      Player &player;
 
-  //! Buffer for formatting text (score, health points and money)
-  char * infoText_;
+      const unsigned int buttonSize_;
+      const unsigned int scoreBoardWidth_;
+      const unsigned int scoreBoardHeight_;
 
-  char * getScoreInfoText() const;
-  char * getHealthPointsInfoText() const;
-  char * getMoneyInfoText() const;
+      //! Pixelposition på Y-axeln av gränsen mellan ScoreBoard och Board
+      unsigned int topLinePosition_;
+      
+      unsigned int Score_;
+      unsigned int healthPoints_;
+      unsigned int Money_;
 
+      bool towerButtonActive_;
 
-  Player &player;
-
-
-  //Properties
-
-  //! Pixel size of the (square) button on ScoreBoard
-  const unsigned int buttonSize_;
-
-  unsigned int scoreBoardWidth_;
-  unsigned int scoreBoardHeight_;
-
-
-  //! The y-axis position of the top border of ScoreBoard
-
-  //! The pixel position on the y-axis of the lowest line drawn on
-  //! Board's grid. This line acts as a border.
-  unsigned int topLinePosition_;
-
-  unsigned int Score_;
-  unsigned int healthPoints_;
-  unsigned int Money_;
-
-  //! @return true if @ref towerButton_ "tower button" has been
-  //! clicked once
-  bool towerButtonActive_;
-
-  //! The image representing the clickable button
-  ALLEGRO_BITMAP *towerButton_;
-
-  ALLEGRO_FONT *infoFont_;
-
-  ALLEGRO_COLOR colorWhite_;
-  ALLEGRO_COLOR colorRed_;
-
+      ALLEGRO_BITMAP *towerButton_;
+      ALLEGRO_FONT *infoFont_;
+      ALLEGRO_COLOR colorWhite_;
+      ALLEGRO_COLOR colorRed_;
 };
-
-
 
 #endif //SCOREBOARD_HPP

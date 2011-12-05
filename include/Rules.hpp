@@ -1,43 +1,36 @@
-//! Check if the requested action is allowed
+//! Kollar om draget är tillåtet
 
-//! Rules mainly control Tower placement on Board to make sure Enemy
-//! always has a free path to @ref exitTile_ "exit".
+//! Rules kollar bland annat på var Player får och inte får placera torn
 
 #ifndef RULES_HPP
 #define RULES_HPP
 
-//! To find out positions
-
-//! These includes are needed in order to find out current Tower, @ref
-//! entranceTile_ "entrance" and @ref exitTile_ "exit" positions.
 #include <Board.hpp>
 #include <Tower.hpp>
+#include <Enemy.hpp>
 #include <list>
-
+#include <definitions.hpp>
 
 class Rules
 {
 public:
-  Rules();
+      Rules();
 
-  //! Check if tower placement is valid
+      //! Kollar om placering av torn på den klickade rutan är tillåtet
+      //! @param board för att kolla upp @ref Board::entranceTile_ "ingång", @ref Board::exitTile_ "utgång" och
+      //! @ref Board::generatePath() "gången".
+      //! @param Towers för att kolla upp var eventuella torn redan är placerade
+      //! @return true om placeringen är tillåten
+      bool towerPlacementValid (const Board & board, const std::list<Tower *> & Towers, gridPosition gridX, gridPosition gridY) const;
 
-  //! @param board current positions of @ref entranceTile_ "entrance"
-  //! and @ref exitTile_ "exit"
-  //! @param Towers current position(s) of Tower
-  //! @param tilePositionX tile position on grid on x-axis
-  //! @param tilePositionY tile position on grid on y-axis
-  //! @returns true if placement of Tower is valid
-  bool towerPlacementValid (const Board & board, const std::list<Tower *> & Towers, unsigned int tilePositionX, unsigned int tilePositionY) const;
-
-  bool enemyPositionValid (const Board & board, unsigned int tilePositionX, unsigned int tilePositionY) const;
-
+      //! Kollar om Enemys steg är giltigt
+      //! @param board för att kolla upp @ref Board::entranceTile_ "ingång", @ref Board::exitTile_
+      //! "utgång" och @ref Board::generatePath() "gången"
+      bool enemyPositionValid (const Board & board, gridPosition gridX, gridPosition gridY) const;
 
 private:
-  Rules(const Rules&);
-  Rules & operator = (const Rules&);
+      Rules(const Rules&);
+      Rules & operator = (const Rules&);
 };
-
-
 
 #endif //RULES_HPP

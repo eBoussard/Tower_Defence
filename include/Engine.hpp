@@ -1,9 +1,9 @@
-//! Controls events such as movement of Enemy
+//! Sköter saker som förflyttning
 
 #ifndef ENGINE_HPP
 #define ENGINE_HPP
 
-
+#include <definitions.hpp>
 
 class Engine
 {
@@ -11,16 +11,11 @@ public:
       Engine();
 
 
-      private:
+private:
       Engine(const Engine&);
       Engine & operator = (const Engine&);
 
 
-
-      //Properties
-
-      //! Makes the game run at a certain pace
-      unsigned int playSpeed_;
 };
 
 

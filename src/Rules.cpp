@@ -7,49 +7,48 @@ Rules::Rules()
 { }
 
 
-bool Rules::towerPlacementValid (const Board & board, const std::list<Tower *> & Towers, unsigned int tilePositionX, unsigned int tilePositionY) const
+bool Rules::towerPlacementValid (const Board & board, const std::list<Tower *> & Towers, gridPosition gridX, gridPosition gridY) const
 {
 
-  if ((tilePositionX == 0) && (tilePositionY == board.getEntranceTile()))
-    {
-      return false;
-    }
+      if ((gridX == 0) && (gridY == board.getEntranceTile()))
+	    {
+		  return false;
+	    }
 
 
-  if ((tilePositionX == 19) && (tilePositionY == board.getExitTile()))
-    {
-      return false;
-    }
+      if ((gridX == 19) && (gridY == board.getExitTile()))
+	    {
+		  return false;
+	    }
 
 
-  //If new position is on existing tower
-  for (std::list<Tower *>::const_iterator it = Towers.begin(); it != Towers.end(); ++it)
-    {
-      Tower *pTower = *it;
-      if (pTower->onTile(tilePositionX, tilePositionY))
-	{
-	  return false;
-	}
-    }
+      //If new position is on existing tower
+      for (std::list<Tower *>::const_iterator it = Towers.begin(); it != Towers.end(); ++it)
+	    {
+		  Tower *pTower = *it;
+		  if (pTower->onTile(gridX, gridY))
+			{
+			      return false;
+			}
+	    }
 
 
-  if (board.onEnemyPath(tilePositionX, tilePositionY))
-    {
-      return false;
-    }
+      if (board.onEnemyPath(gridX, gridY))
+	    {
+		  return false;
+	    }
 
-  return true;
-}
-
-
-
-bool Rules::enemyPositionValid (const Board & board, unsigned int tilePositionX, unsigned int tilePositionY) const
-{
-  if (board.onEnemyPath(tilePositionX, tilePositionY))
-    {
       return true;
-    }
-  return false;
 }
 
+
+
+bool Rules::enemyPositionValid (const Board & board, gridPosition gridX, gridPosition gridY) const
+{
+      if (board.onEnemyPath(gridX, gridY))
+	    {
+		  return true;
+	    }
+      return false;
+}
 

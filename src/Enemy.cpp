@@ -3,47 +3,38 @@
 #include <iostream>
 #include <allegro.h>
 
-
-
-Enemy::Enemy(unsigned int xIndex, unsigned int yIndex):healthPoints_(100), movementSpeed_(100), yieldsMoney_(100), enemyBitmapSize_(48), xIndex_(xIndex), yIndex_(yIndex)
+Enemy::Enemy(gridPosition gridX, gridPosition gridY):healthPoints_(100), movementSpeed_(100), yieldsMoney_(100), enemyBitmapSize_(48), gridX_(gridX), gridY_(gridY)
 { 
   al_init();
 
   enemyBitmap_ = al_create_bitmap (enemyBitmapSize_, enemyBitmapSize_);
-
-  targetBitmapHolder_ = al_get_target_bitmap();
   al_set_target_bitmap (enemyBitmap_);
   al_clear_to_color (al_map_rgb (255, 0, 0));
-  al_set_target_bitmap (targetBitmapHolder_);
 }
-
 
 void Enemy::Draw() const
 {
-  al_draw_bitmap (enemyBitmap_, (xIndex_ * 64) + 8, (yIndex_ * 64) + 8, 0);
+  al_draw_bitmap (enemyBitmap_, (gridX_ * 64) + 8, (gridY_ * 64) + 8, 0);
 }
-
-
-
 
 unsigned int Enemy::getXIndex() const
 {
-  return xIndex_;
+  return gridX_;
 }
 
 unsigned int Enemy::getYIndex() const
 {
-  return yIndex_;
+  return gridY_;
 }
 
 
-void Enemy::setXIndex(unsigned int xIndex)
+void Enemy::setXIndex(gridPosition gridX)
 {
-  xIndex_ = xIndex;
+      gridX_ = gridX;
 }
 
 
-void Enemy::setYIndex(unsigned int yIndex)
+void Enemy::setYIndex(gridPosition gridY)
 {
-  yIndex_ = yIndex;
+      gridY_ = gridY;
 }

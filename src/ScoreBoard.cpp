@@ -14,7 +14,7 @@
 
 
 
-ScoreBoard::ScoreBoard(Player& aPlayer):player(aPlayer), buttonSize_(32), towerButtonActive_(false)
+ScoreBoard::ScoreBoard(Player& aPlayer):player(aPlayer), buttonSize_(32), towerButtonActive_(false), scoreBoardWidth_(1280), scoreBoardHeight_(80), topLinePosition_(640)
 {
   al_init();
   al_init_primitives_addon();
@@ -25,35 +25,20 @@ ScoreBoard::ScoreBoard(Player& aPlayer):player(aPlayer), buttonSize_(32), towerB
   colorWhite_ = al_map_rgb (255, 255, 255);
   colorRed_ = al_map_rgb (255, 0, 0);
 
-
   towerButton_ = al_load_bitmap ("gfx/towerbutton.bmp");
-
 
   infoFont_ =  al_load_ttf_font ("pirulen.ttf", 18, 0);
   infoText_ = new char [128];
-
-  UI ui;
-
-  scoreBoardWidth_ = ui.displayWidth;
-  scoreBoardHeight_ = (ui.displayHeight - ui.boardHeight); // 720 - 640 = 80                                                            
-
-
-  topLinePosition_ = ui.boardHeight;
-
 
   Money_ = player.getMoney();
   healthPoints_ = player.getHealthPoints();
   Score_ = player.getScore();
 }
 
-
-
 ScoreBoard::~ScoreBoard()
 {
   delete(infoText_);
 }
-
-
 
 void ScoreBoard::updateTextInfo()
 {
@@ -62,8 +47,6 @@ void ScoreBoard::updateTextInfo()
   Score_ = player.getScore();
 }
 
-
-
 void ScoreBoard::Draw()
 {
   updateTextInfo();
@@ -71,10 +54,7 @@ void ScoreBoard::Draw()
   drawInfoText();
 }
 
-
-
-
-void ScoreBoard::ButtonClicked(unsigned int x, unsigned int y)
+void ScoreBoard::ButtonClicked(pixelPosition x, pixelPosition y)
 {
   if (y > topLinePosition_ + (buttonSize_ / 2) && y < topLinePosition_ + (buttonSize_ * 1.5))
   {
@@ -86,15 +66,10 @@ void ScoreBoard::ButtonClicked(unsigned int x, unsigned int y)
   }
 }
 
-
-
-
 bool ScoreBoard::towerButtonActive() const
 {
   return towerButtonActive_;
 }
-
-
 
 void ScoreBoard::drawTowerButton() const
 {
@@ -105,9 +80,6 @@ void ScoreBoard::drawTowerButton() const
     al_draw_rectangle ((scoreBoardWidth_ - 2) - (buttonSize_ * 2), (topLinePosition_ - 2) + (buttonSize_ / 2), (scoreBoardWidth_ + 2) - buttonSize_, (topLinePosition_ + 2) + (buttonSize_ * 1.5), colorRed_, 2);
   }
 }
-
-
-
 
 void ScoreBoard::drawInfoText() const
 {
@@ -124,22 +96,17 @@ void ScoreBoard::drawInfoText() const
   }
 }
 
-
-
-
 char * ScoreBoard::getScoreInfoText() const
 {
   sprintf (infoText_, "%d", Score_);
   return infoText_;
 }
 
-
 char * ScoreBoard::getHealthPointsInfoText() const
 {
   sprintf (infoText_, "%d", healthPoints_);
   return infoText_;
 }
-
 
 char * ScoreBoard::getMoneyInfoText() const
 {
