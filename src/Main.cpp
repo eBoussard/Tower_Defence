@@ -227,6 +227,16 @@ int main()
 						      cout << "ENEMY Y: " << gridY << endl;
 						      cout << "TIME: " << al_get_timer_count(framerateTimer) / 30 << endl;
 						}
+
+
+
+					  //====================
+					  // EXPERIMENTAL
+					  //====================
+
+					  rules.enemyShootable(board, Towers, pEnemy);
+
+
 				    }
 			}
 

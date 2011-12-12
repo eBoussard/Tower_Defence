@@ -52,3 +52,14 @@ bool Rules::enemyPositionValid (const Board & board, gridPosition gridX, gridPos
       return false;
 }
 
+
+
+bool Rules::enemyShootable(const Board & board, const std::list<Tower *> & Towers, Enemy enemy)
+{
+      Tower *pTower = NULL;
+
+      if (pTower->onTile(3, 3))
+	    {
+		  return std::cout << "test" << std::endl;
+	    }
+}

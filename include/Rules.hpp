@@ -28,6 +28,10 @@ public:
       //! "utgång" och @ref Board::generatePath() "gången"
       bool enemyPositionValid (const Board & board, gridPosition gridX, gridPosition gridY) const;
 
+
+      //Board för enemy path, Tower list för Towers position och Enemy för Enemys position.
+      bool enemyProximity (const Board & board, const std::list<Tower *> & Towers, Enemy enemy);
+
 private:
       Rules(const Rules&);
       Rules & operator = (const Rules&);
