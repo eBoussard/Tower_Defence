@@ -30,7 +30,7 @@ public:
 
 
       //Board för enemy path, Tower list för Towers position och Enemy för Enemys position.
-      bool enemyProximity (const Board & board, const std::list<Tower *> & Towers, Enemy enemy);
+      void enemyShootable(const Board & board, const std::list<Tower *> & Towers, Enemy & enemy);
 
 private:
       Rules(const Rules&);

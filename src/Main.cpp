@@ -234,7 +234,7 @@ int main()
 					  // EXPERIMENTAL
 					  //====================
 
-					  rules.enemyShootable(board, Towers, pEnemy);
+					  rules.enemyShootable(board, Towers, *pEnemy);
 
 
 				    }
