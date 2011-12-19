@@ -14,6 +14,9 @@ class Enemy
 public:
       Enemy(gridPosition gridX, gridPosition gridY);
 
+      unsigned int getHealthPoints() const;
+      void setHealthPoints(unsigned int t_healthPoints);
+
       void Draw() const;
 
       unsigned int getXIndex() const;
@@ -35,6 +38,7 @@ private:
       const unsigned int enemyBitmapSize_;
       gridPosition gridX_;
       gridPosition gridY_;
+      unsigned int t_healthPoints;
       
       ALLEGRO_BITMAP *enemyBitmap_;
       ALLEGRO_BITMAP *targetBitmapHolder_;

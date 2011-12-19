@@ -1,5 +1,6 @@
 #include <Rules.hpp>
 #include <iostream>
+#include <allegro.h>
 
 
 
@@ -56,10 +57,34 @@ bool Rules::enemyPositionValid (const Board & board, gridPosition gridX, gridPos
 
 void Rules::enemyShootable(const Board & board, const std::list<Tower *> & Towers, Enemy & enemy)
 {
-      Tower *pTower;
-
-      if (pTower->onTile(0, 0))
+      for (std::list<Tower *>::const_iterator it = Towers.begin(); it != Towers.end(); ++it)
 	    {
-		  std::cout << "test" << std::endl;
+		  Tower *pTower = *it;
+
+		  if (pTower->onTile(enemy.getXIndex() + 1, enemy.getYIndex()) ||
+		      pTower->onTile(enemy.getXIndex() + 1, enemy.getYIndex() + 1) ||
+		      pTower->onTile(enemy.getXIndex() + 1, enemy.getYIndex() - 1) ||
+
+		      pTower->onTile(enemy.getXIndex(), enemy.getYIndex() + 1) ||
+		      pTower->onTile(enemy.getXIndex(), enemy.getYIndex() - 1) ||
+
+		      pTower->onTile(enemy.getXIndex() - 1, enemy.getYIndex()) ||
+		      pTower->onTile(enemy.getXIndex() - 1, enemy.getYIndex() + 1) ||
+		      pTower->onTile(enemy.getXIndex() - 1, enemy.getYIndex() - 1))
+			{
+			      ALLEGRO_TIMER *shootingTimer = NULL;
+			      ALLEGRO_EVENT_QUEUE *datQueue = NULL;
+
+			      al_init();
+			      al_create_timer(1.0);
+			      al_create_event_queue();
+
+			      al_register_event_source (datQueue, al_get_timer_event_source (shootingTimer));
+			      al_start_timer(shootingTimer);
+
+			      enemy.setHealthPoints(enemy.getHealthPoints() - 1);
+			      std::cout << enemy.getHealthPoints() << std::endl;
+			}
 	    }
 }
+

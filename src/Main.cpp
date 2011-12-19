@@ -180,6 +180,7 @@ int main()
 			      if (pEnemy != NULL)
 				    {
 					  pEnemy->Draw();
+					  rules.enemyShootable(board, Towers, *pEnemy);
 				    }
 
 			      for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
@@ -220,13 +221,13 @@ int main()
 
 
 
-					  if ((oldGridY != gridY) || (oldGridX != gridX))
-						{
-						      cout << "ENEMY STEP: " << enemyStepCounter << endl;
-						      cout << "ENEMY X: " << gridX << endl;
-						      cout << "ENEMY Y: " << gridY << endl;
-						      cout << "TIME: " << al_get_timer_count(framerateTimer) / 30 << endl;
-						}
+					  // if ((oldGridY != gridY) || (oldGridX != gridX))
+					  // 	{
+					  // 	      cout << "ENEMY STEP: " << enemyStepCounter << endl;
+					  // 	      cout << "ENEMY X: " << gridX << endl;
+					  // 	      cout << "ENEMY Y: " << gridY << endl;
+					  // 	      cout << "TIME: " << al_get_timer_count(framerateTimer) / 30 << endl;
+					  // 	}
 
 
 
@@ -234,7 +235,6 @@ int main()
 					  // EXPERIMENTAL
 					  //====================
 
-					  rules.enemyShootable(board, Towers, *pEnemy);
 
 
 				    }
@@ -259,7 +259,6 @@ int main()
 									{
 									      Towers.push_back(pTower);
 									      player.setMoney(player.getMoney() - pTower->getPrice());
-									      cout << "TOWER CREATED\n\nMONEY: " << player.getMoney() << endl;
 									}
 							    }
 						}

@@ -12,6 +12,16 @@ Enemy::Enemy(gridPosition gridX, gridPosition gridY):healthPoints_(100), movemen
   al_clear_to_color (al_map_rgb (255, 0, 0));
 }
 
+unsigned int Enemy::getHealthPoints() const
+{
+      return healthPoints_;
+}
+
+void Enemy::setHealthPoints(unsigned int t_healthPoints)
+{
+      healthPoints_ = t_healthPoints;
+}
+
 void Enemy::Draw() const
 {
   al_draw_bitmap (enemyBitmap_, (gridX_ * 64) + 8, (gridY_ * 64) + 8, 0);
