@@ -76,8 +76,8 @@ void Rules::enemyShootable(const Board & board, const std::list<Tower *> & Tower
 			      ALLEGRO_EVENT_QUEUE *datQueue = NULL;
 
 			      al_init();
-			      al_create_timer(1.0);
-			      al_create_event_queue();
+			      shootingTimer = al_create_timer(1.0);
+			      datQueue = al_create_event_queue();
 
 			      al_register_event_source (datQueue, al_get_timer_event_source (shootingTimer));
 			      al_start_timer(shootingTimer);

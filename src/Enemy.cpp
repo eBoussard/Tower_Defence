@@ -3,7 +3,7 @@
 #include <iostream>
 #include <allegro.h>
 
-Enemy::Enemy(gridPosition gridX, gridPosition gridY):healthPoints_(100), movementSpeed_(100), yieldsMoney_(100), enemyBitmapSize_(48), gridX_(gridX), gridY_(gridY)
+Enemy::Enemy(gridPosition gridX, gridPosition gridY):healthPoints_(15), movementSpeed_(100), yieldsMoney_(100), enemyBitmapSize_(48), gridX_(gridX), gridY_(gridY)
 { 
   al_init();
 
