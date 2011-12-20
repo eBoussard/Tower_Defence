@@ -25,6 +25,8 @@ public:
       void setXIndex(gridPosition gridX);
       void setYIndex(gridPosition gridY);
 
+      unsigned int getMovementSpeed() const;
+
 private:
       Enemy(const Enemy&);
       Enemy & operator = (const Enemy&);

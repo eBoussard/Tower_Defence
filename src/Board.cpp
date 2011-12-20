@@ -49,10 +49,6 @@ Board::Board(): tileSize_(64), boardWidth_(1280), boardHeight_(640)
 	    }
 }
 
-////////////////////////////////////
-// PUBLIC METHODS //
-///////////////////////////////////
-
 void Board::Draw() const
 {
       drawBackground();
@@ -91,7 +87,6 @@ unsigned int Board::getEntranceTile() const
       return entranceTile_;
 }
 
-
 unsigned int Board::getExitTile() const
 {
       return exitTile_;
@@ -114,10 +109,6 @@ void Board::getEnemyPosition(unsigned int enemyStep, gridPosition &gridX, gridPo
       gridX = enemyPath_[enemyStep].first;
       gridY = enemyPath_[enemyStep].second;
 }
-
-/////////////////////////////////////
-// PRIVATE METHODS //
-/////////////////////////////////////
 
 unsigned int Board::getRand(unsigned int Min, unsigned int Max)
 {

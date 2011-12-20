@@ -3,12 +3,16 @@
 #ifndef ENGINE_HPP
 #define ENGINE_HPP
 
+#include <Enemy.hpp>
+#include <Board.hpp>
 #include <definitions.hpp>
 
 class Engine
 {
 public:
       Engine();
+
+    void moveEnemy(Board & board, Enemy & enemy);
 
 
 private:

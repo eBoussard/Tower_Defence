@@ -4,52 +4,18 @@
 
 
 * Anteckningar
-** Getters och setters
-[2011-10-30 Sun 15:39]
- - En getter ser ut like so:
+** Flyttning av Enemy movement
+[2011-12-19 Mon 21:01]
+Enemy behöver följande:
+- Timer: ska röra sig X steg var Y sekund
+- Event queue: för timern
 
- int getValue() const
-{
-  return Value;
-}
+I Main.cpp ska något i stil med "engine.moveEnemy()" stå.
 
- - const finns eftersom en getter inte ändrar någonting.
-
-
- - En setter ser ut like so:
-
-void setValue (int temporaryValueName)
-{
-  temporaryValueName = Value;
-}
-
- - temporaryValueName finns bara i den här funktionen och kan vara vad
-   som helst; den är helt oviktig.
- 
- - Om
-
-setValue (10);
-
- - körs så kommer
-
-getValue();
-
- - att returnera 10.
-* Idéer
-** Flygande fiender, rörelse
-[2011-11-01 Tue 10:22]
- - Flygande fiender flyger långt ifrån enemy path för att tvinga
-   spelaren att placera torn även långt ifrån enemy path.
 * Todo
-** TODO Tower skadar Enemy
+** TODO Släng in lite kod som handlar om Rules
   
-  [[file:~/Tower_Defence/src/TowerDefence.cpp::/{#2/][clnk]]
-** TODO Enemys rörelse är ojämn när den går på timern
+  [[file:~/TowerDefence/src/Main.cpp]]
+** TODO Enemy dör och Enemy försvinner vid exit
   
-  [[file:~/Tower_Defence/src/TowerDefence.cpp::/{#2/][clnk]]
-** TODO Prova att ta bort pOldTargetBitmap (och lägg till en if i Main.cpp)
-  
-  [[file:~/Tower_Defence/src/Tower.cpp::/al_set_target_bitmap%5B%20\t%5D*(%5B%20\t%5D*towerBitmap_%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
-** TODO Lägg till boardHeight_ och boardWidth_
-  
-  [[file:~/TowerDefence/src/Board.cpp::/al_draw_line%5B%20\t%5D*(%5B%20\t%5D*0%5B%20\t%5D*,%5B%20\t%5D*hPos%5B%20\t%5D*,%5B%20\t%5D*boardWidth_%5B%20\t%5D*,%5B%20\t%5D*hPos%5B%20\t%5D*,%5B%20\t%5D*gridColor_%5B%20\t%5D*,%5B%20\t%5D*2%5B%20\t%5D*)%5B%20\t%5D*%3B#1/][clnk]]
+  [[file:~/TowerDefence/src/Engine.cpp::/pEnemy->setYIndex(gridY)%3B#1/][clnk]]
