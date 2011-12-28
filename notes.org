@@ -3,6 +3,8 @@
 
 
 * Todos
+** TODO Kolla om setters fungerar i Enemy.cpp
+   Kolla vilken del som egentligen ska stå först (gridX_ = gridX eller gridX = gridX_). Kaffe behövs.
 * Tankar
 ** Segmentation fault
    Den klagade på segmentation fault, så jag ändrade från "gridX_ = gridX" till "gridX =

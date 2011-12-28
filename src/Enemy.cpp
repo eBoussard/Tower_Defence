@@ -7,9 +7,11 @@ Enemy::Enemy(gridPosition gridX, gridPosition gridY):healthPoints_(15), movement
 { 
    al_init();
 
+   ALLEGRO_BITMAP *tempBitmap = al_get_target_bitmap();
    enemyBitmap_ = al_create_bitmap (enemyBitmapSize_, enemyBitmapSize_);
    al_set_target_bitmap (enemyBitmap_);
    al_clear_to_color (al_map_rgb (255, 0, 0));
+   al_set_target_bitmap (tempBitmap);
 }
 
 unsigned int Enemy::getHealthPoints() const
@@ -40,13 +42,13 @@ unsigned int Enemy::getYIndex() const
 
 void Enemy::setXIndex(gridPosition gridX)
 {
-   gridX = gridX_;
+   gridX_ = gridX;
 }
 
 
 void Enemy::setYIndex(gridPosition gridY)
 {
-   gridY = gridY_;
+   gridY_ = gridY;
 }
 
 unsigned int Enemy::getMovementSpeed() const

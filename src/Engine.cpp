@@ -24,5 +24,7 @@ void Engine::moveEnemy(Board & board, Enemy & enemy)
 
       std::cout << "E-X: " << gridX << std::endl;
       std::cout << "E-Y: " << gridY << std::endl;
+      std::cout << "E-S: " << enemyStepCounter << std::endl;
+      al_stop_timer (movementTimer);
 }
 
