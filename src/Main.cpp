@@ -56,6 +56,7 @@ int main()
    bool gameStarted = false;
    bool Quit = false;
    bool redraw = false;
+   bool enemySpawned = false;
    pixelPosition x, y;
    gridPosition gridX, gridY;
    const unsigned int displayWidth = 1280;
@@ -68,6 +69,7 @@ int main()
    Rules rules;
    Board board;
    Engine engine;
+   Enemy *pEnemy;
 
    if (!al_init())
       {
@@ -160,9 +162,10 @@ int main()
 		     Quit = true;
 		  }
 
-	       if (Event.keyboard.keycode == ALLEGRO_KEY_E)
+	       if (Event.keyboard.keycode == ALLEGRO_KEY_E && enemySpawned == false)
 		  {
-		     Enemy *pEnemy = new Enemy(0, board.getEntranceTile());
+		     pEnemy = new Enemy(0, board.getEntranceTile());
+		     enemySpawned = true;
 		  }
 	    }
 
@@ -175,6 +178,10 @@ int main()
 		  {
 		     Tower * pTower = *it;
 		     pTower->Draw();
+		  }
+	       if (enemySpawned == true)
+		  {
+		     pEnemy->Draw();
 		  }
 	    }
 

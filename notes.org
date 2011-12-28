@@ -3,3 +3,7 @@
 
 
 * Todos
+* Tankar
+** Segmentation fault
+   Den klagade på segmentation fault, så jag ändrade från "gridX_ = gridX" till "gridX =
+   gridX_".
