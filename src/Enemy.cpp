@@ -40,15 +40,15 @@ unsigned int Enemy::getYIndex() const
 }
 
 
-void Enemy::setXIndex(gridPosition gridX)
+void Enemy::setXIndex(gridPosition t_gridX)
 {
-   gridX_ = gridX;
+   gridX_ = t_gridX;
 }
 
 
-void Enemy::setYIndex(gridPosition gridY)
+void Enemy::setYIndex(gridPosition t_gridY)
 {
-   gridY_ = gridY;
+   gridY_ = t_gridY;
 }
 
 unsigned int Enemy::getMovementSpeed() const

@@ -10,13 +10,13 @@
 class Engine
 {
 public:
-      Engine();
+   Engine();
 
-    void moveEnemy(Board & board, Enemy & enemy);
+   void moveEnemy(Enemy & enemy, Board & board, unsigned int enemyStepCounter);
 
 private:
-      Engine(const Engine&);
-      Engine & operator = (const Engine&);
+   Engine(const Engine&);
+   Engine & operator = (const Engine&);
 
 
 };

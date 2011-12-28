@@ -44,8 +44,6 @@ bool mouseTwoClick (pixelPosition &x, pixelPosition &y)
 }
 
 
-
-
 int main()
 {
    ALLEGRO_DISPLAY *Display = NULL;
@@ -56,11 +54,11 @@ int main()
    bool gameStarted = false;
    bool Quit = false;
    bool redraw = false;
-   bool enemySpawned = false;
    pixelPosition x, y;
    gridPosition gridX, gridY;
    const unsigned int displayWidth = 1280;
    const unsigned int displayHeight = 720;
+   unsigned int enemyStepCounter = 0;
       
    list <Tower *> Towers;
    Tower tower(gridX, gridY);
@@ -69,7 +67,7 @@ int main()
    Rules rules;
    Board board;
    Engine engine;
-   Enemy *pEnemy;
+   Enemy *pEnemy = NULL;
 
    if (!al_init())
       {
@@ -115,10 +113,14 @@ int main()
    al_register_event_source (eventQueue, al_get_timer_event_source (framerateTimer));
    al_register_event_source (eventQueue, al_get_keyboard_event_source());
    al_start_timer(framerateTimer);
-   al_set_window_title (Display, "START");
+   al_set_window_title (Display, "NONE");
 
    while(!Quit)
       {
+	 if (pEnemy != NULL) al_set_window_title(Display, "ENEMY CREATED");
+	 if (Towers.empty() == false) al_set_window_title(Display, "TOWER CREATED");
+	 if (Towers.empty() == false && pEnemy != NULL) al_set_window_title(Display, "TOWER CREATED, ENEMY CREATED");
+
 	 ALLEGRO_EVENT Event;
 	    
 	 al_set_target_bitmap (al_get_backbuffer (Display));
@@ -142,46 +144,41 @@ int main()
 
 	 if (Event.type == ALLEGRO_EVENT_KEY_UP)
 	    {
-	       if (Event.keyboard.keycode == ALLEGRO_KEY_S)
-		  {
-		     if (gameStarted == false)
-			{
-			   al_set_window_title (Display, "GAME");
-			   gameStarted = true;
-			}
-		     else if (gameStarted == true)
-			{
-			   al_set_window_title (Display, "MENU");
-			   gameStarted = false;
-			   al_clear_to_color (al_map_rgb (0, 0, 0));
-			}
-		  }
-
 	       if (Event.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
 		  {
 		     Quit = true;
 		  }
 
-	       if (Event.keyboard.keycode == ALLEGRO_KEY_E && enemySpawned == false)
+	       if (Event.keyboard.keycode == ALLEGRO_KEY_E && pEnemy == NULL)
 		  {
 		     pEnemy = new Enemy(0, board.getEntranceTile());
-		     enemySpawned = true;
+		     al_set_timer_count(framerateTimer, 0);
 		  }
 	    }
 
-	 if (gameStarted == true && redraw == true)
+	
+	 if (redraw == true)
 	    {
 	       board.Draw();
 	       scoreboard.Draw();
-	       engine.moveEnemy(board, *pEnemy);
 	       for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
 		  {
 		     Tower * pTower = *it;
 		     pTower->Draw();
 		  }
-	       if (enemySpawned == true)
+
+	       if (pEnemy != NULL)
 		  {
+		     engine.moveEnemy(*pEnemy, board, enemyStepCounter);
 		     pEnemy->Draw();
+		     enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
+		     rules.enemyShootable(board, Towers, *pEnemy);
+
+		     if (pEnemy->getXIndex() == 19 && pEnemy->getYIndex() == board.getExitTile() || pEnemy->getHealthPoints() == 0)
+			{
+			   delete pEnemy;
+			   pEnemy = NULL;
+			}
 		  }
 	    }
 

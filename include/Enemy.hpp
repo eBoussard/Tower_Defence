@@ -12,38 +12,38 @@
 class Enemy
 {
 public:
-      Enemy(gridPosition gridX, gridPosition gridY);
+   Enemy(gridPosition gridX, gridPosition gridY);
 
-      unsigned int getHealthPoints() const;
-      void setHealthPoints(unsigned int t_healthPoints);
+   unsigned int getHealthPoints() const;
+   void setHealthPoints(unsigned int t_healthPoints);
 
-      void Draw() const;
+   void Draw() const;
 
-      unsigned int getXIndex() const;
-      unsigned int getYIndex() const;
+   unsigned int getXIndex() const;
+   unsigned int getYIndex() const;
 
-      void setXIndex(gridPosition gridX);
-      void setYIndex(gridPosition gridY);
+   void setXIndex(gridPosition t_gridX);
+   void setYIndex(gridPosition t_gridY);
 
-      unsigned int getMovementSpeed() const;
+   unsigned int getMovementSpeed() const;
 
 private:
-      Enemy(const Enemy&);
-      Enemy & operator = (const Enemy&);
+   Enemy(const Enemy&);
+   Enemy & operator = (const Enemy&);
 
-      //! Ett värde som anger hur många skott av X värde @ref Enemy "fienden" kan ta innan den dör
-      unsigned int healthPoints_;
-      unsigned int movementSpeed_;
+   //! Ett värde som anger hur många skott av X värde @ref Enemy "fienden" kan ta innan den dör
+   unsigned int healthPoints_;
+   unsigned int movementSpeed_;
 
-      //! @ref Enemy "Fienden" ger @ref Player "spelaren" pengar när den dör
-      unsigned int yieldsMoney_;
-      const unsigned int enemyBitmapSize_;
-      gridPosition gridX_;
-      gridPosition gridY_;
-      unsigned int t_healthPoints;
+   //! @ref Enemy "Fienden" ger @ref Player "spelaren" pengar när den dör
+   unsigned int yieldsMoney_;
+   const unsigned int enemyBitmapSize_;
+   gridPosition gridX_;
+   gridPosition gridY_;
+   unsigned int t_healthPoints;
       
-      ALLEGRO_BITMAP *enemyBitmap_;
-      ALLEGRO_BITMAP *targetBitmapHolder_;
+   ALLEGRO_BITMAP *enemyBitmap_;
+   ALLEGRO_BITMAP *targetBitmapHolder_;
 };
 
 
