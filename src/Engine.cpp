@@ -22,3 +22,4 @@ void Engine::moveEnemy(Board & board, Enemy & enemy)
       enemy.setXIndex(gridX);
       enemy.setYIndex(gridY);
 }
+

@@ -27,7 +27,7 @@ ScoreBoard::ScoreBoard(Player& aPlayer):player(aPlayer), buttonSize_(32), towerB
 
   towerButton_ = al_load_bitmap ("gfx/towerbutton.bmp");
 
-  infoFont_ =  al_load_ttf_font ("pirulen.ttf", 18, 0);
+  infoFont_ =  al_load_ttf_font ("gfx/pirulen.ttf", 18, 0);
   infoText_ = new char [128];
 
   Money_ = player.getMoney();

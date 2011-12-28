@@ -2,20 +2,4 @@
 #+STARTUP: hidestars
 
 
-
-* Anteckningar
-** Flyttning av Enemy movement
-[2011-12-19 Mon 21:01]
-Enemy behöver följande:
-- Timer: ska röra sig X steg var Y sekund
-- Event queue: för timern
-
-I Main.cpp ska något i stil med "engine.moveEnemy()" stå.
-
-* Todo
-** TODO Släng in lite kod som handlar om Rules
-  
-  [[file:~/TowerDefence/src/Main.cpp]]
-** TODO Enemy dör och Enemy försvinner vid exit
-  
-  [[file:~/TowerDefence/src/Engine.cpp::/pEnemy->setYIndex(gridY)%3B#1/][clnk]]
+* Todos

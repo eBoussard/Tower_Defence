@@ -14,7 +14,6 @@ public:
 
     void moveEnemy(Board & board, Enemy & enemy);
 
-
 private:
       Engine(const Engine&);
       Engine & operator = (const Engine&);
