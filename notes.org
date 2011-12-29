@@ -3,10 +3,12 @@
 
 
 * Todos
-** TODO Kolla om setters fungerar i Enemy.cpp
+** DONE Kolla om setters fungerar i Enemy.cpp
    Kolla vilken del som egentligen ska stå först (gridX_ = gridX eller gridX = gridX_). Kaffe behövs.
-** TODO Make board a member of Engine
+** TODO Fler än en fiende på Board
+   CLOCK: [2011-12-29 Thu 13:47]
+   CLOCK: [2011-12-29 Thu 13:38]--[2011-12-29 Thu 13:40] =>  0:02
+   Ska gå att skicka ut en fiende även om pEnemy inte är NULL.
+** TODO Fiender som dör ger pengar
+** TODO Player kan dö
 * Tankar
-** Segmentation fault
-   Den klagade på segmentation fault, så jag ändrade från "gridX_ = gridX" till "gridX =
-   gridX_".

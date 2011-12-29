@@ -5,6 +5,7 @@
 
 #include <Enemy.hpp>
 #include <Board.hpp>
+#include <list>
 #include <definitions.hpp>
 
 class Engine
@@ -12,7 +13,7 @@ class Engine
 public:
    Engine();
 
-   void moveEnemy(Enemy & enemy, Board & board, unsigned int enemyStepCounter);
+   void moveEnemy(const std::list<Enemy *> & Enemies, Board & board, unsigned int enemyStepCounter);
 
 private:
    Engine(const Engine&);

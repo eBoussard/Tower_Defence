@@ -61,6 +61,7 @@ int main()
    unsigned int enemyStepCounter = 0;
       
    list <Tower *> Towers;
+   list <Enemy *> Enemies;
    Tower tower(gridX, gridY);
    Player player;
    ScoreBoard scoreboard(player);
@@ -149,14 +150,16 @@ int main()
 		     Quit = true;
 		  }
 
-	       if (Event.keyboard.keycode == ALLEGRO_KEY_E && pEnemy == NULL)
+	       if (Event.keyboard.keycode == ALLEGRO_KEY_E)
 		  {
 		     pEnemy = new Enemy(0, board.getEntranceTile());
 		     al_set_timer_count(framerateTimer, 0);
+
+		     Enemies.push_back(pEnemy);
 		  }
 	    }
 
-	
+
 	 if (redraw == true)
 	    {
 	       board.Draw();
@@ -169,15 +172,13 @@ int main()
 
 	       if (pEnemy != NULL)
 		  {
-		     engine.moveEnemy(*pEnemy, board, enemyStepCounter);
-		     pEnemy->Draw();
-		     enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
-		     rules.enemyShootable(board, Towers, *pEnemy);
-
-		     if (pEnemy->getXIndex() == 19 && pEnemy->getYIndex() == board.getExitTile() || pEnemy->getHealthPoints() == 0)
+		     for (list<Enemy *>::iterator it = Enemies.begin(); it != Enemies.end(); ++it)
 			{
-			   delete pEnemy;
-			   pEnemy = NULL;
+			   pEnemy = *it;
+			   engine.moveEnemy(Enemies, board, enemyStepCounter);
+			   pEnemy->Draw();
+			   enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
+			   rules.enemyShootable(board, Towers, *pEnemy);
 			}
 		  }
 	    }

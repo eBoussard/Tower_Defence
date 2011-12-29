@@ -60,7 +60,7 @@ void Rules::enemyShootable(const Board & board, const std::list<Tower *> & Tower
    for (std::list<Tower *>::const_iterator it = Towers.begin(); it != Towers.end(); ++it)
       {
 	 Tower *pTower = *it;
-
+ 
 	 if (pTower->onTile(enemy.getXIndex() + 1, enemy.getYIndex()) ||
 	     pTower->onTile(enemy.getXIndex() + 1, enemy.getYIndex() + 1) ||
 	     pTower->onTile(enemy.getXIndex() + 1, enemy.getYIndex() - 1) ||
