@@ -60,15 +60,13 @@ int main()
    const unsigned int displayHeight = 720;
    unsigned int enemyStepCounter = 0;
       
-   list <Tower *> Towers;
-   list <Enemy *> Enemies;
-   Tower tower(gridX, gridY);
    Player player;
    ScoreBoard scoreboard(player);
    Rules rules;
    Board board;
    Engine engine;
    Enemy *pEnemy = NULL;
+   Tower *pTower = NULL;
 
    if (!al_init())
       {
@@ -109,23 +107,19 @@ int main()
 	 return 1;
       }
 
-
    al_register_event_source (eventQueue, al_get_display_event_source (Display));
    al_register_event_source (eventQueue, al_get_timer_event_source (framerateTimer));
    al_register_event_source (eventQueue, al_get_keyboard_event_source());
    al_start_timer(framerateTimer);
-   al_set_window_title (Display, "NONE");
+   al_set_window_title (Display, "TowerDefence");
 
+
+
+   
    while(!Quit)
       {
-	 if (pEnemy != NULL) al_set_window_title(Display, "ENEMY CREATED");
-	 if (Towers.empty() == false) al_set_window_title(Display, "TOWER CREATED");
-	 if (Towers.empty() == false && pEnemy != NULL) al_set_window_title(Display, "TOWER CREATED, ENEMY CREATED");
-
 	 ALLEGRO_EVENT Event;
-	    
 	 al_set_target_bitmap (al_get_backbuffer (Display));
-
 
 	 if (! al_get_next_event(eventQueue, &Event))
 	    {
@@ -154,8 +148,7 @@ int main()
 		  {
 		     pEnemy = new Enemy(0, board.getEntranceTile());
 		     al_set_timer_count(framerateTimer, 0);
-
-		     Enemies.push_back(pEnemy);
+		     board.addEnemy(pEnemy, enemyStepCounter);
 		  }
 	    }
 
@@ -164,22 +157,18 @@ int main()
 	    {
 	       board.Draw();
 	       scoreboard.Draw();
-	       for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
+
+	       if (pTower != NULL)
 		  {
-		     Tower * pTower = *it;
 		     pTower->Draw();
 		  }
 
 	       if (pEnemy != NULL)
 		  {
-		     for (list<Enemy *>::iterator it = Enemies.begin(); it != Enemies.end(); ++it)
-			{
-			   pEnemy = *it;
-			   engine.moveEnemy(Enemies, board, enemyStepCounter);
-			   pEnemy->Draw();
-			   enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
-			   rules.enemyShootable(board, Towers, *pEnemy);
-			}
+		     enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
+		     engine.moveEnemy(board, enemyStepCounter);
+		     rules.enemyShootable(board, Towers, *pEnemy);
+		     pEnemy->Draw();
 		  }
 	    }
 
@@ -195,11 +184,10 @@ int main()
 			{
 			   if (rules.towerPlacementValid(board, Towers, gridX, gridY))
 			      {
-				 Tower * pTower = new Tower(gridX, gridY);
-
 				 if (player.getMoney() >= pTower->getPrice())
 				    {
-				       Towers.push_back(pTower);
+				       pTower = new Tower(gridX, gridY);
+				       board.addTower(pTower);
 				       player.setMoney(player.getMoney() - pTower->getPrice());
 				    }
 			      }
@@ -207,29 +195,19 @@ int main()
 		  }
 	    }
 
-
-
-
 	 if (mouseTwoClick(x, y))
 	    {
 	       if (board.getTileCoordinates(x, y, gridX, gridY))
-		  {
-		     for (list<Tower *>::iterator it = Towers.begin(); it != Towers.end(); ++it)
+	 	  {
+		     if (pTower->onTile(gridX, gridY))
 			{
-			   Tower *pTower = *it;
-
-			   if (pTower->onTile(gridX, gridY))
-			      {
-				 player.setMoney(player.getMoney() + pTower->getSellValue());
-				 delete pTower;
-				 Towers.erase(it);
-				 break;
-			      }
+			   player.setMoney(player.getMoney() + pTower->getSellValue());
+			   delete pTower;
+			   break;
 			}
 		  }
 	    }
-
-	 al_flip_display();
       }
+   al_flip_display();
 }
 

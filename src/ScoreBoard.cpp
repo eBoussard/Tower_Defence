@@ -60,7 +60,6 @@ void ScoreBoard::ButtonClicked(pixelPosition x, pixelPosition y)
   {
     if (x > scoreBoardWidth_ - (buttonSize_ * 2) && x < scoreBoardWidth_ - buttonSize_)
     {
-      std::cout << "button clicked\n";
       towerButtonActive_ = !towerButtonActive_;
     }
   }

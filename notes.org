@@ -9,4 +9,13 @@
    Gör en list av pair (lista av Enemy och enemyStepCounter).
 ** TODO Fiender som dör ger pengar
 ** TODO Player kan dö
+** TODO Hantera Enemy som går av planen
+** TODO Rensa cout statements
+** TODO Regler för placering av torn
+   Ska inte gå att placera på varandra
+** TODO Regler för när torn kan skjuta
+   Trassel med list
 * Tankar
+* Anteckningar
+** Info
+

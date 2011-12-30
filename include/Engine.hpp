@@ -13,7 +13,7 @@ class Engine
 public:
    Engine();
 
-   void moveEnemy(const std::list<Enemy *> & Enemies, Board & board, unsigned int enemyStepCounter);
+   void moveEnemy(Board & board, unsigned int enemyStepCounter);
 
 private:
    Engine(const Engine&);

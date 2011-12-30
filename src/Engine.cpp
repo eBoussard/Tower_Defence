@@ -8,13 +8,16 @@ Engine::Engine()
 }
 
 
-void Engine::moveEnemy(const std::list<Enemy *> & Enemies, Board & board, unsigned int enemyStepCounter)
+void Engine::moveEnemy(Board & board, unsigned int enemyStepCounter)
 {
-   for (std::list<Enemy *>::const_iterator it = Enemies.begin(); it != Enemies.end(); ++it)
+   Board::EnemiesList_t & Enemies = board.getEnemies();
+   for (Board::EnemiesList_t::iterator it = Enemies.begin(); it != Enemies.end(); ++it)
       {
-	 Enemy *pEnemy = *it;
+	 Enemy *pEnemy = it->first;
+	 unsigned int enemyStartStep = it->second;
+	 
 	 unsigned int gridX, gridY;
-	 board.getEnemyPosition(enemyStepCounter, gridX, gridY);
+	 board.getEnemyPosition(enemyStepCounter - enemyStartStep, gridX, gridY);
 	 pEnemy->setXIndex(gridX);
 	 pEnemy->setYIndex(gridY);
       }

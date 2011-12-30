@@ -42,8 +42,6 @@ bool Rules::towerPlacementValid (const Board & board, const std::list<Tower *> &
    return true;
 }
 
-
-
 bool Rules::enemyPositionValid (const Board & board, gridPosition gridX, gridPosition gridY) const
 {
    if (board.onEnemyPath(gridX, gridY))
@@ -52,8 +50,6 @@ bool Rules::enemyPositionValid (const Board & board, gridPosition gridX, gridPos
       }
    return false;
 }
-
-
 
 void Rules::enemyShootable(const Board & board, const std::list<Tower *> & Towers, Enemy & enemy)
 {
@@ -83,7 +79,7 @@ void Rules::enemyShootable(const Board & board, const std::list<Tower *> & Tower
 	       al_start_timer(shootingTimer);
 
 	       enemy.setHealthPoints(enemy.getHealthPoints() - 1);
-	       std::cout << enemy.getHealthPoints() << std::endl;
+	       std::cout << "Enemy HP: " << enemy.getHealthPoints() << std::endl;
 	    }
       }
 }
