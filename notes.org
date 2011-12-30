@@ -6,9 +6,7 @@
 ** DONE Kolla om setters fungerar i Enemy.cpp
    Kolla vilken del som egentligen ska stå först (gridX_ = gridX eller gridX = gridX_). Kaffe behövs.
 ** TODO Fler än en fiende på Board
-   CLOCK: [2011-12-29 Thu 13:47]
-   CLOCK: [2011-12-29 Thu 13:38]--[2011-12-29 Thu 13:40] =>  0:02
-   Ska gå att skicka ut en fiende även om pEnemy inte är NULL.
+   Gör en list av pair (lista av Enemy och enemyStepCounter).
 ** TODO Fiender som dör ger pengar
 ** TODO Player kan dö
 * Tankar
