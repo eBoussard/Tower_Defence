@@ -15,6 +15,10 @@ public:
    Board();
    void Draw() const;
 
+   void drawTowers() const;
+
+   void drawEnemies() const; 
+
    typedef std::list<std::pair<Enemy *, unsigned int> > EnemiesList_t;
    typedef std::list<Tower *> TowersList_t;
    
@@ -42,6 +46,10 @@ public:
 
    //! Tower ägs av Board. Board lägger till alla Tower i en lista.
    void addTower(Tower *pTower);
+
+   bool tileHasTower(unsigned int gridX, unsigned int gridY) const;
+
+   void removeTower(unsigned int gridX, unsigned int gridY);
 
    EnemiesList_t & getEnemies();
 

@@ -58,6 +58,7 @@ void Board::Draw() const
    drawEntrance();
    drawExit();
    drawEnemyPath();
+   drawTowers();
 }
 
 void Board::mouseClick(pixelPosition x, pixelPosition y)
@@ -153,7 +154,6 @@ void Board::addEnemy(Enemy * pEnemy, unsigned int enemyStartStep)
 
 void Board::addTower(Tower *pTower)
 {
-   TowersList_t Towers;
    Towers.push_back(pTower);
    if (logging.amountOfUnits == true) std::cout << "T: " << Towers.size() << std::endl;
 }
@@ -168,9 +168,51 @@ Board::TowersList_t & Board::getTowers()
    return Towers;
 }
 
+bool Board::tileHasTower(unsigned int gridX, unsigned int gridY) const
+{
+   for (TowersList_t::const_iterator it = Towers.begin(); it != Towers.end(); ++it)
+      {
+	 Tower *pTower = *it;
+	 if (pTower->onTile(gridX, gridY))
+	    {
+	       return true;
+	    }
+      }
+   return false;
+}
+
+void Board::removeTower(unsigned int gridX, unsigned int gridY)
+{
+   for (TowersList_t::iterator it = Towers.begin(); it != Towers.end(); ++it)
+      {
+	 Tower *pTower = *it;
+	 if (pTower->onTile(gridX, gridY))
+	    {
+	       delete pTower;
+	       Towers.erase(it);
+	       if (logging.amountOfUnits == true) std::cout << "T: " << Towers.size() << std::endl;
+	       break;
+	    }
+      }
+}
+
 ////////////////////////
 // DRAWING //
 //////////////////////
+
+void Board::drawTowers() const
+{
+   for (TowersList_t::const_iterator it = Towers.begin(); it != Towers.end(); ++it)
+      {
+	 Tower *pTower = *it;
+	 pTower->Draw();
+      }
+}
+
+void Board::drawEnemies() const
+{
+   //todo
+}
 
 void Board::drawBackground() const
 {

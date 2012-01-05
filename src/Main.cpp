@@ -66,7 +66,6 @@ int main()
    Board board;
    Engine engine;
    Enemy *pEnemy = NULL;
-   Tower *pTower = NULL;
 
    if (!al_init())
       {
@@ -158,16 +157,11 @@ int main()
 	       board.Draw();
 	       scoreboard.Draw();
 
-	       if (pTower != NULL)
-		  {
-		     pTower->Draw();
-		  }
-
 	       if (pEnemy != NULL)
 		  {
 		     enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
 		     engine.moveEnemy(board, enemyStepCounter);
-		     rules.enemyShootable(board, Towers, *pEnemy);
+		     //rules.enemyShootable(board, *pTower, *pEnemy);
 		     pEnemy->Draw();
 		  }
 	    }
@@ -182,13 +176,14 @@ int main()
 		  {
 		     if (board.getTileCoordinates(x, y, gridX, gridY))
 			{
-			   if (rules.towerPlacementValid(board, Towers, gridX, gridY))
+			   //if (rules.towerPlacementValid(board, *pTower, gridX, gridY))
+			   if (true)
 			      {
-				 if (player.getMoney() >= pTower->getPrice())
+				 if (player.getMoney() >= Tower::getPrice())
 				    {
-				       pTower = new Tower(gridX, gridY);
+				       Tower *pTower = new Tower(gridX, gridY);
 				       board.addTower(pTower);
-				       player.setMoney(player.getMoney() - pTower->getPrice());
+				       player.setMoney(player.getMoney() - Tower::getPrice());
 				    }
 			      }
 			}
@@ -199,15 +194,15 @@ int main()
 	    {
 	       if (board.getTileCoordinates(x, y, gridX, gridY))
 	 	  {
-		     if (pTower->onTile(gridX, gridY))
-			{
-			   player.setMoney(player.getMoney() + pTower->getSellValue());
-			   delete pTower;
-			   break;
-			}
+		     if (board.tileHasTower(gridX, gridY))
+		     	{
+		     	   board.removeTower(gridX, gridY);
+		     	   player.setMoney(player.getMoney() + Tower::getSellValue());
+
+		     	}
 		  }
 	    }
+	 al_flip_display();
       }
-   al_flip_display();
 }
 

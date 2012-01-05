@@ -21,7 +21,7 @@ public:
       //! @ref Board::generatePath() "gången".
       //! @param Towers för att kolla upp var eventuella torn redan är placerade
       //! @return true om placeringen är tillåten
-      bool towerPlacementValid (const Board & board, const std::list<Tower *> & Towers, gridPosition gridX, gridPosition gridY) const;
+      bool towerPlacementValid (const Board & board, Tower & tower, gridPosition gridX, gridPosition gridY) const;
 
       //! Kollar om Enemys steg är giltigt
       //! @param board för att kolla upp @ref Board::entranceTile_ "ingång", @ref Board::exitTile_
@@ -30,7 +30,7 @@ public:
 
 
       //Board för enemy path, Tower list för Towers position och Enemy för Enemys position.
-      void enemyShootable(const Board & board, const std::list<Tower *> & Towers, Enemy & enemy);
+      void enemyShootable(const Board & board, Tower & tower, Enemy & enemy);
 
 private:
       Rules(const Rules&);

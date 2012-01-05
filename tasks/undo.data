@@ -1,0 +1,67 @@
+time 1325687504
+new [description:"Fixa ritandet" entry:"1325687504" priority:"H" project:"TD" status:"pending" uuid:"307846e5-63a0-dbdf-12b9-22de93008bfb"]
+---
+time 1325687559
+new [description:"Kolla igenom koden för reglerna" entry:"1325687559" priority:"H" project:"TD" status:"pending" uuid:"beca7e08-4d5d-da4a-5d82-987acb33072c"]
+---
+time 1325687603
+old [description:"Kolla igenom koden för reglerna" entry:"1325687559" priority:"H" project:"TD" status:"pending" uuid:"beca7e08-4d5d-da4a-5d82-987acb33072c"]
+new [annotation_1325687603:"Verkar vara trassel med nya sättet att hantera torn (ägs numera av Board)" description:"Kolla igenom koden för reglerna" entry:"1325687559" priority:"H" project:"TD" status:"pending" uuid:"beca7e08-4d5d-da4a-5d82-987acb33072c"]
+---
+time 1325687742
+new [description:"Fixa en macro för att kompilera i Emacs" entry:"1325687742" priority:"M" status:"pending" uuid:"9a890e47-0880-6755-e72f-d6ea516a21cb"]
+---
+time 1325690056
+old [description:"Fixa ritandet" entry:"1325687504" priority:"H" project:"TD" status:"pending" uuid:"307846e5-63a0-dbdf-12b9-22de93008bfb"]
+new [description:"Fixa ritandet" end:"1325690056" entry:"1325687504" priority:"H" project:"TD" status:"completed" uuid:"307846e5-63a0-dbdf-12b9-22de93008bfb"]
+---
+time 1325690165
+new [description:"Fixa Enemy rörelse" entry:"1325690165" priority:"H" project:"TD" status:"pending" uuid:"e24419fd-c249-a149-4507-b21d5610c65a"]
+---
+time 1325690220
+new [description:"Fixa flera fiender på Board" entry:"1325690220" priority:"H" project:"TD" status:"pending" uuid:"35e59f8d-d331-2fc7-cbc6-076d41d769ea"]
+---
+time 1325690367
+new [description:"Kolla koden för Tower" entry:"1325690367" priority:"M" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+---
+time 1325690390
+old [description:"Kolla koden för Tower" entry:"1325690367" priority:"M" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+new [annotation_1325690390:"Går inte att placera mer än ett torn" description:"Kolla koden för Tower" entry:"1325690367" priority:"M" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+---
+time 1325690404
+old [annotation_1325690390:"Går inte att placera mer än ett torn" description:"Kolla koden för Tower" entry:"1325690367" priority:"M" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+new [annotation_1325690390:"Går inte att placera mer än ett torn" annotation_1325690404:"Programmet verkar stängas utan meddelande vid högerklick" description:"Kolla koden för Tower" entry:"1325690367" priority:"M" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+---
+time 1325690729
+old [annotation_1325690390:"Går inte att placera mer än ett torn" annotation_1325690404:"Programmet verkar stängas utan meddelande vid högerklick" description:"Kolla koden för Tower" entry:"1325690367" priority:"M" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+new [annotation_1325690390:"Går inte att placera mer än ett torn" annotation_1325690404:"Programmet verkar stängas utan meddelande vid högerklick" annotation_1325690729:"Verkar ha någonting att göra med Players pengar" description:"Kolla koden för Tower" entry:"1325690367" priority:"M" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+---
+time 1325691056
+old [annotation_1325690390:"Går inte att placera mer än ett torn" annotation_1325690404:"Programmet verkar stängas utan meddelande vid högerklick" annotation_1325690729:"Verkar ha någonting att göra med Players pengar" description:"Kolla koden för Tower" entry:"1325690367" priority:"M" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+new [annotation_1325690390:"Går inte att placera mer än ett torn" annotation_1325690404:"Programmet verkar stängas utan meddelande vid högerklick" annotation_1325690729:"Verkar ha någonting att göra med Players pengar" description:"Kolla koden för Tower" entry:"1325690367" priority:"H" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+---
+time 1325756813
+new [description:"Fixa metoder i Board för att hålla koll på torn" entry:"1325756813" priority:"H" project:"TD" status:"pending" uuid:"c7d1bc7f-5036-db4d-548c-81f8100fdb9a"]
+---
+time 1325757456
+old [description:"Fixa metoder i Board för att hålla koll på torn" entry:"1325756813" priority:"H" project:"TD" status:"pending" uuid:"c7d1bc7f-5036-db4d-548c-81f8100fdb9a"]
+new [annotation_1325757456:"Lägg till metod tileHasTower" description:"Fixa metoder i Board för att hålla koll på torn" entry:"1325756813" priority:"H" project:"TD" status:"pending" uuid:"c7d1bc7f-5036-db4d-548c-81f8100fdb9a"]
+---
+time 1325757463
+old [annotation_1325757456:"Lägg till metod tileHasTower" description:"Fixa metoder i Board för att hålla koll på torn" entry:"1325756813" priority:"H" project:"TD" status:"pending" uuid:"c7d1bc7f-5036-db4d-548c-81f8100fdb9a"]
+new [annotation_1325757456:"Lägg till metod tileHasTower" annotation_1325757463:"Lägg till metod removeTower" description:"Fixa metoder i Board för att hålla koll på torn" entry:"1325756813" priority:"H" project:"TD" status:"pending" uuid:"c7d1bc7f-5036-db4d-548c-81f8100fdb9a"]
+---
+time 1325759376
+new [description:"Kolla varför ScoreBoard info inte ritas" entry:"1325759376" priority:"M" project:"TD" status:"pending" uuid:"e626c53c-54ce-bded-8972-eda692ee73c6"]
+---
+time 1325759389
+old [annotation_1325757456:"Lägg till metod tileHasTower" annotation_1325757463:"Lägg till metod removeTower" description:"Fixa metoder i Board för att hålla koll på torn" entry:"1325756813" priority:"H" project:"TD" status:"pending" uuid:"c7d1bc7f-5036-db4d-548c-81f8100fdb9a"]
+new [annotation_1325757456:"Lägg till metod tileHasTower" annotation_1325757463:"Lägg till metod removeTower" description:"Fixa metoder i Board för att hålla koll på torn" end:"1325759389" entry:"1325756813" priority:"H" project:"TD" status:"completed" uuid:"c7d1bc7f-5036-db4d-548c-81f8100fdb9a"]
+---
+time 1325759397
+old [annotation_1325690390:"Går inte att placera mer än ett torn" annotation_1325690404:"Programmet verkar stängas utan meddelande vid högerklick" annotation_1325690729:"Verkar ha någonting att göra med Players pengar" description:"Kolla koden för Tower" entry:"1325690367" priority:"H" project:"TD" status:"pending" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+new [annotation_1325690390:"Går inte att placera mer än ett torn" annotation_1325690404:"Programmet verkar stängas utan meddelande vid högerklick" annotation_1325690729:"Verkar ha någonting att göra med Players pengar" description:"Kolla koden för Tower" end:"1325759397" entry:"1325690367" priority:"H" project:"TD" status:"completed" uuid:"17a14a12-0367-5183-94e9-3a2c2f777fb8"]
+---
+time 1325759443
+new [description:"Rita Enemy i Board, precis som Tower" entry:"1325759443" priority:"M" project:"TD" status:"pending" uuid:"4aec4a6f-5e4e-d57a-d607-f8627b2079cc"]
+---
