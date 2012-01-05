@@ -59,6 +59,7 @@ void Board::Draw() const
    drawExit();
    drawEnemyPath();
    drawTowers();
+   drawEnemies();
 }
 
 void Board::mouseClick(pixelPosition x, pixelPosition y)
@@ -147,7 +148,6 @@ void Board::generateEntranceExitPositions()
 
 void Board::addEnemy(Enemy * pEnemy, unsigned int enemyStartStep)
 {
-   EnemiesList_t Enemies;
    Enemies.push_back(std::make_pair(pEnemy, enemyStartStep));
    if (logging.amountOfUnits == true) std::cout << "E: " << Enemies.size() << std::endl;
 }
@@ -211,7 +211,14 @@ void Board::drawTowers() const
 
 void Board::drawEnemies() const
 {
-   //todo
+   std::cout << "Drawing " << Enemies.size() << " enemies" << std::endl;
+   for (EnemiesList_t::const_iterator it = Enemies.begin(); it != Enemies.end(); ++it)
+      {
+	 Enemy *pEnemy = it->first;
+	 pEnemy->Draw();
+	 unsigned int stepCount = it->second;
+	 std::cout << "Drawing Enemy on step " << stepCount << std::endl;
+      }
 }
 
 void Board::drawBackground() const

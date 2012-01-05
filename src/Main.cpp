@@ -146,7 +146,6 @@ int main()
 	       if (Event.keyboard.keycode == ALLEGRO_KEY_E)
 		  {
 		     pEnemy = new Enemy(0, board.getEntranceTile());
-		     al_set_timer_count(framerateTimer, 0);
 		     board.addEnemy(pEnemy, enemyStepCounter);
 		  }
 	    }
@@ -157,13 +156,8 @@ int main()
 	       board.Draw();
 	       scoreboard.Draw();
 
-	       if (pEnemy != NULL)
-		  {
-		     enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
-		     engine.moveEnemy(board, enemyStepCounter);
-		     //rules.enemyShootable(board, *pTower, *pEnemy);
-		     pEnemy->Draw();
-		  }
+	       enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
+	       engine.moveEnemy(board, enemyStepCounter);
 	    }
 
 

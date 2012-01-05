@@ -65,3 +65,14 @@ new [annotation_1325690390:"Går inte att placera mer än ett torn" annotation_1
 time 1325759443
 new [description:"Rita Enemy i Board, precis som Tower" entry:"1325759443" priority:"M" project:"TD" status:"pending" uuid:"4aec4a6f-5e4e-d57a-d607-f8627b2079cc"]
 ---
+time 1325791457
+old [description:"Rita Enemy i Board, precis som Tower" entry:"1325759443" priority:"M" project:"TD" status:"pending" uuid:"4aec4a6f-5e4e-d57a-d607-f8627b2079cc"]
+new [description:"Rita Enemy i Board, precis som Tower" end:"1325791457" entry:"1325759443" priority:"M" project:"TD" status:"completed" uuid:"4aec4a6f-5e4e-d57a-d607-f8627b2079cc"]
+---
+time 1325791464
+old [description:"Fixa flera fiender på Board" entry:"1325690220" priority:"H" project:"TD" status:"pending" uuid:"35e59f8d-d331-2fc7-cbc6-076d41d769ea"]
+new [description:"Fixa flera fiender på Board" end:"1325791464" entry:"1325690220" priority:"H" project:"TD" status:"completed" uuid:"35e59f8d-d331-2fc7-cbc6-076d41d769ea"]
+---
+time 1325791514
+new [description:"Lägg till Enemystep och torns positioner i logging" entry:"1325791514" priority:"H" project:"TD" status:"pending" uuid:"8c6f2f41-65df-0fb5-9a5d-eb0903f33aec"]
+---

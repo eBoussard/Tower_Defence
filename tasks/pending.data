@@ -1,6 +1,5 @@
 [annotation_1325687603:"Verkar vara trassel med nya sättet att hantera torn (ägs numera av Board)" description:"Kolla igenom koden för reglerna" entry:"1325687559" priority:"H" project:"TD" status:"pending" uuid:"beca7e08-4d5d-da4a-5d82-987acb33072c"]
 [description:"Fixa en macro för att kompilera i Emacs" entry:"1325687742" priority:"M" status:"pending" uuid:"9a890e47-0880-6755-e72f-d6ea516a21cb"]
 [description:"Fixa Enemy rörelse" entry:"1325690165" priority:"H" project:"TD" status:"pending" uuid:"e24419fd-c249-a149-4507-b21d5610c65a"]
-[description:"Fixa flera fiender på Board" entry:"1325690220" priority:"H" project:"TD" status:"pending" uuid:"35e59f8d-d331-2fc7-cbc6-076d41d769ea"]
 [description:"Kolla varför ScoreBoard info inte ritas" entry:"1325759376" priority:"M" project:"TD" status:"pending" uuid:"e626c53c-54ce-bded-8972-eda692ee73c6"]
-[description:"Rita Enemy i Board, precis som Tower" entry:"1325759443" priority:"M" project:"TD" status:"pending" uuid:"4aec4a6f-5e4e-d57a-d607-f8627b2079cc"]
+[description:"Lägg till Enemystep och torns positioner i logging" entry:"1325791514" priority:"H" project:"TD" status:"pending" uuid:"8c6f2f41-65df-0fb5-9a5d-eb0903f33aec"]
