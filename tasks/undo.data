@@ -76,3 +76,11 @@ new [description:"Fixa flera fiender på Board" end:"1325791464" entry:"13256902
 time 1325791514
 new [description:"Lägg till Enemystep och torns positioner i logging" entry:"1325791514" priority:"H" project:"TD" status:"pending" uuid:"8c6f2f41-65df-0fb5-9a5d-eb0903f33aec"]
 ---
+time 1325793401
+old [description:"Fixa Enemy rörelse" entry:"1325690165" priority:"H" project:"TD" status:"pending" uuid:"e24419fd-c249-a149-4507-b21d5610c65a"]
+new [description:"Fixa Enemy rörelse" end:"1325793401" entry:"1325690165" priority:"H" project:"TD" status:"completed" uuid:"e24419fd-c249-a149-4507-b21d5610c65a"]
+---
+time 1325793411
+old [description:"Lägg till Enemystep och torns positioner i logging" entry:"1325791514" priority:"H" project:"TD" status:"pending" uuid:"8c6f2f41-65df-0fb5-9a5d-eb0903f33aec"]
+new [description:"Lägg till Enemystep och torns positioner i logging" end:"1325793410" entry:"1325791514" priority:"H" project:"TD" status:"deleted" uuid:"8c6f2f41-65df-0fb5-9a5d-eb0903f33aec"]
+---

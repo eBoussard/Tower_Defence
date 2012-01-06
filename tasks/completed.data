@@ -3,3 +3,5 @@
 [annotation_1325757456:"Lägg till metod tileHasTower" annotation_1325757463:"Lägg till metod removeTower" description:"Fixa metoder i Board för att hålla koll på torn" end:"1325759389" entry:"1325756813" priority:"H" project:"TD" status:"completed" uuid:"c7d1bc7f-5036-db4d-548c-81f8100fdb9a"]
 [description:"Rita Enemy i Board, precis som Tower" end:"1325791457" entry:"1325759443" priority:"M" project:"TD" status:"completed" uuid:"4aec4a6f-5e4e-d57a-d607-f8627b2079cc"]
 [description:"Fixa flera fiender på Board" end:"1325791464" entry:"1325690220" priority:"H" project:"TD" status:"completed" uuid:"35e59f8d-d331-2fc7-cbc6-076d41d769ea"]
+[description:"Fixa Enemy rörelse" end:"1325793401" entry:"1325690165" priority:"H" project:"TD" status:"completed" uuid:"e24419fd-c249-a149-4507-b21d5610c65a"]
+[description:"Lägg till Enemystep och torns positioner i logging" end:"1325793410" entry:"1325791514" priority:"H" project:"TD" status:"deleted" uuid:"8c6f2f41-65df-0fb5-9a5d-eb0903f33aec"]
