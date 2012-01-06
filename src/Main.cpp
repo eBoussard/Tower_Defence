@@ -66,6 +66,7 @@ int main()
    Board board;
    Engine engine;
    Enemy *pEnemy = NULL;
+   Tower *pTower = NULL;
 
    if (!al_init())
       {
@@ -170,12 +171,11 @@ int main()
 		  {
 		     if (board.getTileCoordinates(x, y, gridX, gridY))
 			{
-			   //if (rules.towerPlacementValid(board, *pTower, gridX, gridY))
-			   if (true)
+			   if (rules.towerPlacementValid(board, *pTower, gridX, gridY))
 			      {
 				 if (player.getMoney() >= Tower::getPrice())
 				    {
-				       Tower *pTower = new Tower(gridX, gridY);
+				       pTower = new Tower(gridX, gridY);
 				       board.addTower(pTower);
 				       player.setMoney(player.getMoney() - Tower::getPrice());
 				    }

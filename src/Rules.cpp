@@ -22,17 +22,10 @@ bool Rules::towerPlacementValid (const Board & board, Tower & tower, gridPositio
 	 return false;
       }
 
-
-   //If new position is on existing tower
-   // for (std::list<Tower *>::const_iterator it = Towers.begin(); it != Towers.end(); ++it)
-   //    {
-   // 	 Tower *pTower = *it;
-   // 	 if (pTower->onTile(gridX, gridY))
-   // 	    {
-   // 	       return false;
-   // 	    }
-   //    }
-
+   if (board.tileHasTower(gridX, gridY))
+      {
+	 return false;
+      }
 
    if (board.onEnemyPath(gridX, gridY))
       {

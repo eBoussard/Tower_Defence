@@ -211,13 +211,11 @@ void Board::drawTowers() const
 
 void Board::drawEnemies() const
 {
-   std::cout << "Drawing " << Enemies.size() << " enemies" << std::endl;
    for (EnemiesList_t::const_iterator it = Enemies.begin(); it != Enemies.end(); ++it)
       {
 	 Enemy *pEnemy = it->first;
 	 pEnemy->Draw();
 	 unsigned int stepCount = it->second;
-	 std::cout << "Drawing Enemy on step " << stepCount << std::endl;
       }
 }
 

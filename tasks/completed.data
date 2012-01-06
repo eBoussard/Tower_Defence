@@ -5,3 +5,4 @@
 [description:"Fixa flera fiender på Board" end:"1325791464" entry:"1325690220" priority:"H" project:"TD" status:"completed" uuid:"35e59f8d-d331-2fc7-cbc6-076d41d769ea"]
 [description:"Fixa Enemy rörelse" end:"1325793401" entry:"1325690165" priority:"H" project:"TD" status:"completed" uuid:"e24419fd-c249-a149-4507-b21d5610c65a"]
 [description:"Lägg till Enemystep och torns positioner i logging" end:"1325793410" entry:"1325791514" priority:"H" project:"TD" status:"deleted" uuid:"8c6f2f41-65df-0fb5-9a5d-eb0903f33aec"]
+[annotation_1325687603:"Verkar vara trassel med nya sättet att hantera torn (ägs numera av Board)" description:"Kolla igenom koden för reglerna" end:"1325866505" entry:"1325687559" priority:"H" project:"TD" status:"completed" uuid:"beca7e08-4d5d-da4a-5d82-987acb33072c"]

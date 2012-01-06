@@ -84,3 +84,10 @@ time 1325793411
 old [description:"Lägg till Enemystep och torns positioner i logging" entry:"1325791514" priority:"H" project:"TD" status:"pending" uuid:"8c6f2f41-65df-0fb5-9a5d-eb0903f33aec"]
 new [description:"Lägg till Enemystep och torns positioner i logging" end:"1325793410" entry:"1325791514" priority:"H" project:"TD" status:"deleted" uuid:"8c6f2f41-65df-0fb5-9a5d-eb0903f33aec"]
 ---
+time 1325866505
+old [annotation_1325687603:"Verkar vara trassel med nya sättet att hantera torn (ägs numera av Board)" description:"Kolla igenom koden för reglerna" entry:"1325687559" priority:"H" project:"TD" status:"pending" uuid:"beca7e08-4d5d-da4a-5d82-987acb33072c"]
+new [annotation_1325687603:"Verkar vara trassel med nya sättet att hantera torn (ägs numera av Board)" description:"Kolla igenom koden för reglerna" end:"1325866505" entry:"1325687559" priority:"H" project:"TD" status:"completed" uuid:"beca7e08-4d5d-da4a-5d82-987acb33072c"]
+---
+time 1325866617
+new [description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"M" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+---
