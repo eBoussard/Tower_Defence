@@ -56,6 +56,7 @@ void Rules::enemyShootable(const Board & board, Tower & tower, Enemy & enemy)
        tower.onTile(enemy.getXIndex() - 1, enemy.getYIndex()) ||
        tower.onTile(enemy.getXIndex() - 1, enemy.getYIndex() + 1) ||
        tower.onTile(enemy.getXIndex() - 1, enemy.getYIndex() - 1))
+   if (true)
       {
 	 ALLEGRO_TIMER *shootingTimer = NULL;
 	 ALLEGRO_EVENT_QUEUE *datQueue = NULL;

@@ -91,3 +91,15 @@ new [annotation_1325687603:"Verkar vara trassel med nya sättet att hantera torn
 time 1325866617
 new [description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"M" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
 ---
+time 1325867881
+old [description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"M" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+new [description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"H" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+---
+time 1325867942
+old [description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"H" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+new [annotation_1325867942:"Allt trassel verkar ha att göra med att Enemy är i en lista nu." description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"H" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+---
+time 1325867988
+old [annotation_1325867942:"Allt trassel verkar ha att göra med att Enemy är i en lista nu." description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"H" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+new [annotation_1325867942:"Allt trassel verkar ha att göra med att Enemy är i en lista nu." annotation_1325867988:"Klagar på allt som har med Enemy att göra (till exempel enemy.getXIndex())" description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"H" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+---

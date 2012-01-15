@@ -159,6 +159,7 @@ int main()
 
 	       enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
 	       engine.moveEnemy(board, enemyStepCounter);
+	       rules.enemyShootable(board, *pTower, *pEnemy);
 	    }
 
 
