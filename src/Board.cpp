@@ -196,6 +196,21 @@ void Board::removeTower(unsigned int gridX, unsigned int gridY)
       }
 }
 
+
+void Board::removeEnemy()
+{
+   for (EnemiesList_t::iterator it = Enemies.begin(); it != Enemies.end(); ++it)
+      {
+	 Enemy *pEnemy = it->first;
+	 if (pEnemy->getHealthPoints() == 0)
+	    {
+	       delete pEnemy;
+	       Enemies.erase(it);
+	       break;
+	    }
+      }
+}
+
 ////////////////////////
 // DRAWING //
 //////////////////////

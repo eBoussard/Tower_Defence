@@ -103,3 +103,14 @@ time 1325867988
 old [annotation_1325867942:"Allt trassel verkar ha att göra med att Enemy är i en lista nu." description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"H" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
 new [annotation_1325867942:"Allt trassel verkar ha att göra med att Enemy är i en lista nu." annotation_1325867988:"Klagar på allt som har med Enemy att göra (till exempel enemy.getXIndex())" description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"H" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
 ---
+time 1326657678
+old [description:"Fixa en macro för att kompilera i Emacs" entry:"1325687742" priority:"M" status:"pending" uuid:"9a890e47-0880-6755-e72f-d6ea516a21cb"]
+new [description:"Fixa en macro för att kompilera i Emacs" end:"1326657678" entry:"1325687742" priority:"M" status:"completed" uuid:"9a890e47-0880-6755-e72f-d6ea516a21cb"]
+---
+time 1326746246
+old [annotation_1325867942:"Allt trassel verkar ha att göra med att Enemy är i en lista nu." annotation_1325867988:"Klagar på allt som har med Enemy att göra (till exempel enemy.getXIndex())" description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"H" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+new [annotation_1325867942:"Allt trassel verkar ha att göra med att Enemy är i en lista nu." annotation_1325867988:"Klagar på allt som har med Enemy att göra (till exempel enemy.getXIndex())" description:"Se till att Enemy kan bli skjuten av Tower" end:"1326746246" entry:"1325866617" priority:"H" project:"TD" status:"completed" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+---
+time 1326746315
+new [description:"Se till att Enemy försvinner när HP == 0" entry:"1326746315" priority:"M" project:"TD" status:"pending" uuid:"db79b736-f2ed-db93-634c-9ab2b255c289"]
+---

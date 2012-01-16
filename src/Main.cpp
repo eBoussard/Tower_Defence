@@ -148,6 +148,7 @@ int main()
 		  {
 		     pEnemy = new Enemy(0, board.getEntranceTile());
 		     board.addEnemy(pEnemy, enemyStepCounter);
+		     pEnemy = NULL;
 		  }
 	    }
 
@@ -159,7 +160,8 @@ int main()
 
 	       enemyStepCounter = al_get_timer_count(framerateTimer) / FPS;
 	       engine.moveEnemy(board, enemyStepCounter);
-	       rules.enemyShootable(board, *pTower, *pEnemy);
+	       rules.enemyShootable(board);
+	       board.removeEnemy();
 	    }
 
 

@@ -51,6 +51,8 @@ public:
 
    void removeTower(unsigned int gridX, unsigned int gridY);
 
+   void removeEnemy();
+
    EnemiesList_t & getEnemies();
 
    TowersList_t & getTowers();

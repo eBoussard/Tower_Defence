@@ -1,3 +1,2 @@
-[description:"Fixa en macro för att kompilera i Emacs" entry:"1325687742" priority:"M" status:"pending" uuid:"9a890e47-0880-6755-e72f-d6ea516a21cb"]
 [description:"Kolla varför ScoreBoard info inte ritas" entry:"1325759376" priority:"M" project:"TD" status:"pending" uuid:"e626c53c-54ce-bded-8972-eda692ee73c6"]
-[annotation_1325867942:"Allt trassel verkar ha att göra med att Enemy är i en lista nu." annotation_1325867988:"Klagar på allt som har med Enemy att göra (till exempel enemy.getXIndex())" description:"Se till att Enemy kan bli skjuten av Tower" entry:"1325866617" priority:"H" project:"TD" status:"pending" uuid:"eaed4fca-62ab-92b2-087a-a091125a3e81"]
+[description:"Se till att Enemy försvinner när HP == 0" entry:"1326746315" priority:"M" project:"TD" status:"pending" uuid:"db79b736-f2ed-db93-634c-9ab2b255c289"]
