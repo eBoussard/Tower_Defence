@@ -8,6 +8,7 @@
 #include <Board.hpp>
 #include <Tower.hpp>
 #include <Enemy.hpp>
+#include <Engine.hpp>
 #include <list>
 #include <definitions.hpp>
 
@@ -29,10 +30,9 @@ public:
    bool enemyPositionValid (const Board & board, gridPosition gridX, gridPosition gridY) const;
 
 
-   //Board för enemy path, Tower list för Towers position och Enemy för Enemys position.
-   void enemyShootable(const Board & board, Tower & tower, Enemy & enemy);
 
-   void enemyShootable(Board & board);
+
+   void isEnemyShootable(Board & board);
 
 private:
    Rules(const Rules&);

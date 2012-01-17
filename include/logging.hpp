@@ -9,6 +9,6 @@ struct loggingSettings
    bool towerPosition;
 };
 
-extern struct loggingSettings logging;
+struct loggingSettings logging;
 
 #endif //LOGGING_HPP

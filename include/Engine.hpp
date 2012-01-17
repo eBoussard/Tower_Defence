@@ -5,19 +5,22 @@
 
 #include <Enemy.hpp>
 #include <Board.hpp>
+#include <Tower.hpp>
 #include <list>
 #include <definitions.hpp>
 
 class Engine
 {
 public:
-   Engine();
+	Engine();
 
-   void moveEnemy(Board & board, unsigned int enemyStepCounter);
+	void moveEnemy(Board & board, unsigned int enemyStepCounter);
+
+	void shootEnemy(const Board & board, Tower & tower, Enemy & enemy);
 
 private:
-   Engine(const Engine&);
-   Engine & operator = (const Engine&);
+	Engine(const Engine&);
+	Engine & operator = (const Engine&);
 
 
 };

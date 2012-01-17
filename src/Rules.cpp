@@ -44,38 +44,9 @@ bool Rules::enemyPositionValid (const Board & board, gridPosition gridX, gridPos
    return false;
 }
 
-void Rules::enemyShootable(const Board & board, Tower & tower, Enemy & enemy)
-{
-   if (tower.onTile(enemy.getXIndex() + 1, enemy.getYIndex()) ||
-       tower.onTile(enemy.getXIndex() + 1, enemy.getYIndex() + 1) ||
-       tower.onTile(enemy.getXIndex() + 1, enemy.getYIndex() - 1) ||
 
-       tower.onTile(enemy.getXIndex(), enemy.getYIndex() + 1) ||
-       tower.onTile(enemy.getXIndex(), enemy.getYIndex() - 1) ||
 
-       tower.onTile(enemy.getXIndex() - 1, enemy.getYIndex()) ||
-       tower.onTile(enemy.getXIndex() - 1, enemy.getYIndex() + 1) ||
-       tower.onTile(enemy.getXIndex() - 1, enemy.getYIndex() - 1))
-      {
-	 ALLEGRO_TIMER *shootingTimer = NULL;
-	 ALLEGRO_EVENT_QUEUE *datQueue = NULL;
-
-	 al_init();
-	 shootingTimer = al_create_timer(1.0);
-	 datQueue = al_create_event_queue();
-
-	 al_register_event_source (datQueue, al_get_timer_event_source (shootingTimer));
-	 al_start_timer(shootingTimer);
-
-	 if (enemy.getHealthPoints() > 0)
-	    {
-	       enemy.setHealthPoints(enemy.getHealthPoints() - 1);
-	       std::cout << "Enemy HP: " << enemy.getHealthPoints() << std::endl;
-	    }
-      }
-}
-
-void Rules::enemyShootable(Board & board)
+void Rules::isEnemyShootable(Board & board)
 {
    Board::EnemiesList_t enemies = board.getEnemies();
    Board::TowersList_t towers = board.getTowers();
@@ -84,9 +55,10 @@ void Rules::enemyShootable(Board & board)
       {
 	 for (Board::TowersList_t::iterator itt = towers.begin(); itt != towers.end(); ++itt)
 	    {
-	       enemyShootable(board, **itt, *ite->first);
+			Engine engine;
+			engine.shootEnemy(board, **itt, *ite->first);
 	    }
-      }
+     }
 }
 
 

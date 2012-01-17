@@ -241,7 +241,7 @@ void Board::drawBackground() const
 
 void Board::drawGrid() const
 {
-   for (int hPos = tileSize_; hPos <= boardHeight_; hPos += tileSize_)
+   for (int hPos = tileSize_; hPos < boardHeight_; hPos += tileSize_)
       {
 	 al_draw_line(0, hPos, boardWidth_, hPos, gridColor_, 2);
       }
