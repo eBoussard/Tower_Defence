@@ -27,14 +27,6 @@ void Engine::moveEnemy(Board & board, unsigned int enemyStepCounter)
 
 void Engine::shootEnemy(const Board & board, Tower & tower, Enemy & enemy)
 {	
-	ALLEGRO_TIMER *shootingTimer = NULL;
-	ALLEGRO_EVENT_QUEUE *datQueue = NULL;
-
-	al_init();
-	shootingTimer = al_create_timer(0.5);
-	datQueue = al_create_event_queue();
-	al_register_event_source (datQueue, al_get_timer_event_source (shootingTimer));
-
 	if (tower.onTile(enemy.getXIndex() + 1, enemy.getYIndex()) ||
 	tower.onTile(enemy.getXIndex() + 1, enemy.getYIndex() + 1) ||
 	tower.onTile(enemy.getXIndex() + 1, enemy.getYIndex() - 1) ||
@@ -44,8 +36,6 @@ void Engine::shootEnemy(const Board & board, Tower & tower, Enemy & enemy)
 	tower.onTile(enemy.getXIndex() - 1, enemy.getYIndex() + 1) ||
 	tower.onTile(enemy.getXIndex() - 1, enemy.getYIndex() - 1))
       {
-		 al_start_timer(shootingTimer);
-		  
 		 if (enemy.getHealthPoints() > 0)
 		    {
 		       enemy.setHealthPoints(enemy.getHealthPoints() - 1);
