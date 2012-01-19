@@ -1,4 +1,4 @@
-//! Spelaren, placerar torn på Board
+//! Spelaren, placerar Tower på Board
 
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
@@ -22,13 +22,8 @@ private:
       Player(const Player&);
       Player & operator = (const Player&);
 
-      //! Player får sina pengar genom att skjuta ner Enemy med hjälp av Tower
       unsigned int Money_;
-
-      //! För varje Enemy som når @ref Board::exitTile_ "utgången" minskar Players HP med ett
       unsigned int healthPoints_;
-
-      //! För varje fiende som dör ökar Players poäng
       unsigned int Score_;
 };
 

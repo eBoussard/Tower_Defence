@@ -195,7 +195,6 @@ int main()
 		     	{
 		     	   board.removeTower(gridX, gridY);
 		     	   player.setMoney(player.getMoney() + Tower::getSellValue());
-
 		     	}
 		  }
 	    }

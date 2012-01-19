@@ -1,6 +1,6 @@
 //! Kollar om draget är tillåtet
 
-//! Rules kollar bland annat på var Player får och inte får placera torn
+//! Rules kollar bland annat på var Player får och inte får placera Tower
 
 #ifndef RULES_HPP
 #define RULES_HPP
@@ -29,9 +29,7 @@ public:
    //! "utgång" och @ref Board::generatePath() "gången"
    bool enemyPositionValid (const Board & board, gridPosition gridX, gridPosition gridY) const;
 
-
-
-
+   //! Innehåller listor på Tower och Enemy. Anropar Engine::shootEnemy()
    void isEnemyShootable(Board & board);
 
 private:

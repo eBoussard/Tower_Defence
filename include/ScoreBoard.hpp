@@ -20,7 +20,7 @@ public:
 
       void Draw();
 
-      //! Gör saker och ting om en musknapp har klickats på knappen
+      //! Aktiverar "tower button" om musen har klickats på den
       void ButtonClicked(pixelPosition x, pixelPosition y);
 
       //! Kollar om knappen har klickats

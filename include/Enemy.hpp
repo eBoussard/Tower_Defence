@@ -1,7 +1,7 @@
-//! "The bad guy"
+//! Fienden
 
 //! Går från vänster sida (0 på X-axeln) till höger sida (19 på X-axeln) på sin @ref
-//! Board::generatePath() "gång". @ref Tower "Torn" skadar @ref Enemy "fienden" när de är nära varanda.
+//! Board::generatePath() "gång". Tower skadar Enemy när de är nära varanda.
 
 #ifndef ENEMY_HPP
 #define ENEMY_HPP
@@ -14,10 +14,10 @@ class Enemy
 public:
    Enemy(gridPosition gridX, gridPosition gridY);
 
+   void Draw() const;
+
    unsigned int getHealthPoints() const;
    void setHealthPoints(unsigned int t_healthPoints);
-
-   void Draw() const;
 
    unsigned int getXIndex() const;
    unsigned int getYIndex() const;

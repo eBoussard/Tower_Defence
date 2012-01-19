@@ -1,3 +1,8 @@
+//! Spelplanen
+
+//! Spelplanen, sedd uppifrån, är där allting utspelar sig. Här placeras Tower som skjuter på Enemy på @ref generatePath() "gången".
+//! Här finns också ingången och utgången placerade.
+
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
@@ -15,13 +20,18 @@ public:
    Board();
    void Draw() const;
 
+   //! Går igenom (iterator) en lista på Tower och anropar Tower::Draw()
    void drawTowers() const;
 
+   //! Går igenom (iterator) en lista på Enemy och anropar Enemy::Draw()
    void drawEnemies() const; 
 
+   //! En lista på ett par
    typedef std::list<std::pair<Enemy *, unsigned int> > EnemiesList_t;
+
+   //! En lista på Tower
    typedef std::list<Tower *> TowersList_t;
-   
+
    //! Kollar var på Board användaren klickat, i pixelkoordinater
    void mouseClick(pixelPosition x, pixelPosition y);
 
@@ -37,46 +47,58 @@ public:
    //! Kollar om en specifik ruta är en del av @ref generatePath() "gångvägen"
    bool onEnemyPath(gridPosition gridX, gridPosition gridY) const;
 
-   //! @ref Enemy "Fiendens" position
+   //! Enemys position
    //! @param stepNumber antal steg fienden har tagit från @ref entranceTile_ "ingången"
    void getEnemyPosition (unsigned int stepNumber, gridPosition &gridX, gridPosition &gridY);
 
-   //! Enemy ägs av Board. Board lägger till alla Enemy i par (antal steg och Enemy) i en lista.
+   //! Lägger till en Enemy, som ägs av Board, i en lista av par
+   //! @param pEnemy Den Enemy som ska läggas till
+   //! @param enemyStartStep Det "tick" timern är ställd på när Enemy skickas ut.
    void addEnemy(Enemy * pEnemy, unsigned int enemyStartStep);
 
-   //! Tower ägs av Board. Board lägger till alla Tower i en lista.
+   //! Lägger till Tower, som ägs av Board, i en lista
    void addTower(Tower *pTower);
 
+   //! Kollar om ett Tower är placerat på en given ruta
    bool tileHasTower(unsigned int gridX, unsigned int gridY) const;
 
+   //! Tar bort ett Tower från en specifik ruta
    void removeTower(unsigned int gridX, unsigned int gridY);
 
+   //! Tar bort en Enemy
    void removeEnemy();
 
+   //! @return en lista på Enemy
    EnemiesList_t & getEnemies();
 
+   //! @return en lista på Tower
    TowersList_t & getTowers();
 
    private:
    Board(const Board&);
    Board & operator = (const Board&);
 
+   //! En lista på Enemy
    EnemiesList_t Enemies;
+
+   //! En lista på Tower
    TowersList_t Towers;
 
-   //! Enkel metod som genererar ett slumpmässigt tal med time seed
+   //! Generarar ett slumpmässigt tal med time seed
    unsigned int getRand(unsigned int Min, unsigned int Max);
 
    //! Genererar vägen fienden kan gå på
 
    //! Vägen genereras slumpmässigt, men har vissa punkter som den
    //! ska gå förbi innan den slutligen når @ref exitTile_
-   //! "utgången"
+   //! "utgången". Dessa punkter definieras i kontruktorn
+   //! @param gridXEnd x-position för en punkt
+   //! @param gridYEnd y-position för en punkt
    void generatePath (gridPosition gridXEnd, gridPosition gridYEnd);
 
-   //! Genererar @ref entranceTile_ "ingångens" och @ref exitTile_
-   //! "utgångens" positioner. Endast Y-axeln genereras; X-axeln är
-   //! alltid samma
+   //! Genererar @ref entranceTile_ "ingångens" och @ref exitTile_ "utgångens" positioner.
+   
+   //! Endast Y-axeln genereras; X-axeln är alltid samma
    void generateEntranceExitPositions();
 
    void drawBackground() const;
@@ -87,8 +109,7 @@ public:
 
    //! Alla rutor på @ref generatePath() "gången"
 
-   //! Vektorn innehåller ett par där den första är X-axeln och den
-   //! andra är Y-axeln
+   //! Vektorn innehåller ett par med X och Y
    std::vector<std::pair<gridPosition, gridPosition> > enemyPath_;
 
    gridPosition entranceTile_;
