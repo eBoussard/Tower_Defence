@@ -16,7 +16,9 @@ Board::Board(): tileSize_(64), boardWidth_(1280), boardHeight_(640)
    al_init_image_addon();
 
    Entrance_ = al_load_bitmap ("gfx/entrance.bmp");
+   assert (Entrance_);
    Exit_ = al_load_bitmap ("gfx/exit.bmp");
+   assert (Exit_);
    enemyPathBitmap_ = al_create_bitmap (tileSize_ / 2, tileSize_ / 2);
    al_set_target_bitmap (enemyPathBitmap_);
    al_clear_to_color (al_map_rgb (255, 255, 255));
