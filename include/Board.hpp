@@ -68,6 +68,8 @@ public:
    //! Tar bort en Enemy
    void removeEnemy();
 
+   void addMoney();
+
    //! @return en lista på Enemy
    EnemiesList_t & getEnemies();
 

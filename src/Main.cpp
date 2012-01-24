@@ -163,16 +163,19 @@ int main()
 		static int drawCounter = 0;
 		static int moveCounter = 0;
 		static int shootCounter = 0;
+		static int summonCounter = 0;
 
 		// drawCounter == 5 gånger per sekund (30/6)
 		// moveCounter == 2 gånger per sekund (30/15)
 		// shootCounter == en gång per sekund
+		// summonCounter == en gång varannan sekund (60)
 
 		if (Event.timer.source == framerateTimer)
 		{
 			++drawCounter;
 			++moveCounter;
 			++shootCounter;
+			++summonCounter;
 			if (drawCounter == 6)
 			{
 				board.Draw();
@@ -192,9 +195,18 @@ int main()
 				rules.isEnemyShootable(board);
 				shootCounter = 0;
 			}
+
+			if (summonCounter == 90)
+			{
+				pEnemy = new Enemy(0, board.getEntranceTile());
+				board.addEnemy(pEnemy, enemyStepCounter);
+				summonCounter = 0;
+				pEnemy = NULL;
+			}
 		}
 
-
+		//TODO: Player får pengar när Enemy dör
+		// Gör en metod i Board
 
 		if (mouseOneClick(x, y))
 		{
