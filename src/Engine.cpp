@@ -5,6 +5,7 @@
 
 Engine::Engine()
 {
+
 }
 
 
@@ -25,7 +26,7 @@ void Engine::moveEnemy(Board & board, unsigned int enemyStepCounter)
 
 
 
-void Engine::shootEnemy(const Board & board, Tower & tower, Enemy & enemy)
+void Engine::shootEnemy(const Board & board, Tower & tower, Enemy & enemy, Player & player)
 {	
 	if (tower.onTile(enemy.getXIndex() + 1, enemy.getYIndex()) ||
 	tower.onTile(enemy.getXIndex() + 1, enemy.getYIndex() + 1) ||
@@ -40,6 +41,10 @@ void Engine::shootEnemy(const Board & board, Tower & tower, Enemy & enemy)
 		    {
 		       enemy.setHealthPoints(enemy.getHealthPoints() - 1);
 		       std::cout << "Enemy HP: " << enemy.getHealthPoints() << std::endl;
+		    }
+		 if (enemy.getHealthPoints() == 0)
+		    {
+		       player.setMoney(player.getMoney() + 10);
 		    }
 	   }
 }

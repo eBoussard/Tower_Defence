@@ -1,2 +1,2 @@
 [description:"Kolla varför ScoreBoard info inte ritas" entry:"1325759376" priority:"M" project:"TD" status:"pending" uuid:"e626c53c-54ce-bded-8972-eda692ee73c6"]
-[description:"Se till att Enemy försvinner när HP == 0" entry:"1326746315" priority:"M" project:"TD" status:"pending" uuid:"db79b736-f2ed-db93-634c-9ab2b255c289"]
+[description:"Tower ska inte kunna attackera mer än en Enemy samtidigt" entry:"1326749024" priority:"H" project:"TD" status:"pending" uuid:"ddea112e-8bf4-2005-55ed-34c95e4957a2"]

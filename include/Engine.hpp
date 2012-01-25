@@ -8,6 +8,7 @@
 #include <Enemy.hpp>
 #include <Board.hpp>
 #include <Tower.hpp>
+#include <Player.hpp>
 #include <list>
 #include <definitions.hpp>
 
@@ -21,7 +22,7 @@ public:
 	void moveEnemy(Board & board, unsigned int enemyStepCounter);
 
 	//! Tower skjuter Enemy
-	void shootEnemy(const Board & board, Tower & tower, Enemy & enemy);
+   void shootEnemy(const Board & board, Tower & tower, Enemy & enemy, Player & player);
 
 private:
 	Engine(const Engine&);

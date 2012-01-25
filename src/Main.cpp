@@ -192,7 +192,7 @@ int main()
 
 			if (shootCounter == 30)
 			{
-				rules.isEnemyShootable(board);
+			   rules.isEnemyShootable(board, player);
 				shootCounter = 0;
 			}
 
@@ -200,8 +200,8 @@ int main()
 			{
 				pEnemy = new Enemy(0, board.getEntranceTile());
 				board.addEnemy(pEnemy, enemyStepCounter);
-				summonCounter = 0;
 				pEnemy = NULL;
+				summonCounter = 0;
 			}
 		}
 
@@ -223,6 +223,7 @@ int main()
 						{
 							pTower = new Tower(gridX, gridY);
 							board.addTower(pTower);
+							pTower = NULL;
 							player.setMoney(player.getMoney() - Tower::getPrice());
 						}
 					}

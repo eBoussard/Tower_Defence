@@ -46,7 +46,7 @@ bool Rules::enemyPositionValid (const Board & board, gridPosition gridX, gridPos
 
 
 
-void Rules::isEnemyShootable(Board & board)
+void Rules::isEnemyShootable(Board & board, Player & player)
 {
    Board::EnemiesList_t enemies = board.getEnemies();
    Board::TowersList_t towers = board.getTowers();
@@ -56,7 +56,7 @@ void Rules::isEnemyShootable(Board & board)
 	 for (Board::TowersList_t::iterator itt = towers.begin(); itt != towers.end(); ++itt)
 	    {
 			Engine engine;
-			engine.shootEnemy(board, **itt, *ite->first);
+			engine.shootEnemy(board, **itt, *ite->first, player);
 	    }
      }
 }

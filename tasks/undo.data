@@ -114,3 +114,10 @@ new [annotation_1325867942:"Allt trassel verkar ha att göra med att Enemy är i
 time 1326746315
 new [description:"Se till att Enemy försvinner när HP == 0" entry:"1326746315" priority:"M" project:"TD" status:"pending" uuid:"db79b736-f2ed-db93-634c-9ab2b255c289"]
 ---
+time 1326748926
+old [description:"Se till att Enemy försvinner när HP == 0" entry:"1326746315" priority:"M" project:"TD" status:"pending" uuid:"db79b736-f2ed-db93-634c-9ab2b255c289"]
+new [description:"Se till att Enemy försvinner när HP == 0" end:"1326748926" entry:"1326746315" priority:"M" project:"TD" status:"completed" uuid:"db79b736-f2ed-db93-634c-9ab2b255c289"]
+---
+time 1326749024
+new [description:"Tower ska inte kunna attackera mer än en Enemy samtidigt" entry:"1326749024" priority:"H" project:"TD" status:"pending" uuid:"ddea112e-8bf4-2005-55ed-34c95e4957a2"]
+---

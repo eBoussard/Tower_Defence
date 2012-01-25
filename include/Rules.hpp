@@ -30,7 +30,7 @@ public:
    bool enemyPositionValid (const Board & board, gridPosition gridX, gridPosition gridY) const;
 
    //! Innehåller listor på Tower och Enemy. Anropar Engine::shootEnemy()
-   void isEnemyShootable(Board & board);
+   void isEnemyShootable(Board & board, Player & player);
 
 private:
    Rules(const Rules&);
